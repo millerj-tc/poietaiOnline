@@ -2,7 +2,7 @@ import {poemCreatorDisplayBuilder} from "./poemCreatorDisplayBuilder.js";
 
 export class poemCreatorContentPasser
 {
-    static PassContentFlow(contentArr){ //called by poemCreatorContentGatherer
+    static PassContentFlow(contentArr){
         
         const $parsedContentArr = this._ParseContent(contentArr);
         
