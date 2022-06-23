@@ -57,7 +57,7 @@ export class poemCreatorContentGatherer
     
     static _RollForContent(contentArr){
         
-        console.error("roll for content here");
+        console.error("roll for content here"); // do it in a way that scales equally with any number of content without preferencing things that are shuffled to early in order (shuffling necessary?) AND allows multiples for things like "/"
         
         let $returnArr;
         
