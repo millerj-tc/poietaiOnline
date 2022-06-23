@@ -29,7 +29,7 @@ export class poemCreatorContentPasser
             
             const $div = document.createElement("div");
             
-            $div.innerHTML = "test";
+            $div.innerHTML = content;
             
             $returnArr.push $div
         }
