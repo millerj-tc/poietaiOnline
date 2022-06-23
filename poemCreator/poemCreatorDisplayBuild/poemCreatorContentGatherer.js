@@ -1,6 +1,8 @@
 import {poemCreatorContentPasser} from "./poemCreatorContentPasser.js";
 import {defaultPoemContent} from "./defaultPoemContent.js"
 
+// see pr comments
+
 export class poemCreatorContentGatherer
 {
     static GatherContentFlow(){
