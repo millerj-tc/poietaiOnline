@@ -1,6 +1,6 @@
 import {defaultPoemContent} from "./defaultPoemContent.js"
 
-function Flow(contentArr){
+export function poemCreatorContentGatherFlow(contentArr){
 
     // how to control frequencies to make it good?
 
@@ -11,6 +11,8 @@ function Flow(contentArr){
     _AddDefaultContent(contentArr);
 
     _AddPlayerDomeContent(contentArr);
+    
+    return contentArr
 }
 
 function _GetPlayerLocation(){

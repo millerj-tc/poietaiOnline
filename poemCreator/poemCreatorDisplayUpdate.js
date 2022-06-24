@@ -1,4 +1,4 @@
-function ContentDivPressed(div){
+export function ContentDivPressed(div){
 
     console.log("You clicked " + div.innerHTML);
 }

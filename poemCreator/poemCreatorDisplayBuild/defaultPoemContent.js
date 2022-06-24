@@ -1,4 +1,4 @@
-const defaultPoemContent = 
+export const defaultPoemContent = 
 [
 
     {

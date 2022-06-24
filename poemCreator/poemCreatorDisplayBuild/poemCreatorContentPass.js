@@ -1,19 +1,20 @@
-function Flow(contentArr){ //called by poemCreatorContentGatherer
+export function poemCreatorContentPassFlow(modWrapArr){
 
-    const $parsedContentArr = _ParseContent(contentArr);
+    const $contentTextArr = _ExtractedTextPropsFromModWraps(modWrapArr);
 
-    const $divArr = _BuildContentDivs($parsedContentArr);
-
-    _PassContentDivsToPoemContentDisplay($divArr);
+    return _BuildContentDivs($contentTextArr);
 }
 
-function _ParseContent(contentArr){
+function _ExtractedTextPropsFromModWraps(modWrapArr){
 
-    const $returnContentArr = contentArr;
+    const $returnArr = [];
+    
+    for(const modWrap of modWrapArr){
+        
+        $returnArr.push(modWrap.content.text);
+    }
 
-    // if you need to do anything to a piece of content that will go here
-
-    return $returnContentArr
+    return $returnArr
 
 }
     
@@ -27,7 +28,7 @@ function _BuildContentDivs(contentArr){
 
         $div.innerHTML = content;
 
-        $returnArr.push $div
+        $returnArr.push($div)
     }
 
     return $returnArr

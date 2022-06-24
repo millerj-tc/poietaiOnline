@@ -1,16 +1,16 @@
-import {poemCreatorDisplayUpdate} from "./../poemCreatorDisplayUpdate.js";
+import {ContentDivPressed} from "./../poemCreatorDisplayUpdate.js";
 
-function Flow(divArr){
-
+export function poemCreatorDisplayBuildFlow(divArr){
+    
     let $divArr = divArr;
 
-    this._AddEventListenerToAllDivs($divArr); //player indicator doesn't need to listen for this
+    _AddEventListenerToAllDivs($divArr); //player indicator doesn't need to listen for this
 
-    $divArr.push(this._CreatePlayerDiv()); //so it's inserted and style classes added appropriately
+    $divArr.push(_CreatePlayerDiv()); //so it's inserted and style classes added appropriately
 
-    this._AddStyleClassesToAllDivs($divArr);
+    _AddStyleClassesToAllDivs($divArr);
 
-    this._AppendDivsToPoemCreationGrid($divArr);
+    _AppendDivsToPoemCreationGrid($divArr);
 
 //        const $poemCreatorDisplay = this._CreatePoemCreatorDisplay();
 
@@ -42,7 +42,7 @@ function _AddEventListenerToAllDivs(divArr){
 
     for(const div of divArr){
 
-        div.addEventListener("click", function(){poemCreatorDisplayUpdate.ContentDivPressed(div)});
+        div.addEventListener("click", function(){ContentDivPressed(div)});
     }
 }
     

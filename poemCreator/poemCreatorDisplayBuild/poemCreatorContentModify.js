@@ -1,16 +1,26 @@
-function Flow(contentArr){
+export function poemCreatorContentModifyFlow(contentArr,n=16){
     
-    _WrapEachContentInModWrapper(contentArr);
+    let $modWrapArr = _ReturnContentInModWrapper(contentArr);
     
+    const $frequencySum = _GetFrequencySum($modWrapArr);
     
+    _AssignModifiedFrequency($modWrapArr,$frequencySum);
+    
+    _AssignModWrapFloorsAndCeilingsForRolls($modWrapArr);
+    
+    return _RollUntilFulfillN($modWrapArr,n);
 }
 
-function _WrapEachContentInModWrapper(contentArr){
+function _ReturnContentInModWrapper(contentArr){
+    
+    let $returnArr = [];
     
     for(const c of contentArr){
         
-        c = {modifiedFrequency:null,rollFloor:null,rollCeiling:null,content:c};
+        $returnArr.push({modifiedFrequency:null,rollFloor:null,rollCeiling:null,content:c});
     }
+    
+    return $returnArr
 }
 
 function _GetFrequencySum(modWrapArr){
@@ -42,5 +52,24 @@ function _AssignModWrapFloorsAndCeilingsForRolls(modWrapArr){
         modWrap.rollFloor = $nextFloor;
         
         modWrap.rollCeiling = modWrap.rollFloor + modWrap.modifiedFrequency;
+        
+        $nextFloor = modWrap.rollCeiling;
+    }   
+}
+    
+function _RollUntilFulfillN(modWrapArr,n){
+    
+    let $returnArr = [];
+    
+    for(let i; i < n; i++){
+        
+        let $roll = Math.random();
+        
+        for(const modWrap of modWrapArr){
+            
+            if($roll > modWrap.rollFloor && $roll <= modWrap.rollCeiling) $returnArr.push(modWrap);
+        }
     }
+    
+    return $returnArr
 }
