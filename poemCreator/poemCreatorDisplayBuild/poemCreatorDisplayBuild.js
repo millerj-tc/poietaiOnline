@@ -1,6 +1,6 @@
 import {poemCreatorDisplayUpdate} from "./../poemCreatorDisplayUpdate.js";
 
-function LoadContentDivsFlow(divArr){
+function Flow(divArr){
 
     let $divArr = divArr;
 
@@ -16,11 +16,6 @@ function LoadContentDivsFlow(divArr){
 
     ///
 }
-    
-//    function _CreatePoemCreatorDisplay(){
-//        
-//        return new poemCreatorDisplay();
-//    }
     
 function _CreatePlayerDiv(){
 

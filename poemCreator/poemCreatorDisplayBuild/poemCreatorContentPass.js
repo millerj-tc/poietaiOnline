@@ -1,11 +1,10 @@
+function Flow(contentArr){ //called by poemCreatorContentGatherer
 
-function PassContentFlow(contentArr){ //called by poemCreatorContentGatherer
+    const $parsedContentArr = _ParseContent(contentArr);
 
-    const $parsedContentArr = this._ParseContent(contentArr);
+    const $divArr = _BuildContentDivs($parsedContentArr);
 
-    const $divArr = this._BuildContentDivs($parsedContentArr);
-
-    this._PassContentDivsToPoemContentDisplay($divArr);
+    _PassContentDivsToPoemContentDisplay($divArr);
 }
 
 function _ParseContent(contentArr){

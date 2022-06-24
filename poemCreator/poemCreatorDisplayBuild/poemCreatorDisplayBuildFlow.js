@@ -3,15 +3,17 @@ import * as poemCreatorContentModify from "./poemCreatorContentModify.js";
 import * as poemCreatorContentPass from "./poemCreatorContentPass.js";
 import * as poemCreatorDisplayBuild from "./poemCreatorDisplayBuild.js";
 
+//import GetLocation from that class and just pass to ContentGather?
+
 function poemCreatorDisplayBuildFlow(){
     
     let $contentArr = [];
     
-    poemCreatorContentGatherer.GatherContentFlow($contentArr);
+    poemCreatorContentGather.Flow($contentArr);
     
-    poemCreatorContentModifier.ModifyContentFlow($contentArr);
+    poemCreatorContentModify.Flow($contentArr);
     
-    poemCreatorContentPasser.PassContentFlow($contentArr);
+    poemCreatorContentPass.Flow($contentArr);
     
-    poemCreatorDisplayBuilder.LoadContentDivsFlow($contentArr);
+    poemCreatorDisplayBuild.Flow($contentArr);
 }
