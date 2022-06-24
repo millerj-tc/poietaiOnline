@@ -1,0 +1,28 @@
+.cssPoemCreatorGrid{
+    display:grid;
+    position:fixed;
+    grid-template-columns: repeat(4,200px);
+    grid-template-rows: repeat(4,200px);
+    align-items: center;
+    justify-content: center;
+    opacity:0.9;
+    background-color: aliceblue;
+}
+
+.cssPoemCreatorGridContent{
+    
+    text-align: center;
+    font-size: 22px;
+    
+}
+
+.cssPoemCreatorOutput{
+    
+    font-size:22px;
+    opacity: 0.5
+}
+
+.cssPoemCreatorOutputContent{
+    
+    display:inline-block;
+}

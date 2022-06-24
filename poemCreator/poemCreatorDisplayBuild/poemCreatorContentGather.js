@@ -32,7 +32,7 @@ function _AddDefaultContent(contentArr){
 
     const $defaultContent = defaultPoemContent;
 
-    for(const c in $defaultContent){
+    for(const c of $defaultContent){
 
         let $copiedC = JSON.parse(JSON.stringify(c));
         

@@ -1,4 +1,6 @@
 import {ContentDivPressed} from "./../poemCreatorDisplayUpdate.js";
+import {ShuffleArray} from "./../../utils.js";
+import {CreateElement,GetElementById} from "./../../ui.js";
 
 export function poemCreatorDisplayBuildFlow(divArr){
     
@@ -9,8 +11,10 @@ export function poemCreatorDisplayBuildFlow(divArr){
     $divArr.push(_CreatePlayerDiv()); //so it's inserted and style classes added appropriately
 
     _AddStyleClassesToAllDivs($divArr);
+    
+    let $shuffledArr = _ShuffleDivElements($divArr);
 
-    _AppendDivsToPoemCreationGrid($divArr);
+    _AppendDivsToPoemCreationGrid($shuffledArr);
 
 //        const $poemCreatorDisplay = this._CreatePoemCreatorDisplay();
 
@@ -19,9 +23,11 @@ export function poemCreatorDisplayBuildFlow(divArr){
     
 function _CreatePlayerDiv(){
 
-    const $playerDiv = document.createElement("div");
+    const $playerDiv = CreateElement("div");
 
     $playerDiv.innerHTML = "X";
+    
+    console.error("assign a unique id that can be matched up with an object in the grid object so that you can get properties like / appending <br> instead and position, etc.");
 
     $playerDiv.classList.add("jsPoemCreatorPlayerIndicator");
 
@@ -34,7 +40,7 @@ function _AddStyleClassesToAllDivs(divArr){
 
     for(const div of divArr){
 
-        div.classList.add("cssPoemCreatorContent")
+        div.classList.add("cssPoemCreatorGridContent")
     }
 }
     
@@ -45,11 +51,16 @@ function _AddEventListenerToAllDivs(divArr){
         div.addEventListener("click", function(){ContentDivPressed(div)});
     }
 }
+
+function _ShuffleDivElements(divArr){
+    
+    return ShuffleArray(divArr);
+}
     
 function _AppendDivsToPoemCreationGrid(divArr){
 
     for(const div of divArr){
 
-        document.getElementById("poemCreatorGrid").append(div);
+       GetElementById("poemCreatorGrid").append(div);
     }
 }

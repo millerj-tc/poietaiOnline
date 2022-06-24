@@ -3,7 +3,12 @@ export const defaultPoemContent =
 
     {
        text: "/",
-       frequency: 0.95,
+       frequency: 1.75,
+    },
+    
+    {
+       text: "",
+       frequency: 1.5,
     },
     
     {
@@ -13,11 +18,6 @@ export const defaultPoemContent =
     
     {
        text: ".",
-       frequency: 0.9,
-    },
-    
-    {
-       text: "",
        frequency: 0.9,
     },
     
@@ -127,13 +127,8 @@ export const defaultPoemContent =
     },
     
     {
-       text: "[",
+       text: "multiDiv",
+       texts:["[","]"],
        frequency: 0.35,
-       linkBoosts:[{text:"]",amount:1}]
-    },
-    
-    {
-       text: "]",
-       frequency: 0.35,
-    },
+    }
 ]
