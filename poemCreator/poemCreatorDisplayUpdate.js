@@ -28,7 +28,11 @@ function _AppendContent(div){
     
     div.classList.add("cssPoemCreatorOutputContent");
     
-    if(div.innerHTML == "/") $output.insertAdjacentHTML("<br>")
+    if(div.innerHTML == "/"){ 
+        
+        $output.insertAdjacentHTML("beforeend","<br>");
+        div.remove();
+    }
     
     else{
         $output.append(div);
