@@ -20,6 +20,6 @@ function _PreloadTwoLinebreaks(contentArr){
     
     for(let i =0; i < 1; i++){
         
-        contentArr.push()
+        contentArr.push({text:"/"})
     }
 }
