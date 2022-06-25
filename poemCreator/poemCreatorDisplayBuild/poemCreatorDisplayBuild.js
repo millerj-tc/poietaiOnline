@@ -8,8 +8,6 @@ export function poemCreatorDisplayBuildFlow(divArr){
 
     _AddEventListenerToAllDivs($divArr); //player indicator doesn't need to listen for this
 
-    $divArr.push(_CreatePlayerDiv()); //so it's inserted and style classes added appropriately
-
     _AddStyleClassesToAllDivs($divArr);
     
     let $shuffledArr = _ShuffleDivElements($divArr);
@@ -20,22 +18,7 @@ export function poemCreatorDisplayBuildFlow(divArr){
 
     ///
 }
-    
-function _CreatePlayerDiv(){
 
-    const $playerDiv = CreateElement("div");
-
-    $playerDiv.innerHTML = "X";
-    
-    console.error("assign a unique id that can be matched up with an object in the grid object so that you can get properties like / appending <br> instead and position, etc.");
-
-    $playerDiv.classList.add("jsPoemCreatorPlayerIndicator");
-
-    $playerDiv.classList.add("cssPoemCreatorPlayerIndicator");
-
-    return $playerDiv
-}
-    
 function _AddStyleClassesToAllDivs(divArr){
 
     for(const div of divArr){

@@ -1,4 +1,4 @@
-export function poemCreatorContentModifyFlow(contentArr,n=15){
+export function poemCreatorContentModifyFlow(contentArr,n=13){
     
     let $modWrapArr = _ReturnContentInModWrapper(contentArr);
     
@@ -63,6 +63,8 @@ function _RollUntilFulfillN(modWrapArr,n){
     
     let i = 0;
     
+    console.table(modWrapArr);
+    
     while(i < n){
         
         let $roll = Math.random();
@@ -86,8 +88,6 @@ function _RollUntilFulfillN(modWrapArr,n){
             }
         }
     }
-    
-    console.log($returnArr)
     
     return $returnArr
 }

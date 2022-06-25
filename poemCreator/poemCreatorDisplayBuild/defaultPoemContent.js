@@ -47,6 +47,46 @@ export const defaultPoemContent =
     },
     
     {
+       text: "rounded",
+       frequency: 0.75,
+    },
+    
+    {
+       text: "feet",
+       frequency: 0.75,
+    },
+    
+    {
+       text: "asked",
+       frequency: 0.75,
+    },
+    
+    {
+       text: "ask",
+       frequency: 0.75,
+    },
+    
+    {
+       text: "grayed",
+       frequency: 0.75,
+    },
+    
+    {
+       text: "since",
+       frequency: 0.75,
+    },
+    
+    {
+       text: "little",
+       frequency: 0.75,
+    },
+    
+    {
+       text: "dirt",
+       frequency: 0.75,
+    },
+    
+    {
        text: "note",
        frequency: 0.75,
     },
