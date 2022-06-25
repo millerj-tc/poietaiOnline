@@ -1,12 +1,11 @@
 .cssPoemCreatorGrid{
     display:grid;
-    position:fixed;
+    position:relative;
+    top:200px;
     grid-template-columns: repeat(4,200px);
     grid-template-rows: repeat(4,200px);
     align-items: center;
     justify-content: center;
-    opacity:0.9;
-    background-color: aliceblue;
 }
 
 .cssPoemCreatorGridContent{
@@ -16,10 +15,33 @@
     
 }
 
-.cssPoemCreatorOutput{
+.cssPoemCreatorOutputTray{
     
+    position: fixed;
+    overflow-y: hidden;
+    height: 80vh;
+    width:80vw;
+    top: -70vh;
+    left:10vh;
+    border: 2px solid;
+    border-radius:25px;
+    padding: 10px;
     font-size:22px;
-    opacity: 0.5
+}
+
+.cssPoemCreatorOutputWrapper{
+    
+    position: relative;
+    height: inherit;
+    width: inherit;
+}
+
+.cssPoemCreatorOutput {
+    
+    position: absolute;
+    bottom: 0;
+    display:inline-block;
+    
 }
 
 .cssPoemCreatorOutputContent{

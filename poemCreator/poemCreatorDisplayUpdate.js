@@ -1,4 +1,4 @@
-import {GetElementById} from "./../ui.js";
+import {GetElementById,CreateElement} from "./../ui.js";
 
 export function ContentDivPressed(div){
 
@@ -24,19 +24,23 @@ function _AppendContent(div){
     
     const $output = GetElementById("poemCreatorOutput");
     
-    div.classList.remove("cssPoemCreatorGridContent");
+    let $appendDiv = CreateElement("div");
     
-    div.classList.add("cssPoemCreatorOutputContent");
+    $appendDiv.innerHTML = div.innerHTML;
+    
+    $appendDiv.classList.add("cssPoemCreatorOutputContent");
     
     if(div.innerHTML == "/"){ 
         
         $output.insertAdjacentHTML("beforeend","<br>");
-        div.remove();
+        
     }
     
     else{
-        $output.append(div);
+        $output.append($appendDiv);
 
         $output.append(" ");
     }
+    
+    div.remove();
 }
