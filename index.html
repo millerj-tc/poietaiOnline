@@ -1,8 +1,62 @@
-        <script type="module">
-            import {poemCreatorDisplayFlow} from './poemCreator/poemCreatorDisplayBuild/poemCreatorDisplayFlow.js';
-            window.poemCreatorDisplayFlow = poemCreatorDisplayFlow;
-        </script>
+<head>   
+    <script type="module">
+        import {poemCreatorDisplayFlow} from './poemCreator/poemCreatorDisplayBuild/poemCreatorDisplayFlow.js';
+        window.poemCreatorDisplayFlow = poemCreatorDisplayFlow;
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+</head>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <div class="cssPoemCreatorGrid" id="poemCreatorGrid"></div>
 <div class="cssPoemCreatorOutputTray"><div class="cssPoemCreatorOutputWrapper"><div class="cssPoemCreatorOutput" id="poemCreatorOutput"></div></div><button></button></div>
 <button style="position:relative;top:100px"  onclick="poemCreatorDisplayFlow()">TEST</button>
+
+<script type="module">
+
+  // Import the functions you need from the SDKs you need
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-analytics.js";
+            
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+  // Your web app's Firebase configuration
+
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyBvjgVPY_ZOM0hoEYc4ewSXFIdw17cFZCE",
+
+    authDomain: "griot-games.firebaseapp.com",
+
+    projectId: "griot-games",
+      
+    databaseURL: "https://griot-games-default-rtdb.firebaseio.com/",
+
+    storageBucket: "griot-games.appspot.com",
+
+    messagingSenderId: "225872980699",
+
+    appId: "1:225872980699:web:5a2f4ee4f30bcde76cbafe",
+
+    measurementId: "G-KZQ8J7P5E4"
+
+  };
+
+
+  // Initialize Firebase
+
+  const app = initializeApp(firebaseConfig);
+
+  const analytics = getAnalytics(app);
+            
+ const db = getDatabase(app);
+
+</script>
