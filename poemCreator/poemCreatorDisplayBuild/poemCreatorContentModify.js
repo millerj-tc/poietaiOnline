@@ -1,4 +1,4 @@
-export function poemCreatorContentModifyFlow(contentArr,n=13){
+export function poemCreatorContentModifyFlow(contentArr,n=16){
     
     let $modWrapArr = _ReturnContentInModWrapper(contentArr);
     
@@ -8,7 +8,9 @@ export function poemCreatorContentModifyFlow(contentArr,n=13){
     
     _AssignModWrapFloorsAndCeilingsForRolls($modWrapArr);
     
-    return _RollUntilFulfillN($modWrapArr,n);
+    let $preloadedModWrapArr = _PreloadModWraps()
+    
+    return _RollUntilFulfillN($modWrapArr,n,$preloadedModWrapArr);
 }
 
 function _ReturnContentInModWrapper(contentArr){
@@ -56,16 +58,27 @@ function _AssignModWrapFloorsAndCeilingsForRolls(modWrapArr){
         $nextFloor = modWrap.rollCeiling;
     }   
 }
+
+function _PreloadModWraps(){
     
-function _RollUntilFulfillN(modWrapArr,n){
+    const $returnArr = [];
     
-    let $returnArr = [];
+    $returnArr.push({content:{text:"X"}},{content:{text:"/"}},{content:{text:"/"}})
+    
+    return $returnArr
+}
+    
+function _RollUntilFulfillN(modWrapArr,n,preloadedModWrapArr){
+    
+    let $returnArr = preloadedModWrapArr;
     
     let i = 0;
     
+    let modN = n - $returnArr.length;
+    
     console.table(modWrapArr);
     
-    while(i < n){
+    while(i < modN){
         
         let $roll = Math.random();
         
