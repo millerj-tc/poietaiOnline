@@ -20,9 +20,9 @@
     position: fixed;
     overflow-y: hidden;
     height: 80vh;
-    width:80vw;
+    width:80%;
     top: -70vh;
-    left:10vh;
+    left:10vw;
     border: 2px solid;
     border-radius:25px;
     padding: 10px;
