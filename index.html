@@ -4,11 +4,13 @@
         window.poemCreatorDisplayFlow = poemCreatorDisplayFlow;
         import {TestLoginMe} from "./firebase/firebaseAuth.js";
         window.TestLoginMe = TestLoginMe;
+        import {MemorizePoemFlow} from "./poemCreator/memorizePoem/memorizePoemFlow.js";
+        window.MemorizePoemFlow = MemorizePoemFlow;
     </script>
 </head>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <div class="cssPoemCreatorGrid" id="poemCreatorGrid"></div>
-<div class="cssPoemCreatorOutputTray"><div class="cssPoemCreatorOutputWrapper"><div class="cssPoemCreatorOutput" id="poemCreatorOutput"></div></div><button></button></div>
+<div class="cssPoemCreatorOutputTray"><div class="cssPoemCreatorOutputWrapper"><div class="cssPoemCreatorOutput" id="poemCreatorOutput"></div></div><button onclick="MemorizePoemFlow()">Memorize</button></div>
 <button style="position:relative;top:100px"  onclick="poemCreatorDisplayFlow()">TEST</button>
 <button style="position:relative;top:100px"  onclick="TestLoginMe()">LOGIN JOSEPH</button>
 
