@@ -76,8 +76,6 @@ function _RollUntilFulfillN(modWrapArr,n,preloadedModWrapArr){
     
     let modN = n - $returnArr.length;
     
-    console.table(modWrapArr);
-    
     while(i < modN){
         
         let $roll = Math.random();
