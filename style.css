@@ -27,6 +27,7 @@
     border-radius:25px;
     padding: 10px;
     font-size:22px;
+    transition: transform 0.75s
 }
 
 .cssPoemCreatorOutputWrapper{
