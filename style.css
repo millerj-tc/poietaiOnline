@@ -26,6 +26,7 @@
     border: 2px solid;
     border-radius:25px;
     padding: 10px;
+    padding-bottom: 50px;
     font-size:22px;
     transition: transform 0.75s
 }

@@ -14,7 +14,7 @@ export function TogglePoemCreatorOutputCollapsed(){
         
         $button.innerHTML = `/\\`;
         
-        $tray.style.transform = "translateY(70vh)"; ;
+        $tray.style.transform = "translateY(75vh)"; ;
     }
     else{
         
