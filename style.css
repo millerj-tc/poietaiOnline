@@ -18,6 +18,7 @@
 .cssPoemCreatorOutputTray{
     
     position: fixed;
+    background-color: white;
     overflow-y: hidden;
     height: 80vh;
     width:80%;
