@@ -2,11 +2,10 @@ import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword } fr
 
 import {TestRetrieveName} from "./firebaseGetUserData.js";
 
-export function TestLogin(){
-    
-    console.log("start login creation");
+export function Login(email,pass){
 
-const auth = getAuth();
+const auth = getAuth();   
+    
 createUserWithEmailAndPassword(auth, "j.sam.miller@gmail.com", "password")
   .then((userCredential) => {
     // Signed in 
@@ -18,8 +17,6 @@ createUserWithEmailAndPassword(auth, "j.sam.miller@gmail.com", "password")
     const errorMessage = error.message;
     // ..
   });
-    
-    console.log("login created");
 }
 
 export function TestLoginMe(){

@@ -51,3 +51,17 @@
     
     display:inline-block;
 }
+
+.loginWrapper{
+    
+    position:relative;
+    display:grid;
+    grid-template-columns: repeat(2,350px);
+    align-items: center;
+    justify-content: center;
+}
+
+.loginWrapper > div {
+    
+    text-align: right;
+}
