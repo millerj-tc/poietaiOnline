@@ -71,9 +71,7 @@ function _AddEventListenerToAllDivs(divArr){
         const $wrapper = div.parentElement;
 
         $wrapper.addEventListener("click", function(){
-            console.log($content);
-            console.log($wrapper);
-            
+
             ContentDivPressed($wrapper);
         });
     }

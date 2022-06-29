@@ -21,8 +21,6 @@ function _isPlayerDiv(div){
 }
 
 function _CheckIfPlayerIndicatorIsWithinNMovesOfDiv(div,n=1){
-
-    console.log(div);
     
     const divPos = _GetPressedDivPos(div);
     const playerIndicatorWrapperDivPos = _GetPlayerIndicatorWrapperDivPos();
@@ -30,13 +28,6 @@ function _CheckIfPlayerIndicatorIsWithinNMovesOfDiv(div,n=1){
     const gridspaceWidth = div.getBoundingClientRect().width;
     
     const distance = GetDistance(divPos[0],divPos[1],playerIndicatorWrapperDivPos[0],playerIndicatorWrapperDivPos[1])
-    
-    console.log(playerIndicatorWrapperDivPos);
-    console.log(">>>")
-    console.log(divPos);
-    console.log(gridspaceWidth);
-    console.log(distance);
-    console.log("---");
     
     if(distance < (gridspaceWidth + 10)) return true
     else return false
