@@ -1,4 +1,3 @@
-/*
 .cssPoemCreatorGrid{
     display:grid;
     position:relative;
@@ -8,16 +7,13 @@
     align-items: center;
     justify-content: center;
 }
-*/
 
-/*
 .cssPoemCreatorGridContent{
     
     text-align: center;
     font-size: 22px;
     
 }
-*/
 
 .cssPoemCreatorOutputTray{
     

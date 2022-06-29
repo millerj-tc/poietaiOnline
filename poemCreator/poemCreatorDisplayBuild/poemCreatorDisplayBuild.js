@@ -12,8 +12,11 @@ export function poemCreatorDisplayBuildFlow(divArr){
     
     let $shuffledArr = _ShuffleDivElements($divArr);
 
-    _AppendDivsToPoemCreationGridNEW($shuffledArr);
+    _AppendDivsToPoemCreationGrid($shuffledArr);
 
+//        const $poemCreatorDisplay = this._CreatePoemCreatorDisplay();
+
+    ///
 }
 
 function _AddStyleClassesToAllDivs(divArr){
@@ -42,19 +45,5 @@ function _AppendDivsToPoemCreationGrid(divArr){
     for(const div of divArr){
 
        GetElementById("poemCreatorGrid").append(div);
-    }
-}
-
-function _AppendDivsToPoemCreationGridNEW(divArr){
-    
-    const $gridDOM = GetElementById("poemCreatorGrid");
-    
-    const $divDestructorArr = divArr;
-    
-    console.log($gridDOM.childNodes);
-    
-    for(const div of $gridDOM.childNodes){
-        
-        div.append($divDestructorArr.pop());
     }
 }
