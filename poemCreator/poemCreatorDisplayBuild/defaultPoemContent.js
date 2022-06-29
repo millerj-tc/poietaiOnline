@@ -142,6 +142,11 @@ export const defaultPoemContent =
     },
     
     {
+       text: "rather",
+       frequency: 0.6,
+    },
+    
+    {
        text: "piss",
        frequency: 0.5,
     },
