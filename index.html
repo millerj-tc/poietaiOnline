@@ -10,6 +10,8 @@
         window.MemorizePoemFlow = MemorizePoemFlow;
         import {TogglePoemCreatorOutputCollapsed} from "./poemCreator/poemCreatorUtils.js";
         window.TogglePoemCreatorOutputCollapsed = TogglePoemCreatorOutputCollapsed;
+        import {LoginFlow} from "./firebase/loginFlow.js";
+        window.LoginFlow = LoginFlow;
     </script>
 </head>
 <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -23,7 +25,7 @@
     <button onclick="MemorizePoemFlow()">Memorize</button>
 </div>
 <button style="position:relative;top:300px"  onclick="poemCreatorDisplayFlow()">TEST</button><br>
-<div class="loginWrapper">    
+<div class="loginWrapper" id="loginWrapper">    
     <div class="loginExisting">
         Existing User Login<br><br>
         <label for="existingUserEmail">Email:</label>
@@ -96,7 +98,7 @@
         // https://firebase.google.com/docs/reference/js/firebase.User
         window.uid = user.uid;
         console.log(window.uid + " login successful");
-        // ...
+        LoginFlow();
       } else {
         // User is signed out
         // ...

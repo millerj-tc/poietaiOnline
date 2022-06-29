@@ -8,8 +8,6 @@ export function TogglePoemCreatorOutputCollapsed(){
     
     const $button = GetElementById("poemCreatorOutputCollapseToggler");
     
-    console.log($trayTop);
-    
     if($trayTop < 0){
         
         $button.innerHTML = `/\\`;

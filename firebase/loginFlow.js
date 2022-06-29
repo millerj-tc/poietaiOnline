@@ -1,7 +1,9 @@
-
+import {GetElementById,SetDisplayTo} from "./../ui.js";
 
 export function LoginFlow(){
     
-    console.log("login flowing");
+    const $lw = GetElementById("loginWrapper");
+    
+    SetDisplayTo($lw,"none");
 
 }
