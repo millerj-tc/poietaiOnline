@@ -1,23 +1,66 @@
 import {GetElementById,CreateElement} from "./../ui.js";
+import {GetDistance} from "./../utils.js";
 
 export function ContentDivPressed(div){
-
-    if(_CheckIfLineFromPlayerToPressedIsUnobstructed) _AppendContent(div);
+    
+    if(_isPlayerDiv(div)) return
+    
+    if(_CheckIfPlayerIndicatorIsWithinNMovesOfDiv(div)){
+        
+        _MovePlayerIndicatorToPressedDivPos(div);
+        _AppendContent(div);
+    }
 }
 
-function _GetPressedDivPos(){
+function _isPlayerDiv(div){
+    
+    if(div.innerHTML == "X") return true
+    else return false
+}
 
+function _CheckIfPlayerIndicatorIsWithinNMovesOfDiv(div,n=1){
 
+    const divPos = _GetPressedDivPos(div);
+    const playerIndicatorPos = _GetPlayerIndicatorDivPos();
+    
+    const gridspaceWidth = div.getBoundingClientRect().width;
+    
+    const distance = GetDistance(divPos[0],divPos[1],playerIndicatorPos[0],playerIndicatorPos[1])
+    
+    console.log(divPos);
+    console.log(playerIndicatorPos);
+    console.log(gridspaceWidth);
+    console.log(distance);
+    
+    if(distance < (gridspaceWidth + 10)) return true
+    else return false
+}
+
+function _GetPressedDivPos(div){
+
+    const rect = div.getBoundingClientRect();
+    
+    return [rect.left,rect.top]
 }
 
 function _GetPlayerIndicatorDivPos(){
+    
+    const $playerDiv = GetElementById("poemCreatorPlayerIndicator");
+    
+    const rect = $playerDiv.getBoundingClientRect();
+    
+    return [rect.left,rect.top]
 
 
 }
 
-function _CheckIfLineFromPlayerToPressedIsUnobstructed(){
-
-    return true
+function _MovePlayerIndicatorToPressedDivPos(div){
+    
+    const $wrapper = div.parentElement;
+    
+    const $playerDiv = GetElementById("poemCreatorPlayerIndicator");
+    
+    $wrapper.append($playerDiv);
 }
     
 function _AppendContent(div){

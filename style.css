@@ -8,13 +8,28 @@
     justify-content: center;
 }
 
+.cssPoemCreatorGridContentWrapper{
+    
+    border: 2px solid;
+    border-radius:25px;
+    border-color: gray;
+    width: 192px;
+    height: 192px;
+    margin:2px;
+}
+
 .cssPoemCreatorGridContent{
     
+    position:relative;
     text-align: center;
     font-size: 22px;
+    top:50%;
+    margin-top: -11px;
+/*
     height: 100px;
     width: 100px;
-    padding:50px;
+*/
+/*    padding:50px;*/
     
 }
 
@@ -37,9 +52,12 @@
 
 .cssPoemCreatorOutputWrapper{
     
+/*
     position: relative;
-    height: inherit;
-    width: inherit;
+    height:200px;
+    width:200px;
+    border: 2px solid;
+*/
 }
 
 .cssPoemCreatorOutput {
