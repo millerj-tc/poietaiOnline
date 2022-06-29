@@ -48,13 +48,26 @@ function _AppendDivsToPoemCreationGrid(divArr){
        GetElementById("poemCreatorGrid").append($divWrapper);
         
         $divWrapper.append(div);
+        
+        if(div.id == "poemCreatorPlayerIndicator"){
+            
+            const $emptyContentDiv = CreateElement("div");
+            
+            $emptyContentDiv.innerHTML = "";
+;            
+            $emptyContentDiv.classList.add("cssPoemCreatorGridContent");
+            
+            $divWrapper.append($emptyContentDiv);
+        }
     }
 }
 
 function _AddEventListenerToAllDivs(divArr){
 
     for(const div of divArr){
-
-        div.parentElement.addEventListener("click", function(){ContentDivPressed(div)});
+        console.log(div.innerHTML);
+        console.log(div.parentElement);
+        console.log("---");
+        div.parentElement.addEventListener("click", function(){ContentDivPressed(div.parentElement)});
     }
 }

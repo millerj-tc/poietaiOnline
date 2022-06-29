@@ -3,12 +3,14 @@ import {GetDistance} from "./../utils.js";
 
 export function ContentDivPressed(div){
     
-    if(_isPlayerDiv(div)) return
+    let $contentDiv = div.firstElementChild;
+    
+    if(_isPlayerDiv($contentDiv)) return
     
     if(_CheckIfPlayerIndicatorIsWithinNMovesOfDiv(div)){
         
         _MovePlayerIndicatorToPressedDivPos(div);
-        _AppendContent(div);
+        _AppendContent($contentDiv);
     }
 }
 
@@ -20,15 +22,17 @@ function _isPlayerDiv(div){
 
 function _CheckIfPlayerIndicatorIsWithinNMovesOfDiv(div,n=1){
 
+    console.log(div);
+    
     const divPos = _GetPressedDivPos(div);
-    const playerIndicatorPos = _GetPlayerIndicatorDivPos();
+    const playerIndicatorWrapperDivPos = _GetPlayerIndicatorWrapperDivPos();
     
     const gridspaceWidth = div.getBoundingClientRect().width;
     
-    const distance = GetDistance(divPos[0],divPos[1],playerIndicatorPos[0],playerIndicatorPos[1])
+    const distance = GetDistance(divPos[0],divPos[1],playerIndicatorWrapperDivPos[0],playerIndicatorWrapperDivPos[1])
     
     console.log(divPos);
-    console.log(playerIndicatorPos);
+    console.log(playerIndicatorWrapperDivPos);
     console.log(gridspaceWidth);
     console.log(distance);
     
@@ -43,11 +47,11 @@ function _GetPressedDivPos(div){
     return [rect.left,rect.top]
 }
 
-function _GetPlayerIndicatorDivPos(){
+function _GetPlayerIndicatorWrapperDivPos(){
     
-    const $playerDiv = GetElementById("poemCreatorPlayerIndicator");
+    const $playerDivWrapper = GetElementById("poemCreatorPlayerIndicator").parentElement;
     
-    const rect = $playerDiv.getBoundingClientRect();
+    const rect = $playerDivWrapper.getBoundingClientRect();
     
     return [rect.left,rect.top]
 
@@ -56,7 +60,7 @@ function _GetPlayerIndicatorDivPos(){
 
 function _MovePlayerIndicatorToPressedDivPos(div){
     
-    const $wrapper = div.parentElement;
+    const $wrapper = div;
     
     const $playerDiv = GetElementById("poemCreatorPlayerIndicator");
     
@@ -99,7 +103,7 @@ function _AppendContent(div){
         $output.append($spaceDiv);
     }
     
-    div.remove();
+    div.innerHTML = "";
 }
 
 function _RemoveSpacesBeforePunctuationDivs(appendDiv){
