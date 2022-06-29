@@ -3,7 +3,7 @@ export const defaultPoemContent =
 
     {
        text: "/",
-       frequency: 0.75,
+       frequency: 0.95,
     },
     
     {
