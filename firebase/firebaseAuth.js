@@ -2,6 +2,8 @@ import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, sig
 
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
 
+import {LoginFlow} from "./loginFlow.js";
+
 import {GetElementById} from "./../ui.js";
 
 import {TestRetrieveName} from "./firebaseGetUserData.js";
@@ -51,32 +53,24 @@ export function Login(){
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    // ...
+    
+    LoginFlow();        
+    
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
   });
-    
-    TestRetrieveName();
 
 }
 
 export function TestLoginMe(){
     
-    const auth = getAuth();
-        signInWithEmailAndPassword(auth, "j.sam.miller@gmail.com", "password")
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+ GetElementById("existingUserEmail").value = "j.sam.miller@gmail.com";
+ GetElementById("existingPass").value = "password";
     
-    TestRetrieveName();
+Login();
+    
 
 }
 

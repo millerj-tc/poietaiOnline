@@ -7,3 +7,8 @@ export function CreateElement(type){
     
     return document.createElement(type)
 }
+
+export function SetDisplayTo(display){
+    
+    this.style.display = display;
+}
