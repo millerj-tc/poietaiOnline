@@ -65,9 +65,16 @@ function _AppendDivsToPoemCreationGrid(divArr){
 function _AddEventListenerToAllDivs(divArr){
 
     for(const div of divArr){
-        console.log(div.innerHTML);
-        console.log(div.parentElement);
-        console.log("---");
-        div.parentElement.addEventListener("click", function(){ContentDivPressed(div.parentElement)});
+        
+        
+        const $content = div;
+        const $wrapper = div.parentElement;
+
+        $wrapper.addEventListener("click", function(){
+            console.log($content);
+            console.log($wrapper);
+            
+            ContentDivPressed($wrapper);
+        });
     }
 }
