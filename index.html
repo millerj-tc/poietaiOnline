@@ -2,9 +2,10 @@
     <script type="module">
         import {poemCreatorDisplayFlow} from './poemCreator/poemCreatorDisplayBuild/poemCreatorDisplayFlow.js';
         window.poemCreatorDisplayFlow = poemCreatorDisplayFlow;
-        import {Login,TestLoginMe} from "./firebase/firebaseAuth.js";
+        import {Login,Register,TestLoginMe} from "./firebase/firebaseAuth.js";
         window.Login = Login;
         window.TestLoginMe = TestLoginMe;
+        window.Register = Register;
         import {MemorizePoemFlow} from "./poemCreator/memorizePoem/memorizePoemFlow.js";
         window.MemorizePoemFlow = MemorizePoemFlow;
         import {TogglePoemCreatorOutputCollapsed} from "./poemCreator/poemCreatorUtils.js";
@@ -21,7 +22,7 @@
     <button id="poemCreatorOutputCollapseToggler" onclick="TogglePoemCreatorOutputCollapsed()">\/</button>
     <button onclick="MemorizePoemFlow()">Memorize</button>
 </div>
-<button style="position:relative;top:100px"  onclick="poemCreatorDisplayFlow()">TEST</button><br>
+<button style="position:relative;top:300px"  onclick="poemCreatorDisplayFlow()">TEST</button><br>
 <div class="loginWrapper">    
     <div class="loginExisting">
         Existing User Login<br><br>
@@ -39,6 +40,7 @@
         <input type="password" id="newUserPass" name="newUserPass"><br><br>
         <label for="newUserChar">Character name:</label>
         <input type="text" id="newUserChar" name="newUserChar"><br><br>
+        <button class="cssRegisterButton" onclick="Register()">Register</button>
         
     </div>
 </div>

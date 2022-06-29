@@ -1,4 +1,6 @@
-import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js";
+import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js";
+
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
 
 import {GetElementById} from "./../ui.js";
 
@@ -6,16 +8,19 @@ import {TestRetrieveName} from "./firebaseGetUserData.js";
 
 export function Register(){
     
+    SignOut();
+    
     const email = GetElementById("newUserEmail").value;
     const pass = GetElementById("newUserPass").value;
 
     const auth = getAuth();   
 
-    createUserWithEmailAndPassword(auth, "j.sam.miller@gmail.com", "password")
+    createUserWithEmailAndPassword(auth, email, pass)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        // ...
+        
+        _PushCharacterNameToDatabase();
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -23,6 +28,19 @@ export function Register(){
         // ..
       });
     }
+
+function _PushCharacterNameToDatabase(){
+    
+    const db = getDatabase();
+    
+    const name = GetElementById("newUserChar").value
+    
+    set(ref(db, 'users/' + window.uid), {
+        name: name,
+        poems: {}
+  });
+
+}
 
 export function Login(){
     
@@ -60,5 +78,15 @@ export function TestLoginMe(){
     
     TestRetrieveName();
 
+}
+
+export function SignOut(){
+
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
 }
 
