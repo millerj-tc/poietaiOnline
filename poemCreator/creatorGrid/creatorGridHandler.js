@@ -6,14 +6,18 @@ class gridspace
         this.gridY;
         this.screenX;
         this.screenY;
+        this.width;
+        this.height;
     }
 }
 
 export class creatorGridHandler
 {
-    constructor(){
+    constructor(squareLayout = true,columnCount = 4){
         
         this.gridspaces = [];
+        this.squareLayout = squareLayout;
+        this.columnCount = columnCount;
     }
     
     CreateGridspace(){
