@@ -84,6 +84,8 @@ function _AppendContent(div){
         
     }
     
+    else if(div.innerHTML == "") return
+    
     else{
         $output.append($appendDiv);
 
