@@ -11,12 +11,8 @@ function _ParsePoemText(data,poemObjArr){
     
     for(const poemObjString in poemObjArr){
         
-        const passedPoemObj = {};
-        
         const pulledPoemObj = data[poemObjString];
-        
-        passedPoemObj.parsedPoemText = pulledPoemObj.poemText;
-        
-        window.gameHandler.poemMemoryHandler.AddPoemToMemory(passedPoemObj);
+    
+        window.gameHandler.poemMemoryHandler.AddPoemToMemory(pulledPoemObj.poemText);
     }
 }

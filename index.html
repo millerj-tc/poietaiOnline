@@ -8,8 +8,9 @@
         window.Register = Register;
         import {MemorizePoemFlow} from "./poemCreator/memorizePoem/memorizePoemFlow.js";
         window.MemorizePoemFlow = MemorizePoemFlow;
-        import {TogglePoemCreatorOutputCollapsed} from "./poemCreator/poemCreatorUtils.js";
+        import {TogglePoemCreatorOutputCollapsed,TogglePoemReciterCollapsed} from "./uiUtils.js";
         window.TogglePoemCreatorOutputCollapsed = TogglePoemCreatorOutputCollapsed;
+        window.TogglePoemReciterCollapsed = TogglePoemReciterCollapsed;
         import {LoginFlow} from "./firebase/loginFlow.js";
         window.LoginFlow = LoginFlow;
         import {ReciteCreateToggleFlow} from "./reciteCreateToggleFlow.js";
@@ -29,13 +30,14 @@
         <button class="poemCreatorOutputTrayButton reciteCreateToggleFlowButton" onclick="ReciteCreateToggleFlow()">Recite</button>
     </div>
 </div>
-<div class="cssPoemReciterTrayWrapper">
-    <div class="cssPoemReciterTray">
-        <div class="cssPoemReciterDisplayWrapper">
-            <div class = "cssPoemReciterDisplay"></div>
-        </div>
+
+<div class="cssPoemReciterTray" id="poemReciterTray">
+    <div class="cssPoemReciterDisplayWrapper">
+        <button class="poemReciterTrayButton" id="poemReciterCollapseToggler" onclick="TogglePoemReciterCollapsed()">/\</button>
+        <div class="cssPoemReciterDisplay" id="poemRemembererDisplay"></div>
     </div>
 </div>
+
 <button style="position:relative;top:300px"  onclick="poemCreatorDisplayFlow()">TEST</button><br>
 <div class="loginWrapper" id="loginWrapper">    
     <div class="loginExisting">

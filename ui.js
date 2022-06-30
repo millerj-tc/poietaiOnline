@@ -15,8 +15,10 @@ export function SetDisplayTo(div,display){
 
 export function ClearAllChildren(div){
     
-    for(const child of div.childNodes){
+    const $children = [...div.children];
+    
+    for(const c of $children){
         
-        child.remove();
+        c.remove();
     }
 }

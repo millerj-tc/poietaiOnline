@@ -1,4 +1,4 @@
-import {poemMemoryHandler} from "./poemReciter/poemMemoryHandler.js";
+import {poemMemoryHandler} from "./poemRememberer/poemMemoryHandler.js";
 
 export class gameHandler
 {

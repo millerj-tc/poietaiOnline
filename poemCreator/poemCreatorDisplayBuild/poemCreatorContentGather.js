@@ -26,6 +26,8 @@ function _AddCurrentLocationSources(contentArr,loc){
 
     //push copies
     
+    //this should be much more modal --maybe even a totally different flow? Consider sources that are non locations, etc.
+    
 }
 
 function _AddDefaultContent(contentArr){

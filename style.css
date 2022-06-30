@@ -1,9 +1,9 @@
 .cssPoemCreatorGrid{
     display:grid;
     position:relative;
-    top:200px;
-    grid-template-columns: repeat(4,200px);
-    grid-template-rows: repeat(4,200px);
+    top:12vh;
+    grid-template-columns: repeat(4,190px);
+    grid-template-rows: repeat(4,190px);
     align-items: center;
     justify-content: center;
 }
@@ -13,8 +13,8 @@
     border: 2px solid;
     border-radius:25px;
     border-color: gray;
-    width: 192px;
-    height: 192px;
+    width: 173px;
+    height: 173px;
     margin:2px;
 }
 
@@ -82,9 +82,41 @@
     
 }
 
-.cssPoemCreatorOutputContent{
+.cssPoemReciterTray{
     
-    display:inline-block;
+    position: fixed;
+    background-color: white;
+    overflow-y: hidden;
+    width:80%;
+    top: 95vh;
+    left:10vw;
+    font-size:22px;
+    transition: transform 0.75s
+}
+
+.cssPoemReciterDisplayWrapper{
+    
+    position: relative;
+    height: 45vh;
+    border: 2px solid;
+    border-radius:25px;
+    padding: 10px;
+    padding-top: 5px;
+}
+
+.cssPoemReciterDisplay{
+    
+    display:grid;
+    grid-template-columns: repeat(4,200px);
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-top:40px;
+}
+
+.poemRemembererPoemButton{
+    
+    white-space: pre-wrap;
 }
 
 .loginWrapper{
