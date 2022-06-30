@@ -2,9 +2,11 @@ import {CreateElement} from "./../ui.js";
 
 class poem
 {
-    constructor(parsedPoemText){
+    constructor(parsedPoemText,poemKey){
         
         this.parsedPoemText = parsedPoemText;
+        
+        this.poemKey = poemKey;
     }
 }
 
@@ -15,9 +17,15 @@ export class poemMemoryHandler
         this.poems = [];
     }
     
-    AddPoemToMemory(parsedPoemText){
+    AddPoemToMemory(parsedPoemText,poemKey){
         
-        const $poem = new poem(parsedPoemText)
+        
+        for(const poem of this.poems){
+            
+            if(poem.poemKey == poemKey) return
+        }
+        
+        const $poem = new poem(parsedPoemText,poemKey)
         
         this.poems.push($poem);
     }

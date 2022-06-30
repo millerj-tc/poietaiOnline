@@ -13,6 +13,6 @@ function _ParsePoemText(data,poemObjArr){
         
         const pulledPoemObj = data[poemObjString];
     
-        window.gameHandler.poemMemoryHandler.AddPoemToMemory(pulledPoemObj.poemText);
+        window.gameHandler.poemMemoryHandler.AddPoemToMemory(pulledPoemObj.poemText,poemObjString);
     }
 }
