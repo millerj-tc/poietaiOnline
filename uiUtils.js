@@ -1,4 +1,4 @@
-import {GetElementById,ClearAllChildren} from "./../ui.js";
+import {GetElementById,ClearAllChildren} from "./ui.js";
 import {poemRemembererShowPoems} from "./poemRememberer/poemRemembererShowPoems.js";
 
 export function TogglePoemCreatorOutputCollapsed(){
