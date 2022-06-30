@@ -23,7 +23,7 @@ function _AddStyleClassesToAllDivs(divArr){
 
     for(const div of divArr){
 
-        div.classList.add("cssPoemCreatorGridContent")
+        div.classList.add("cssPoemCreatorGridContent");
         
         if(div.innerHTML == "X"){
             div.id = "poemCreatorPlayerIndicator";

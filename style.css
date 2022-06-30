@@ -50,6 +50,11 @@
     margin-left: 10px;
 }
 
+.reciteCreateToggleFlowButton{
+    
+    float:right;
+}
+
 .cssPoemCreatorOutputWrapper{
     
     position: relative;
@@ -67,6 +72,13 @@
     bottom: 0;
     display:inline-block;
     padding-bottom: 40px;
+    
+}
+
+.lastAddedOutputContent{
+    
+    font-weight: bold;
+    color: darkblue;
     
 }
 

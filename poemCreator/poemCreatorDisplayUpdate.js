@@ -70,6 +70,10 @@ function _AppendContent(div){
     
     $appendDiv.classList.add("cssPoemCreatorOutputContent");
     
+    _RemoveLastAddedClassFromOutputDivs();
+    
+    $appendDiv.classList.add("lastAddedOutputContent");
+    
     if($output.lastElementChild != null && $output.lastElementChild.innerHTML == "/") $output.lastElementChild.remove();
     
     _RemoveSpacesBeforePunctuationDivs($appendDiv);
@@ -115,5 +119,15 @@ function _RemoveSpacesBeforePunctuationDivs(appendDiv){
             
             $output.lastElementChild.remove();
         }
+    }
+}
+
+function _RemoveLastAddedClassFromOutputDivs(){
+    
+    const $output = GetElementById("poemCreatorOutput");
+    
+    for(const div of $output.childNodes){
+        
+        div.classList.remove("lastAddedOutputContent");
     }
 }

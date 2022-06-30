@@ -1,4 +1,6 @@
-import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
+import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
+
+import {PullPoemsFromProfileIntoMemoryFlow} from "./firebasePullPoemsFromProfileIntoMemoryFlow.js";
 
 export function TestRetrieveName(){
     const dbRef = ref(getDatabase());
@@ -10,5 +12,16 @@ export function TestRetrieveName(){
       }
     }).catch((error) => {
       console.error(error);
+    });
+}
+
+export function GetUserPoems(n=3){
+    
+    const db = getDatabase();
+    const poems = ref(db, 'users/' + window.uid + '/poems');
+    onValue(poems, (snapshot) => {
+        const data = snapshot.val();
+
+        PullPoemsFromProfileIntoMemoryFlow(data);
     });
 }
