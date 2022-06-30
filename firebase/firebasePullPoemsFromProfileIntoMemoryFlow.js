@@ -17,7 +17,7 @@ function _ParsePoemText(data,poemObjArr){
         
         const pulledPoemObj = data[poemObjString];
         
-        passedPoemObj.parsedPoemText = pulledPoemObj.poemText.replace(/\Q+&nbsp;\E/g," ").replace(/\Q++\E/g,"\n");
+        passedPoemObj.parsedPoemText = pulledPoemObj.poemText;
         
         window.gameHandler.poemMemoryHandler.AddPoemToMemory(passedPoemObj);
     }
