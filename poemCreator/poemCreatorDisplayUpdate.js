@@ -1,4 +1,4 @@
-import {GetElementById,CreateElement} from "./../ui.js";
+import {GetElementById,CreateElement,SetDisplayTo} from "./../ui.js";
 import {GetDistance} from "./../utils.js";
 
 export function ContentDivPressed(div){
@@ -11,6 +11,7 @@ export function ContentDivPressed(div){
         
         _MovePlayerIndicatorToPressedDivPos(div);
         _AppendContent($contentDiv);
+        _UnhideMemorizeButton();
     }
 }
 
@@ -130,4 +131,11 @@ function _RemoveLastAddedClassFromOutputDivs(){
         
         div.classList.remove("lastAddedOutputContent");
     }
+}
+
+function _UnhideMemorizeButton(){
+    
+    const $memButton = GetElementById("memorizeCreatedPoemButton");
+    
+    SetDisplayTo($memButton,"inline-block");
 }

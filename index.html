@@ -25,8 +25,15 @@
     <div class="cssPoemCreatorOutputWrapper">
         <div class="cssPoemCreatorOutput" id="poemCreatorOutput"></div>
         <button class="poemCreatorOutputTrayButton" id="poemCreatorOutputCollapseToggler" onclick="TogglePoemCreatorOutputCollapsed()">\/</button>
-    <button class="poemCreatorOutputTrayButton" onclick="MemorizePoemFlow()">Memorize</button>
-    <button class="poemCreatorOutputTrayButton reciteCreateToggleFlowButton" onclick="ReciteCreateToggleFlow()">Recite</button>
+        <button class="poemCreatorOutputTrayButton" id="memorizeCreatedPoemButton" onclick="MemorizePoemFlow()">Memorize</button>
+        <button class="poemCreatorOutputTrayButton reciteCreateToggleFlowButton" onclick="ReciteCreateToggleFlow()">Recite</button>
+    </div>
+</div>
+<div class="cssPoemReciterTrayWrapper">
+    <div class="cssPoemReciterTray">
+        <div class="cssPoemReciterDisplayWrapper">
+            <div class = "cssPoemReciterDisplay"></div>
+        </div>
     </div>
 </div>
 <button style="position:relative;top:300px"  onclick="poemCreatorDisplayFlow()">TEST</button><br>

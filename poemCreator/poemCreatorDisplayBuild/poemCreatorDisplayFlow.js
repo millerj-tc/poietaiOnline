@@ -1,3 +1,4 @@
+import {poemCreatorPrepPoemOutputTray} from "./poemCreatorPrepPoemOutputTray.js";
 import {poemCreatorContentGatherFlow} from "./poemCreatorContentGather.js";
 import {poemCreatorContentModifyFlow} from "./poemCreatorContentModify.js";
 import {poemCreatorContentPassFlow} from "./poemCreatorContentPass.js";
@@ -9,6 +10,8 @@ import {poemCreatorDisplayBuildFlow} from "./poemCreatorDisplayBuild.js";
 export function poemCreatorDisplayFlow(){
     
     let $contentArr = [];
+    
+    poemCreatorPrepPoemOutputTray();
     
     let $gatheredContent = poemCreatorContentGatherFlow($contentArr);
     

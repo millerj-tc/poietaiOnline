@@ -2,8 +2,6 @@ import {GetUserPoems} from "./firebaseGetUserData.js";
 
 export function PullPoemsFromProfileIntoMemoryFlow(data){
     
-    console.log(data);
-    
     const poemObjArr = data;
     
     _ParsePoemText(data,poemObjArr);
@@ -21,6 +19,4 @@ function _ParsePoemText(data,poemObjArr){
         
         window.gameHandler.poemMemoryHandler.AddPoemToMemory(passedPoemObj);
     }
-    
-    console.log(window.gameHandler.poemMemoryHandler);
 }

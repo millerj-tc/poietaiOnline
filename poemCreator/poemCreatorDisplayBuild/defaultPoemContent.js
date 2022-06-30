@@ -174,6 +174,6 @@ export const defaultPoemContent =
     {
        text: "multiDiv",
        texts:["[","]"],
-       frequency: 0.35,
+       frequency: -1.00,
     }
 ]
