@@ -75,6 +75,11 @@
     
 }
 
+.cssPoemCreatorOutputContent{
+    
+    display:inline-block;
+}
+
 .lastAddedOutputContent{
     
     font-weight: bold;
