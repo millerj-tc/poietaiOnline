@@ -8,12 +8,12 @@ export const defaultPoemContent =
     
     {
        text: "",
-       frequency: 1,
+       frequency: 1.75,
     },
     
     {
        text: ",",
-       frequency: 1.5,
+       frequency: 1.75,
     },
     
     {
@@ -23,16 +23,21 @@ export const defaultPoemContent =
     
     {
        text: "—",
-       frequency: 0.85,
+       frequency: 0.80,
     },
     
     {
        text: "was",
-       frequency: 0.85,
+       frequency: 0.80,
     },
     
     {
        text: "stones",
+       frequency: 0.75,
+    },
+    
+    {
+       text: "heads",
        frequency: 0.75,
     },
     
@@ -148,7 +153,7 @@ export const defaultPoemContent =
     
     {
        text: "piss",
-       frequency: 0.5,
+       frequency: 0.45,
     },
     
     {
