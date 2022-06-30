@@ -7,7 +7,7 @@ export function MemorizePoemToProfile(poemText) {
   const postData = {
     uid: window.uid,
     poemText: poemText,
-    memorizationDate: Date.now();
+    memorizationDate: Date.now(),
 
   };
 
