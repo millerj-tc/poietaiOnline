@@ -1,4 +1,4 @@
-import {GetElementById} from "./../ui.js";
+import {GetElementById,CreateElement} from "./../ui.js";
 
 export function GetPoemHTMLFromPoemCreatorOutput(){
     
@@ -43,7 +43,7 @@ export function GetPoemFromPoemCreatorOutput(mode = "text"){
         
          const $virtualDOM = CreateElement("div");
     
-        $virtualDOM.innerHTML = $poemText;
+        $virtualDOM.innerHTML = $returnString;
     
         $returnString = $virtualDOM.innerText;
     }

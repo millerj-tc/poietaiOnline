@@ -1,4 +1,5 @@
-import {CreateElement} from "./../ui.js";
+import {CreateElement,GetElementById} from "./../ui.js";
+import {NavigationFlow} from "./navigationFlow.js";
 
 export function ParseNavigationText(text){
     
@@ -29,8 +30,25 @@ export function ParseNavigationText(text){
             $span.dataset.target = $passageId;
 
             $navText = $navText.replace(m,$span.outerHTML);
+            
+            $span.addEventListener("click",function(){console.log("clicked");NavigationFlow($passageId)});
         }
     }
     
     return $navText
+}
+
+export function AttachEventListenersDOMs(DOMId){
+    
+    const $navOutput = GetElementById(DOMId);
+            
+    for(const child of $navOutput.children){
+        
+        if(child.classList.contains("passageLink")){
+            
+            const $passageId = child.dataset.target;
+            
+            child.addEventListener("click",function(){NavigationFlow($passageId)});
+        }
+    }
 }

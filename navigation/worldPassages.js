@@ -1,4 +1,4 @@
-import {GoToPassage} from "./passageFX.js";
+import {GoToPassage,AppendToDiv} from "./passageFX.js";
 import {PoemTextContainsWord} from "./../poemEvaluation/poemFXConditions.js";
 
 export function InitializeWorldPassages(){
@@ -20,7 +20,7 @@ export function InitializeWorldPassages(){
 
         <span id='yseldaResponse'></span>
 
-        [[North|hotApartmentCourtyard]]
+        [[South|hotApartmentCourtyard]]
 
         <i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i>
 
@@ -37,14 +37,19 @@ export function InitializeWorldPassages(){
         {text:"silver",frequency:3},
     ]);
     
-    hotApartment.passageFxHandler.AddPassageFx(GoToPassage,"hotApartmentCourtyard")
+    hotApartment.passageFxHandler.AddPassageFx(AppendToDiv,"yseldaResponse",
+        `"'Silver','old','ancient','chronowasted' -- I've heard it all, Cliched Poietai. Is that really all you can conjure? Heh heh heh."<br><br>
+
+        [[North|hotApartmentCourtyard]]`                                          
+    )
         .conditionHandler.AddConditionGroup("or")
         .AddCondition(PoemTextContainsWord,"silver")
-        .AddCondition(PoemTextContainsWord,"old");
+        .AddCondition(PoemTextContainsWord,"old")
+        .AddCondition(PoemTextContainsWord,"grayed");
     
     const hotApartmentCourtyard = $passageHandler.AddPassage("hotApartmentCourtyard");
 
     hotApartmentCourtyard.SetText(`
-        "'Silver','old','ancient','chronowasted' -- I've heard it all youngling. Is that really all you can conjure? Heh heh heh."`);
+        `);
 
 }

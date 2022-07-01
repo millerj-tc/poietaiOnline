@@ -33,7 +33,7 @@ export class passageFxHandler
         
         for(const fx of this.passageFxs){
             
-            if(fx.conditionHandler.Evaluate()) fx.FxFunc();
+            if(fx.conditionHandler.Evaluate()) fx.FxFunc(fx.arg0,fx.arg1,fx.arg2);
         }
     }
 }

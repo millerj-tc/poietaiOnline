@@ -1,5 +1,5 @@
 import {GetElementById,ClearInnerHTML,CreateElement} from "./../ui.js";
-import {ParseNavigationText} from "./navigationUtils.js";
+import {ParseNavigationText,AttachEventListenersDOMs} from "./navigationUtils.js";
 
 export function NavigationFlow(destPassage){
 
@@ -60,13 +60,5 @@ function _DisplayCurrentPassage(passageHandler){
     
     $navOutput.insertAdjacentHTML("beforeend",passageHandler.currentPassage.text)
     
-    for(const child of $navOutput.children){
-        
-        if(child.classList.contains("passageLink")){
-            
-            const $passageId = child.dataset.target;
-            
-            child.addEventListener("click",function(){NavigationFlow($passageId)});
-        }
-    }
+    AttachEventListenersDOMs("navigationOutput");
 }

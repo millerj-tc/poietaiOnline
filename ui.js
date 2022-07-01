@@ -15,16 +15,14 @@ export function GetOrCreateDivInsideDOM(id,DOM){
         if(child.id == id) return child
     }
     
-    if(!$found){
-        
-        const $div = CreateElement("div");
-        
-        $div.id = id;
-        
-        DOM.append($div);
-        
-        return $div
-    }
+    const $div = CreateElement("div");
+
+    $div.id = id;
+
+    DOM.append($div);
+
+    return $div
+    
 }
 
 export function SetDisplayTo(div,display){
