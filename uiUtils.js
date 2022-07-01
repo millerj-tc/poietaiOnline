@@ -1,5 +1,45 @@
 import {GetElementById,ClearAllChildren} from "./ui.js";
 import {poemRemembererShowPoems} from "./poemRememberer/poemRemembererShowPoems.js";
+import {poemCreatorDisplayFlow} from "./poemCreator/poemCreatorDisplayBuild/poemCreatorDisplayFlow.js";
+
+export function TogglePoemCreatorTrayCollapsed(){
+    
+    const $tray = GetElementById("poemCreatorTray");
+    
+    const $trayTop = $tray.getBoundingClientRect().y;
+    
+    const $button = GetElementById("poemCreatorTrayCollapseToggler");
+    
+    if($trayTop < -300){
+        
+        $button.innerHTML = `/\\`;
+        
+        $tray.style.transform = "translateY(85vh)";
+        
+        poemCreatorDisplayFlow();
+    }
+    else{
+        
+        $button.innerHTML = "\\/";
+        
+        $tray.style.transform = "translateY(0)"
+        
+        const $grid = GetElementById("poemCreatorGrid");
+        
+        $tray.addEventListener('transitionend', _ClearPoemCreatorGridOnCollapse);
+    }
+}
+
+function _ClearPoemCreatorGridOnCollapse(){
+    
+    const $output = GetElementById("poemCreatorGrid");
+    
+    const $tray = GetElementById("poemCreatorTray");
+    
+    ClearAllChildren($output);
+    
+    $tray.removeEventListener('transitionend', _ClearPoemCreatorGridOnCollapse);
+}
 
 export function TogglePoemCreatorOutputCollapsed(){
     
@@ -9,11 +49,11 @@ export function TogglePoemCreatorOutputCollapsed(){
     
     const $button = GetElementById("poemCreatorOutputCollapseToggler");
     
-    if($trayTop < 0){
+    if($trayTop < -400){
         
         $button.innerHTML = `/\\`;
         
-        $tray.style.transform = "translateY(75vh)"; ;
+        $tray.style.transform = "translateY(55vh)"; ;
     }
     else{
         

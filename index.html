@@ -10,9 +10,10 @@
         window.Register = Register;
         import {MemorizePoemFlow} from "./poemCreator/memorizePoem/memorizePoemFlow.js";
         window.MemorizePoemFlow = MemorizePoemFlow;
-        import {TogglePoemCreatorOutputCollapsed,TogglePoemReciterCollapsed} from "./uiUtils.js";
+        import {TogglePoemCreatorOutputCollapsed,TogglePoemReciterCollapsed,TogglePoemCreatorTrayCollapsed} from "./uiUtils.js";
         window.TogglePoemCreatorOutputCollapsed = TogglePoemCreatorOutputCollapsed;
         window.TogglePoemReciterCollapsed = TogglePoemReciterCollapsed;
+        window.TogglePoemCreatorTrayCollapsed = TogglePoemCreatorTrayCollapsed;
         import {LoginFlow} from "./firebase/loginFlow.js";
         window.LoginFlow = LoginFlow;
         import {ReciteCreateToggleFlow} from "./reciteCreateToggleFlow.js";
@@ -22,15 +23,20 @@
     </script>
 </head>
 <link rel="stylesheet" type="text/css" href="style.css"/>
-<div class="cssPoemCreatorGrid" id="poemCreatorGrid">
-</div>
-<div class="cssPoemCreatorOutputTray" id="poemCreatorOutputTray">
-    <div class="cssPoemCreatorOutputWrapper">
-        <div class="cssPoemCreatorOutput" id="poemCreatorOutput"></div>
-        <button class="poemCreatorOutputTrayButton" id="poemCreatorOutputCollapseToggler" onclick="TogglePoemCreatorOutputCollapsed()">\/</button>
-        <button class="poemCreatorOutputTrayButton" id="memorizeCreatedPoemButton" onclick="MemorizePoemFlow()">Memorize</button>
-        <button class="poemCreatorOutputTrayButton reciteCreateToggleFlowButton" onclick="ReciteCreateToggleFlow()">Recite</button>
+
+
+<div class="poemCreatorTray" id="poemCreatorTray">
+    <div class="cssPoemCreatorOutputTray" id="poemCreatorOutputTray">
+        <div class="cssPoemCreatorOutputWrapper">
+            <div class="cssPoemCreatorOutput" id="poemCreatorOutput"></div>
+            <button class="poemCreatorOutputTrayButton" id="poemCreatorOutputCollapseToggler" onclick="TogglePoemCreatorOutputCollapsed()">\/</button>
+            <button class="poemCreatorOutputTrayButton" id="memorizeCreatedPoemButton" onclick="MemorizePoemFlow()">Memorize</button>
+            <button class="poemCreatorOutputTrayButton reciteCreateToggleFlowButton" onclick="ReciteCreateToggleFlow()">Recite</button>
+        </div>
     </div>
+    <div class="cssPoemCreatorGrid" id="poemCreatorGrid">
+    </div>
+    <button class="poemCreatorTrayButton" id="poemCreatorTrayCollapseToggler" onclick="TogglePoemCreatorTrayCollapsed()">\/</button>
 </div>
 
 <div class="cssPoemReciterTray" id="poemReciterTray">
