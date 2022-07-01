@@ -1,5 +1,6 @@
 import {GetElementById,CreateElement} from "./../ui.js";
 import {GetPoemHTMLFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
+import {TogglePoemCreatorTrayCollapsed,TogglePoemReciterCollapsed} from "./../uiUtils.js";
 
 export function PoemEvaluationFlow(poem){
     
@@ -13,9 +14,9 @@ export function PoemEvaluationFlow(poem){
     
     //** _AllusionEvaluation($srcArr);
     
-    //** _AppendToNavOutput(poem); // give it PoemSpeak id and replace that id so there's only one poem on the screen at a time.
+     _AppendToNavOutput($poemText);
     
-    //** _CollapseTheMenuThePoemCameFrom();
+     _CollapseTheMenuThePoemCameFrom();
 }
 
 function _GetPoemCreatorPoemIfArgIsNull(poem){
@@ -76,4 +77,40 @@ function _GetAlludedSources(wordArr){
     return $returnArr
 }
 
-function _AppendToNavOutput(poem)
+function _AppendToNavOutput(poem){
+    
+    const $navOutput = GetElementById("navigationOutput");
+    
+    let $found = false;
+    
+    for(const child of $navOutput.children){
+        
+        if(child.id == "navigationOutputPlayerPoemSpeak") $found = true;
+    }
+    
+    if(!$found){
+        
+        const $navOutputPlayerPoemSpeak = CreateElement("div");
+        
+        $navOutputPlayerPoemSpeak.classList.add("navigationOutputPlayerPoemSpeak");
+        
+        $navOutputPlayerPoemSpeak.id = "navigationOutputPlayerPoemSpeak";
+        
+        $navOutput.append($navOutputPlayerPoemSpeak);
+    }
+    
+    const $navOutputPlayerPoemSpeak = GetElementById("navigationOutputPlayerPoemSpeak");
+    
+    $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", `"`);
+    
+    $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", poem);
+    
+    $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", `."<br><br>`);
+}
+
+function _CollapseTheMenuThePoemCameFrom(){
+    
+    TogglePoemCreatorOutputCollapsed();
+    TogglePoemReciterCollapsed();
+    
+}

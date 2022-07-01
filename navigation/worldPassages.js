@@ -13,6 +13,8 @@ export function InitializeWorldPassages(){
 
         "You've gotten your winks and your water. Now pay me, itinerant one."<br><br>
 
+        <span id='navigationOutputPlayerPoemSpeak'></span>
+
         [[North|hotApartmentCourtyard]]<br><br>
 
         [[South|otherPlace]]<br><br>
