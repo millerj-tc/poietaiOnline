@@ -1,6 +1,6 @@
-import {GetElementById,CreateElement} from "./../ui.js";
-import {GetPoemHTMLFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
-import {TogglePoemCreatorTrayCollapsed,TogglePoemReciterCollapsed} from "./../uiUtils.js";
+import {GetElementById,CreateElement,ClearInnerHTML} from "./../ui.js";
+import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuation} from "./../poemCreator/poemCreatorUtils.js";
+import {PoemReciterTrayClose,PoemCreatorTrayClose} from "./../uiUtils.js";
 
 export function PoemEvaluationFlow(poem){
     
@@ -27,15 +27,9 @@ function _GetPoemCreatorPoemIfArgIsNull(poem){
 
 function _ParsePoemText(poem){
     
-    let $poemText = poem
+    let $poemText = poem.slice();
     
-    if($poemText.match(/\.|,|!|\?|\[|]/gm) != null){
-    
-        for(const match of $poemText.match(/\.|,|!|\?|\[|]/gm)){
-
-            $poemText = $poemText.replace(match, " " + match);
-        }
-    }
+    $poemText = RestoreSpacesBeforePunctuation($poemText);
     
     let $returnArr = [];
     
@@ -67,7 +61,7 @@ function _GetAlludedSources(wordArr){
             
             for(const poemWord of wordArr){
                 
-                if(poemWord == allusionWord.text) $srcPkg.triggeredAllusionWords.push(poemWord);
+                if(poemWord.toLowerCase() == allusionWord.text) $srcPkg.triggeredAllusionWords.push(poemWord);
             }
         }
         
@@ -101,6 +95,8 @@ function _AppendToNavOutput(poem){
     
     const $navOutputPlayerPoemSpeak = GetElementById("navigationOutputPlayerPoemSpeak");
     
+    ClearInnerHTML($navOutputPlayerPoemSpeak);
+    
     $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", `"`);
     
     $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", poem);
@@ -110,7 +106,7 @@ function _AppendToNavOutput(poem){
 
 function _CollapseTheMenuThePoemCameFrom(){
     
-    TogglePoemCreatorOutputCollapsed();
-    TogglePoemReciterCollapsed();
+    PoemCreatorTrayClose("closed");
+    PoemReciterTrayClose("closed");
     
 }

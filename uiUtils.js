@@ -18,16 +18,25 @@ export function TogglePoemCreatorTrayCollapsed(){
         
         poemCreatorDisplayFlow();
     }
-    else{
-        
-        $button.innerHTML = "\\/";
-        
-        $tray.style.transform = "translateY(0)"
-        
-        const $grid = GetElementById("poemCreatorGrid");
-        
-        $tray.addEventListener('transitionend', _ClearPoemCreatorGridOnCollapse);
+    else{ 
+        PoemCreatorTrayClose();
+        _PoemCreatorOutputClose();
     }
+}
+
+export function PoemCreatorTrayClose(){
+    
+    const $tray = GetElementById("poemCreatorTray");
+        
+    const $button = GetElementById("poemCreatorTrayCollapseToggler");
+    
+    $button.innerHTML = "\\/";
+
+    $tray.style.transform = "translateY(0)"
+
+    const $grid = GetElementById("poemCreatorGrid");
+
+    $tray.addEventListener('transitionend', _ClearPoemCreatorGridOnCollapse);
 }
 
 function _ClearPoemCreatorGridOnCollapse(){
@@ -55,12 +64,18 @@ export function TogglePoemCreatorOutputCollapsed(){
         
         $tray.style.transform = "translateY(55vh)"; ;
     }
-    else{
+    else _PoemCreatorOutputClose();
+}
+
+function _PoemCreatorOutputClose(){
+    
+    const $tray = GetElementById("poemCreatorOutputTray");
         
-        $button.innerHTML = "\\/";
+    const $button = GetElementById("poemCreatorOutputCollapseToggler");
+    
+    $button.innerHTML = "\\/";
         
-        $tray.style.transform = "translateY(0)"
-    }
+    $tray.style.transform = "translateY(0)"
 }
 
 export function TogglePoemReciterCollapsed(){
@@ -83,14 +98,20 @@ export function TogglePoemReciterCollapsed(){
         
         poemRemembererShowPoems();
     }
-    else{
+    else PoemReciterTrayClose();
+}
+
+export function PoemReciterTrayClose(){
+    
+    const $tray = GetElementById("poemReciterTray");
+    
+    const $button = GetElementById("poemReciterCollapseToggler");
+    
+    $button.innerHTML = "/\\";
         
-        $button.innerHTML = "/\\";
-        
-        $tray.style.transform = "translateY(0)";
-        
-        $tray.addEventListener('transitionend', _ClearPoemRemembererChildrenOnCollapse);
-    }
+    $tray.style.transform = "translateY(0)";
+
+    $tray.addEventListener('transitionend', _ClearPoemRemembererChildrenOnCollapse);
 }
 
 function _ClearPoemRemembererChildrenOnCollapse(){
