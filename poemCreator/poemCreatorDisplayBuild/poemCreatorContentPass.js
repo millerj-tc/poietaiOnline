@@ -9,9 +9,16 @@ function _ExtractedTextPropsFromModWraps(modWrapArr){
 
     const $returnArr = [];
     
+    console.log(modWrapArr);
+    
     for(const modWrap of modWrapArr){
         
-        $returnArr.push(modWrap.content.text);
+        if(modWrap.content.hasOwnProperty("source")){
+            
+            $returnArr.push(`<span class='allusionWord'>${modWrap.content.text}</span>`)
+        }
+        
+        else $returnArr.push(modWrap.content.text);
     }
 
     return $returnArr

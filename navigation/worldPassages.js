@@ -24,7 +24,7 @@ export function InitializeWorldPassages(){
         {text:"sweat",frequency:2.5},
         {text:"winks",frequency:2.5},
         {text:"sipping",frequency:2.5},
-        {text:"old",frequency:3.5},
-        {text:"silver",frequency:3.5},
+        {text:"old",frequency:3},
+        {text:"silver",frequency:3},
     ]);
 }

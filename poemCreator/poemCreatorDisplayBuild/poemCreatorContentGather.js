@@ -4,9 +4,9 @@ export function poemCreatorContentGatherFlow(contentArr){
 
     // how to control frequencies to make it good?
 
-    const $loc = _GetPlayerLocation()
+//    const $loc = _GetPlayerLocation()
 
-    _AddCurrentLocationSources(contentArr,$loc);
+    _AddCurrentPassageSources(contentArr);
 
     _AddDefaultContent(contentArr);
 
@@ -15,19 +15,30 @@ export function poemCreatorContentGatherFlow(contentArr){
     return contentArr
 }
 
-function _GetPlayerLocation(){
+//function _GetPlayerLocation(){
+//
+//    let $loc
+//
+//    return $loc
+//}
 
-    let $loc
-
-    return $loc
-}
-
-function _AddCurrentLocationSources(contentArr,loc){
+function _AddCurrentPassageSources(contentArr){
 
     //push copies
     
-    //this should be much more modal --maybe even a totally different flow? Consider sources that are non locations, etc.
+    const $passageHandler = window.gameHandler.passageHandler;
     
+    for(const src of $passageHandler.currentPassage.sources){
+        
+        for(const word of src.allusionWords){
+            
+            let $copiedWord = JSON.parse(JSON.stringify(word));
+            
+            $copiedWord.source = src.id;
+            
+            contentArr.push($copiedWord);
+        }
+    }
 }
 
 function _AddDefaultContent(contentArr){

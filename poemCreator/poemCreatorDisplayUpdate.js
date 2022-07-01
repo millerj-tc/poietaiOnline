@@ -71,6 +71,8 @@ function _AppendContent(div){
     
     $appendDiv.classList.add("cssPoemCreatorOutputContent");
     
+    _RemoveAllusionWordClass($appendDiv);
+    
     _RemoveLastAddedClassFromOutputDivs();
     
     $appendDiv.classList.add("lastAddedOutputContent");
@@ -138,4 +140,15 @@ function _UnhideMemorizeButton(){
     const $memButton = GetElementById("memorizeCreatedPoemButton");
     
     SetDisplayTo($memButton,"inline-block");
+}
+
+function _RemoveAllusionWordClass(appendDiv){
+    
+    for(const child of appendDiv.children){
+        
+        for(const cls of child.classList){
+            
+            if(cls == "allusionWord") child.classList.remove(cls);
+        }
+    }
 }
