@@ -7,8 +7,6 @@ export function PoemEvaluationFlow(poem){
     
     const $wordArr = _ParsePoemText($poemText);
     
-    console.log($wordArr);
-    
     const $srcPkgArr = _GetAlludedSources($wordArr);
     
     console.log($srcPkgArr);
@@ -68,16 +66,14 @@ function _GetAlludedSources(wordArr){
             
             for(const poemWord of wordArr){
                 
-                console.log(`${poemWord} ${allusionWord.text}`);
-                
                 if(poemWord == allusionWord.text) $srcPkg.triggeredAllusionWords.push(poemWord);
             }
         }
-        
-        console.log($srcPkg);
         
         if($srcPkg.triggeredAllusionWords.length > 0) $returnArr.push($srcPkg);
     }
     
     return $returnArr
 }
+
+function _AppendToNavOutput(poem)
