@@ -1,5 +1,6 @@
 import {MemorizePoemToProfile} from "./../../firebase/firebaseMemorizePoemToUserProfile.js";
 import {GetElementById} from "./../../ui.js";
+import {GetPoemHTMLFromPoemCreatorOutput} from "./../poemCreatorUtils.js";
 
 export function MemorizePoemFlow(){
     
@@ -7,25 +8,9 @@ export function MemorizePoemFlow(){
     
     //** _ConfirmChoiceToForgetMostPastPoem();
     
-    const poemText = _GetPoemText();
+    const poemText = GetPoemHTMLFromPoemCreatorOutput();
     
     //** _ParsePoemText();
     
     MemorizePoemToProfile(poemText);
-}
-
-function _GetPoemText(){
-    
-    let $returnString = "";
-    
-    const outputDivs = GetElementById("poemCreatorOutput").childNodes;
-    
-    for(const div of outputDivs){
-        
-        if(div.innerHTML == "&nbsp;") $returnString += " ";
-        else if(div.outerHTML == "<br>") $returnString += "\n";
-        else if(div.innerHTML != undefined) $returnString += div.innerHTML;
-    }
-    
-    return $returnString;
 }

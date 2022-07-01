@@ -1,4 +1,5 @@
-import {GetElementById} from "./../ui.js";
+import {GetElementById,CreateElement} from "./../ui.js";
+import {GetPoemHTMLFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
 
 export function PoemEvaluationFlow(poem){
     
@@ -8,7 +9,9 @@ export function PoemEvaluationFlow(poem){
     
     console.log($wordArr);
     
-    const $srcArr = _GetAlludedSources($wordArr);
+    const $srcPkgArr = _GetAlludedSources($wordArr);
+    
+    console.log($srcPkgArr);
     
     //** _AllusionEvaluation($srcArr);
     
@@ -20,38 +23,12 @@ export function PoemEvaluationFlow(poem){
 function _GetPoemCreatorPoemIfArgIsNull(poem){
     
     if(poem != null) return poem
-    else{
-        
-        let $returnString = "";
-        
-        for(const child of GetElementById("poemCreatorOutput").children){
-            
-            $returnString += child.innerHTML;
-        }
-        
-        const $regexMatchArr = $returnString.match(/\&nbsp\;/gm);
-        
-        if($regexMatchArr.length > 0){
-            
-            for(const match of $regexMatchArr){
-                
-                $returnString = $returnString.replace(match," ");
-            }
-        }
-        
-        return $returnString
-    }
+    else return GetPoemHTMLFromPoemCreatorOutput();
 }
 
 function _ParsePoemText(poem){
     
     let $poemText = poem
-    
-    let $returnArr = [];
-    
-    let $splitArr = [];
-    
-    console.log($poemText);
     
     if($poemText.match(/\.|,|!|\?|\[|]/gm) != null){
     
@@ -60,22 +37,18 @@ function _ParsePoemText(poem){
             $poemText = $poemText.replace(match, " " + match);
         }
     }
+    
+    let $returnArr = [];
+    
+    const $virtualDOM = CreateElement("div");
+    
+    $virtualDOM.innerHTML = $poemText;
+    
+    const $virtualDOMSplitArr = $virtualDOM.innerText.split(" ");
+    
+    for(const i of $virtualDOMSplitArr){
         
-    $splitArr = $poemText.split(" ");
-    
-    for(let i of $splitArr){
-        
-        if(i.match(/\n/gm) != null){
-    
-            for(const match of i.match(/\n/gm)){
-                
-                i = i.replace(match,"");
-            }
-            
-            $returnArr.push(i);
-    
-        }
-        else $returnArr.push(i);
+        $returnArr.push(i.replace("\n",""));
     }
     
     return $returnArr
@@ -85,5 +58,26 @@ function _GetAlludedSources(wordArr){
     
     const $sourceHandler = window.gameHandler.sourceHandler;
     
+    const $returnArr = [];
     
+    for(const src of $sourceHandler.sources){
+        
+        let $srcPkg = {id:src.id,triggeredAllusionWords:[]}
+        
+        for(const allusionWord of src.allusionWords){
+            
+            for(const poemWord of wordArr){
+                
+                console.log(`${poemWord} ${allusionWord.text}`);
+                
+                if(poemWord == allusionWord.text) $srcPkg.triggeredAllusionWords.push(poemWord);
+            }
+        }
+        
+        console.log($srcPkg);
+        
+        if($srcPkg.triggeredAllusionWords.length > 0) $returnArr.push($srcPkg);
+    }
+    
+    return $returnArr
 }
