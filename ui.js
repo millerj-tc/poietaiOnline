@@ -8,6 +8,31 @@ export function CreateElement(type){
     return document.createElement(type)
 }
 
+export function GetOrCreateDivInsideDOM(id,DOM){
+    
+    let $found = false;
+    
+    console.log(DOM);
+    
+    for(const child of DOM.children){
+        
+        console.log(child);
+        
+        if(child.id == id) return child
+    }
+    
+    if(!$found){
+        
+        const $div = CreateElement("div");
+        
+        $div.id = id;
+        
+        DOM.append($div);
+        
+        return $div
+    }
+}
+
 export function SetDisplayTo(div,display){
 
     div.style.display = display;

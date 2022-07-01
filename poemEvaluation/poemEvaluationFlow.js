@@ -1,4 +1,4 @@
-import {GetElementById,CreateElement,ClearInnerHTML} from "./../ui.js";
+import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM} from "./../ui.js";
 import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuation} from "./../poemCreator/poemCreatorUtils.js";
 import {PoemReciterTrayClose,PoemCreatorTrayClose} from "./../uiUtils.js";
 
@@ -75,29 +75,13 @@ function _AppendToNavOutput(poem){
     
     const $navOutput = GetElementById("navigationOutput");
     
-    let $found = false;
+    const $navOutputPlayerPoemSpeak = GetOrCreateDivInsideDOM("navigationOutputPlayerPoemSpeak",$navOutput);
     
-    for(const child of $navOutput.children){
-        
-        if(child.id == "navigationOutputPlayerPoemSpeak") $found = true;
-    }
-    
-    if(!$found){
-        
-        const $navOutputPlayerPoemSpeak = CreateElement("div");
-        
-        $navOutputPlayerPoemSpeak.classList.add("navigationOutputPlayerPoemSpeak");
-        
-        $navOutputPlayerPoemSpeak.id = "navigationOutputPlayerPoemSpeak";
-        
-        $navOutput.append($navOutputPlayerPoemSpeak);
-    }
-    
-    const $navOutputPlayerPoemSpeak = GetElementById("navigationOutputPlayerPoemSpeak");
+    $navOutputPlayerPoemSpeak.classList.add("navigationOutputPlayerPoemSpeak");
     
     ClearInnerHTML($navOutputPlayerPoemSpeak);
     
-    $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", `"`);
+    $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", `You recite: "`);
     
     $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", poem);
     
