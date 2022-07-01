@@ -1,4 +1,5 @@
 import {CreateElement} from "./../ui.js";
+import {PoemEvaluationFlow} from "./../poemEvaluation/poemEvaluationFlow.js";
 
 class poem
 {
@@ -49,6 +50,8 @@ export class poemMemoryHandler
         $poemButton.classList.add("poemRemembererPoemButton");
         
         $poemButton.innerHTML = poem.parsedPoemText;
+        
+        $poemButton.addEventListener("click",function(){PoemEvaluationFlow(poem.parsedPoemText)});
     
         return $poemButton;
     }

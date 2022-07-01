@@ -16,8 +16,8 @@
         window.TogglePoemCreatorTrayCollapsed = TogglePoemCreatorTrayCollapsed;
         import {LoginFlow} from "./firebase/loginFlow.js";
         window.LoginFlow = LoginFlow;
-        import {ReciteCreateToggleFlow} from "./reciteCreateToggleFlow.js";
-        window.ReciteCreateToggleFlow = ReciteCreateToggleFlow;
+        import {PoemEvaluationFlow} from "./poemEvaluation/poemEvaluationFlow.js";
+        window.PoemEvaluationFlow = PoemEvaluationFlow;
         import {gameHandler} from "./gameHandler.js";
         window.gameHandler = new gameHandler();
     </script>
@@ -32,7 +32,7 @@
             <div class="cssPoemCreatorOutput" id="poemCreatorOutput"></div>
             <button class="poemCreatorOutputTrayButton" id="poemCreatorOutputCollapseToggler" onclick="TogglePoemCreatorOutputCollapsed()">\/</button>
             <button class="poemCreatorOutputTrayButton" id="memorizeCreatedPoemButton" onclick="MemorizePoemFlow()">Memorize</button>
-            <button class="poemCreatorOutputTrayButton reciteCreateToggleFlowButton" onclick="ReciteCreateToggleFlow()">Recite</button>
+            <button class="poemCreatorOutputTrayButton reciteButton" onclick="PoemEvaluationFlow()">Recite</button>
         </div>
     </div>
     <div class="cssPoemCreatorGrid" id="poemCreatorGrid">
