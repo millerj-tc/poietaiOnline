@@ -22,3 +22,8 @@ export function ClearAllChildren(div){
         c.remove();
     }
 }
+
+export function ClearInnerHTML(div){
+    
+    div.innerHTML = "";
+}

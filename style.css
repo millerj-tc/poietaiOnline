@@ -13,6 +13,13 @@ body{
     
 }
 
+.passageLink{
+    
+    font-weight:bold;
+    text-decoration: underline;
+    color:darkblue;
+}
+
 .cssPoemCreatorGrid{
     display:grid;
     position:absolute;

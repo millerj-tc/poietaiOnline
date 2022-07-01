@@ -18,4 +18,12 @@ export class passageHandler
         
         return $passage
     }
+    
+    SetCurrentPassage(passageId){
+        
+        for(const passage of this.passages){
+            
+            if(passageId == passage.id) this.currentPassage = passage;
+        }
+    }
 }

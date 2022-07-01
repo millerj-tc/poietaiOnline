@@ -15,6 +15,6 @@ export function LoginFlow(){
     
     //** DetermineUserLocation();
     
-    NavigationFlow();
+    NavigationFlow("hotApartment");
 
 }

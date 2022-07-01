@@ -13,6 +13,10 @@ export function InitializeWorldPassages(){
 
         "You've gotten your winks and your water. Now pay me, itinerant one."<br><br>
 
+        [[North|hotApartmentCourtyard]]<br><br>
+
+        [[South|otherPlace]]<br><br>
+
         <i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i>
 
     `);
@@ -27,4 +31,10 @@ export function InitializeWorldPassages(){
         {text:"old",frequency:3},
         {text:"silver",frequency:3},
     ]);
+    
+    const hotApartmentCourtyard = $passageHandler.AddPassage("hotApartmentCourtyard");
+
+    hotApartmentCourtyard.SetText(`
+        Test`);
+
 }
