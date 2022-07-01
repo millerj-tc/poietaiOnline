@@ -1,4 +1,4 @@
-import {GoToPassage,AppendToDiv} from "./passageFX.js";
+import {GoToPassage,AppendToDivOnce} from "./passageFX.js";
 import {PoemTextContainsWord} from "./../poemEvaluation/poemFXConditions.js";
 
 export function InitializeWorldPassages(){
@@ -10,6 +10,8 @@ export function InitializeWorldPassages(){
         You smell sweat and sweet as you wake in a cozy place<br>
         -- one familiar for all the Poietai like yourself.<br><br>
 
+        You get up from your little roll up mattress while trying not to wake your slumbering peers.<br><br>
+
         Yselda walks in with a smile and hands you a mug.<br>
         She waits patiently while you finishing sipping it,<br>
         admiring the birds out the window.<br><br>
@@ -19,9 +21,6 @@ export function InitializeWorldPassages(){
         <span id='navigationOutputPlayerPoemSpeak'></span>
 
         <span id='yseldaResponse'></span>
-
-        [[South|hotApartmentCourtyard]]
-
         <i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i>
 
     `);
@@ -37,15 +36,28 @@ export function InitializeWorldPassages(){
         {text:"silver",frequency:3},
     ]);
     
-    hotApartment.passageFxHandler.AddPassageFx(AppendToDiv,"yseldaResponse",
-        `"'Silver','old','ancient','chronowasted' -- I've heard it all, Cliched Poietai. Is that really all you can conjure? Heh heh heh."<br><br>
+    hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"yseldaResponse",
+        `"Oh, 'ancient', yes. Now '{{keywords}}'. 'Chronowasted', even! -- I've heard it all, Clichéd Poietai. Is  that really all you can conjure? Heh heh heh."<br><br>
 
-        [[North|hotApartmentCourtyard]]`                                          
-    )
+        [[North|hotApartmentCourtyard]]`, ["silver","old","grayed"])
         .conditionHandler.AddConditionGroup("or")
         .AddCondition(PoemTextContainsWord,"silver")
         .AddCondition(PoemTextContainsWord,"old")
         .AddCondition(PoemTextContainsWord,"grayed");
+    
+    hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"yseldaResponse",
+        `"'Keys', yes, 'keys'...Wait a second, where are my keys? Oh my oh my...." Yselda scooters away.<br><br>
+
+        [[North|hotApartmentCourtyard]]`                                          
+    )
+        .conditionHandler.AddConditionGroup("and")
+        .AddCondition(PoemTextContainsWord,"keys");
+    
+    hotApartment.passageFxHandler.AddDefaultPassageFx(AppendToDivOnce,"yseldaResponse",
+    `"I shall consider this, clever Poietai. Thank you for sharing with me."<br><br>
+
+        [[North|hotApartmentCourtyard]]
+    `);
     
     const hotApartmentCourtyard = $passageHandler.AddPassage("hotApartmentCourtyard");
 
