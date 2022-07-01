@@ -1,3 +1,13 @@
+.navigationOutput{
+    
+    position:fixed;
+    top:15vh;
+    left:14vw;
+    right:14vw;
+    font-size:24px;
+    
+}
+
 .cssPoemCreatorGrid{
     display:grid;
     position:absolute;
@@ -25,7 +35,7 @@
     background-color: white;
     overflow-y: hidden;
     width:80%;
-    top: -75vh;
+    top: -88vh;
     height: 94vh;
     left:10vw;
     font-size:22px;

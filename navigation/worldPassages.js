@@ -1,26 +1,30 @@
-import {passage} from "./passage.js";
+export function InitializeWorldPassages(){
+    const $passageHandler = window.gameHandler.passageHandler;
 
-const hotApartment = new passage("hotApartment");
+    const hotApartment = $passageHandler.AddPassage("hotApartment");
 
-hotApartment.SetText(`
-    You smell sweat and sweet as you wake in a cozy place\n
-    -- one familiar for all the Poietai like yourself.\n\n
-    
-    Yselda walks in with a smile and hands you a mug.\n
-    She waits patiently while you finishing sipping it,\n
-    admiring the birds out the window.\n\n
+    hotApartment.SetText(`
+        You smell sweat and sweet as you wake in a cozy place<br>
+        -- one familiar for all the Poietai like yourself.<br><br>
 
-    "You've gotten your winks and your water. Now pay me, itinerant one."\n\n
+        Yselda walks in with a smile and hands you a mug.<br>
+        She waits patiently while you finishing sipping it,<br>
+        admiring the birds out the window.<br><br>
 
-`);
+        "You've gotten your winks and your water. Now pay me, itinerant one."<br><br>
 
-const hotApartmentSrc = hotApartment.AddSource("hotApartment");
+        <i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i>
 
-hotApartmentSrc.SetAllusionWords([
-    {text:"sweet",frequency:2.5},
-    {text:"sweat",frequency:2.5},
-    {text:"winks",frequency:2.5},
-    {text:"sipping",frequency:2.5},
-    {text:"old",frequency:3.5},
-    {text:"silver",frequency:3.5},
-]);
+    `);
+
+    const hotApartmentSrc = hotApartment.AddSource("hotApartment");
+
+    hotApartmentSrc.SetAllusionWords([
+        {text:"sweet",frequency:2.5},
+        {text:"sweat",frequency:2.5},
+        {text:"winks",frequency:2.5},
+        {text:"sipping",frequency:2.5},
+        {text:"old",frequency:3.5},
+        {text:"silver",frequency:3.5},
+    ]);
+}
