@@ -9,8 +9,6 @@ function _ExtractedTextPropsFromModWraps(modWrapArr){
 
     const $returnArr = [];
     
-    console.log(modWrapArr);
-    
     for(const modWrap of modWrapArr){
         
         if(modWrap.content.hasOwnProperty("source")){
