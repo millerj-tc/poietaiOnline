@@ -50,12 +50,25 @@ export class conditionHandler
         this.conditionGroups = [];
     }
     
-    AddConditionGroup(type){ //types are "and" or "or"
+    AddConditionGroup(type = "and"){ //types are "and" or "or"
         
         const $condGrp = new conditionGroup(this,type);
         
         this.conditionGroups.push($condGrp);
         
         return $condGrp
+    }
+    
+    Evaluate(){
+        
+        let $trueCondGrps = 0;
+        
+        for(const condGrp of this.conditionGroups){
+            
+            if(condGrp.Evaluate()) $trueCondGrps++
+        }
+        
+        if($trueCondGrps == this.conditionGroups.length) return true
+        else return false
     }
 }

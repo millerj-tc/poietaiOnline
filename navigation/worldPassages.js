@@ -1,3 +1,6 @@
+import {GoToPassage} from "./passageFX.js";
+import {PoemTextContainsWord} from "./../poemEvaluation/poemFXConditions.js";
+
 export function InitializeWorldPassages(){
     const $passageHandler = window.gameHandler.passageHandler;
 
@@ -15,9 +18,9 @@ export function InitializeWorldPassages(){
 
         <span id='navigationOutputPlayerPoemSpeak'></span>
 
-        [[North|hotApartmentCourtyard]]<br><br>
+        <span id='yseldaResponse'></span>
 
-        [[South|otherPlace]]<br><br>
+        [[North|hotApartmentCourtyard]]
 
         <i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i>
 
@@ -34,9 +37,14 @@ export function InitializeWorldPassages(){
         {text:"silver",frequency:3},
     ]);
     
+    hotApartment.passageFxHandler.AddPassageFx(GoToPassage,"hotApartmentCourtyard")
+        .conditionHandler.AddConditionGroup("or")
+        .AddCondition(PoemTextContainsWord,"silver")
+        .AddCondition(PoemTextContainsWord,"old");
+    
     const hotApartmentCourtyard = $passageHandler.AddPassage("hotApartmentCourtyard");
 
     hotApartmentCourtyard.SetText(`
-        Test`);
+        "'Silver','old','ancient','chronowasted' -- I've heard it all youngling. Is that really all you can conjure? Heh heh heh."`);
 
 }

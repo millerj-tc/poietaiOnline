@@ -1,4 +1,5 @@
 import {GetElementById,ClearInnerHTML,CreateElement} from "./../ui.js";
+import {ParseNavigationText} from "./navigationUtils.js";
 
 export function NavigationFlow(destPassage){
 
@@ -20,33 +21,35 @@ function _ParseCurrentPassage(passageHandler){
     
     const $passage = passageHandler.currentPassage;
     
-    if($passage.text.match(/\[\[(\S*)]]/gm) != null){
+    $passage.text = ParseNavigationText($passage.text);
     
-        for(const m of $passage.text.match(/\[\[(\S*)]]/gm)){
-
-            let $displayText = m.match(/\[\[(\S*)\|/gm)[0];
-
-            $displayText = $displayText.replace("[[","");
-
-            $displayText = $displayText.replace("|","");
-
-            let $passageId = m.match(/\|(\S*)]]/gm)[0];
-
-            $passageId = $passageId.replace("]]","");
-
-            $passageId = $passageId.replace("|","");
-
-            const $span = CreateElement("span");
-
-            $span.innerHTML = $displayText;
-
-            $span.classList.add("passageLink");
-
-            $span.dataset.target = $passageId;
-
-            $passage.text = $passage.text.replace(m,$span.outerHTML);
-        }
-    }
+//    if($passage.text.match(/\[\[(\S*)]]/gm) != null){
+//    
+//        for(const m of $passage.text.match(/\[\[(\S*)]]/gm)){
+//
+//            let $displayText = m.match(/\[\[(\S*)\|/gm)[0];
+//
+//            $displayText = $displayText.replace("[[","");
+//
+//            $displayText = $displayText.replace("|","");
+//
+//            let $passageId = m.match(/\|(\S*)]]/gm)[0];
+//
+//            $passageId = $passageId.replace("]]","");
+//
+//            $passageId = $passageId.replace("|","");
+//
+//            const $span = CreateElement("span");
+//
+//            $span.innerHTML = $displayText;
+//
+//            $span.classList.add("passageLink");
+//
+//            $span.dataset.target = $passageId;
+//
+//            $passage.text = $passage.text.replace(m,$span.outerHTML);
+//        }
+//    }
 }
 
 function _DisplayCurrentPassage(passageHandler){

@@ -10,13 +10,7 @@ export function CreateElement(type){
 
 export function GetOrCreateDivInsideDOM(id,DOM){
     
-    let $found = false;
-    
-    console.log(DOM);
-    
     for(const child of DOM.children){
-        
-        console.log(child);
         
         if(child.id == id) return child
     }

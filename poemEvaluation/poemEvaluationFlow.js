@@ -12,7 +12,7 @@ export function PoemEvaluationFlow(poem){
     
     console.log($srcPkgArr);
     
-    //** _AllusionEvaluation($srcArr);
+     _PassageFXEvaluate();
     
      _AppendToNavOutput($poemText);
     
@@ -69,6 +69,11 @@ function _GetAlludedSources(wordArr){
     }
     
     return $returnArr
+}
+
+function _PassageFXEvaluate(){
+    
+    window.gameHandler.passageHandler.currentPassage.passageFxHandler.Evaluate();
 }
 
 function _AppendToNavOutput(poem){

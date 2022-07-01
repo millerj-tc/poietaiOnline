@@ -1,3 +1,5 @@
+import {passageFxHandler} from "./passageFXHandler.js";
+
 class source
 {
     constructor(id){
@@ -34,6 +36,7 @@ export class passage
         
         this.id = id;
         this.text;
+        this.passageFxHandler = new passageFxHandler();
         this.sources = [];
     }
     
