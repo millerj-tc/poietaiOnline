@@ -5,6 +5,17 @@ export function ParseNavigationText(text){
     
     let $navText = text.slice();
     
+    $navText = _ParsePassageLinks($navText);
+    
+    $navText = _CapitalizeLettersAfterAppropriatePunctuation($navText);
+    
+    return $navText
+}
+
+function _ParsePassageLinks(text){
+    
+    let $navText = text.slice();
+    
     if($navText.match(/\[\[(\S*)]]/gm) != null){
     
         for(const m of $navText.match(/\[\[(\S*)]]/gm)){
@@ -30,8 +41,21 @@ export function ParseNavigationText(text){
             $span.dataset.target = $passageId;
 
             $navText = $navText.replace(m,$span.outerHTML);
+        }
+    }
+    
+    return $navText
+}
+
+function _CapitalizeLettersAfterAppropriatePunctuation(text){
+    
+    let $navText = text.slice();
+    
+    if($navText.match(/(?<=\. \W*|\! \W*|\? \W*|\: \W*)\w/mg) != null){
+        
+        for(const m of $navText.match(/(?<=\. \W*|\! \W*|\? \W*|\: \W*)\w/mg)){
             
-            $span.addEventListener("click",function(){console.log("clicked");NavigationFlow($passageId)});
+            $navText = $navText.replace(m,m.toUpperCase());
         }
     }
     

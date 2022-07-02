@@ -2,6 +2,8 @@ import {GetPoemFromPoemCreatorOutput,RestoreSpacesBeforePunctuation} from "./../
 
 export function GetPlaintextListOfUsedKeywords(keywordsArr){
     
+    if(keywordsArr == null || !Array.isArray(keywordsArr)) return
+    
     let $poemText = GetPoemFromPoemCreatorOutput();
     
     $poemText = RestoreSpacesBeforePunctuation($poemText);

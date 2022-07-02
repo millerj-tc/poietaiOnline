@@ -44,3 +44,8 @@ export function ClearInnerHTML(div){
     
     div.innerHTML = "";
 }
+
+export function SetInnerTextTo(DOM,text){
+    
+    DOM.innerText = text;
+}

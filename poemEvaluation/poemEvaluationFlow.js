@@ -1,6 +1,7 @@
-import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM} from "./../ui.js";
+import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM,SetInnerTextTo} from "./../ui.js";
 import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuation} from "./../poemCreator/poemCreatorUtils.js";
 import {PoemReciterTrayClose,PoemCreatorTrayClose} from "./../uiUtils.js";
+import {ParseNavigationText} from "./../navigation/navigationUtils.js";
 
 export function PoemEvaluationFlow(poem){
     
@@ -78,6 +79,8 @@ function _PassageFXEvaluate(){
 
 function _AppendToNavOutput(poem){
     
+    let $recitationText = `You recite: "` + poem + `."<br><br>`;
+    
     const $navOutput = GetElementById("navigationOutput");
     
     const $navOutputPlayerPoemSpeak = GetOrCreateDivInsideDOM("navigationOutputPlayerPoemSpeak",$navOutput);
@@ -86,11 +89,11 @@ function _AppendToNavOutput(poem){
     
     ClearInnerHTML($navOutputPlayerPoemSpeak);
     
-    $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", `You recite: "`);
+    $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", $recitationText);
     
-    $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", poem);
+    const $adjustedInnerText = ParseNavigationText($navOutputPlayerPoemSpeak.innerText);
     
-    $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", `."<br><br>`);
+    SetInnerTextTo($navOutputPlayerPoemSpeak,$adjustedInnerText);
 }
 
 function _CollapseTheMenuThePoemCameFrom(){
