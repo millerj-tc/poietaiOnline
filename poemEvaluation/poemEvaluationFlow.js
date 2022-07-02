@@ -92,8 +92,6 @@ function _AppendToNavOutput(poem){
     ClearInnerHTML($navOutputPlayerPoemSpeak);
     
     $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", $recitationText);
-    
-    CapitalizeLettersAfterAppropriatePunctuation($navOutputPlayerPoemSpeak.id);
 }
 
 function _CollapseTheMenuThePoemCameFrom(){
