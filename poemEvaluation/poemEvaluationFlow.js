@@ -96,8 +96,6 @@ function _AppendToNavOutput(poem){
     SetInnerTextTo($navOutputPlayerPoemSpeak,$adjustedInnerText);
     
     CapitalizeLettersAfterAppropriatePunctuation($navOutputPlayerPoemSpeak.id);
-    
-    console.error("just make a dynamically inserted text function with capitalize arg?");
 }
 
 function _CollapseTheMenuThePoemCameFrom(){
