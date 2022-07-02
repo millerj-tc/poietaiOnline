@@ -1,6 +1,6 @@
 import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM,SetInnerTextTo} from "./../ui.js";
 import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuation} from "./../poemCreator/poemCreatorUtils.js";
-import {PoemReciterTrayClose,PoemCreatorTrayClose} from "./../uiUtils.js";
+import {PoemReciterTrayClose,CapitalizeLettersAfterAppropriatePunctuation,PoemCreatorTrayClose} from "./../uiUtils.js";
 import {ParseNavigationText} from "./../navigation/navigationUtils.js";
 
 export function PoemEvaluationFlow(poem){
@@ -94,6 +94,10 @@ function _AppendToNavOutput(poem){
     const $adjustedInnerText = ParseNavigationText($navOutputPlayerPoemSpeak.innerText);
     
     SetInnerTextTo($navOutputPlayerPoemSpeak,$adjustedInnerText);
+    
+    CapitalizeLettersAfterAppropriatePunctuation($navOutputPlayerPoemSpeak.id);
+    
+    console.error("just make a dynamically inserted text function with capitalize arg?");
 }
 
 function _CollapseTheMenuThePoemCameFrom(){

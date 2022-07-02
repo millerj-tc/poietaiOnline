@@ -30,8 +30,9 @@ body{
     position:absolute;
     top: 15vh;
     left: 25%;
-    grid-template-columns: repeat(4,190px);
-    grid-template-rows: repeat(4,190px);
+    grid-template-columns: repeat(4,16vh);
+    grid-template-rows: repeat(4,16vh);
+    gap: 1vh;
     align-items: center;
     justify-content: center;
 }
@@ -46,8 +47,8 @@ body{
     border: 2px solid;
     border-radius:25px;
     border-color: gray;
-    width: 173px;
-    height: 173px;
+    width: 15vh;
+    height: 15vh;
     margin:2px;
 }
 

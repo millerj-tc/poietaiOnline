@@ -21,7 +21,7 @@ export function InitializeWorldPassages(){
         <span id='navigationOutputPlayerPoemSpeak'></span>
 
         <span id='yseldaResponse'></span>
-        <i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i>
+        <p><i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i></p>
 
     `);
 
@@ -37,7 +37,7 @@ export function InitializeWorldPassages(){
     ]);
     
     hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"yseldaResponse",
-        `"Oh, 'ancient', yes. '{{keywords}}'. 'Chronowasted', even! -- I've heard it all, Clichéd Poietai. Is  that really all you can conjure? Heh heh heh."<br><br>
+        `"Oh, 'ancient', yes. Now '{{keywords}}'. 'Chronowasted', even! -- I've heard it all, Clichéd Poietai. Is  that really all you can conjure? Heh heh heh."<br><br>
 
         [[North|hotApartmentCourtyard]]`, ["silver","old","grayed"])
         .conditionHandler.AddConditionGroup("or")

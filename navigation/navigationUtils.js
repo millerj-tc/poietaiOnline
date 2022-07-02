@@ -1,3 +1,4 @@
+import {CapitalizeLettersAfterAppropriatePunctuation} from "./../uiUtils.js";
 import {CreateElement,GetElementById} from "./../ui.js";
 import {NavigationFlow} from "./navigationFlow.js";
 
@@ -7,7 +8,7 @@ export function ParseNavigationText(text){
     
     $navText = _ParsePassageLinks($navText);
     
-    $navText = _CapitalizeLettersAfterAppropriatePunctuation($navText);
+//    $navText = _CapitalizeLettersAfterAppropriatePunctuation($navText);
     
     return $navText
 }
@@ -47,20 +48,24 @@ function _ParsePassageLinks(text){
     return $navText
 }
 
-function _CapitalizeLettersAfterAppropriatePunctuation(text){
-    
-    let $navText = text.slice();
-    
-    if($navText.match(/(?<=\. \W*|\! \W*|\? \W*|\: \W*)\w/mg) != null){
-        
-        for(const m of $navText.match(/(?<=\. \W*|\! \W*|\? \W*|\: \W*)\w/mg)){
-            
-            $navText = $navText.replace(m,m.toUpperCase());
-        }
-    }
-    
-    return $navText
-}
+//function _CapitalizeLettersAfterAppropriatePunctuation(text){
+//        
+//    let $navText = text.slice();
+//    
+//    const $querySelectorAllArr = GetVirtualDOMQuerySelectorAll($navText);
+//    
+//    let $returnText = "";
+//    
+//    for(const item of $querySelectorAllArr){
+//
+//        SetInnerTextTo(item,item.innerText.replace(/(?<=\. \W*|\! \W*|\? \W*|\: \W*)\w/mg,`$&`.toUpperCase()));
+//        
+//        $returnText += item.outerHTML;
+//
+//    }
+//    
+//    return $returnText
+//}
 
 export function AttachEventListenersDOMs(DOMId){
     

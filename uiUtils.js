@@ -1,4 +1,4 @@
-import {GetElementById,ClearAllChildren} from "./ui.js";
+import {GetElementById,ClearAllChildren,CreateElement,SetInnerTextTo} from "./ui.js";
 import {poemRemembererShowPoems} from "./poemRememberer/poemRemembererShowPoems.js";
 import {poemCreatorDisplayFlow} from "./poemCreator/poemCreatorDisplayBuild/poemCreatorDisplayFlow.js";
 
@@ -123,4 +123,18 @@ function _ClearPoemRemembererChildrenOnCollapse(){
     ClearAllChildren($output);
     
     $tray.removeEventListener('transitionend', _ClearPoemRemembererChildrenOnCollapse);
+}
+
+export function CapitalizeLettersAfterAppropriatePunctuation(id){
+    
+    const $querySelectorAllArr = document.querySelectorAll(`#${id}`);
+    
+    console.log($querySelectorAllArr);
+    
+    for(const item of $querySelectorAllArr){
+        
+        console.log(item);
+
+        SetInnerTextTo(item,item.innerText.replace(/(?<=\. \W*|\! \W*|\? \W*|\: \W*)\w/mg,function(match){return match.toUpperCase()})); //
+    }
 }
