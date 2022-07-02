@@ -129,12 +129,13 @@ export function CapitalizeLettersAfterAppropriatePunctuation(id){
     
     const $querySelectorAllArr = document.querySelectorAll(`#${id}`);
     
-    console.log($querySelectorAllArr);
-    
     for(const item of $querySelectorAllArr){
-        
-        console.log(item);
 
         SetInnerTextTo(item,item.innerText.replace(/(?<=\. \W*|\! \W*|\? \W*|\: \W*)\w/mg,function(match){return match.toUpperCase()})); //
     }
+}
+
+export function ReplaceNReturnWithBr(text){
+    
+    return text.replace(/\n/gm,"<br>");
 }

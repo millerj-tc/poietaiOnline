@@ -63,6 +63,8 @@ function _MovePlayerIndicatorToPressedDivPos(div){
     
 function _AppendContent(div){
     
+    if(div.innerHTML == "") return
+    
     const $output = GetElementById("poemCreatorOutput");
     
     let $appendDiv = CreateElement("div");
@@ -91,7 +93,7 @@ function _AppendContent(div){
         
     }
     
-    else if(div.innerHTML == "") return
+    //else if(div.innerHTML == "") return
     
     else{
         $output.append($appendDiv);

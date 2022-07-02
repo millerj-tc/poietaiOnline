@@ -1,6 +1,6 @@
 import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM,SetInnerTextTo} from "./../ui.js";
 import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuation} from "./../poemCreator/poemCreatorUtils.js";
-import {PoemReciterTrayClose,CapitalizeLettersAfterAppropriatePunctuation,PoemCreatorTrayClose} from "./../uiUtils.js";
+import {PoemReciterTrayClose,CapitalizeLettersAfterAppropriatePunctuation,PoemCreatorTrayClose,ReplaceNReturnWithBr} from "./../uiUtils.js";
 import {ParseNavigationText} from "./../navigation/navigationUtils.js";
 
 export function PoemEvaluationFlow(poem){
@@ -79,7 +79,9 @@ function _PassageFXEvaluate(){
 
 function _AppendToNavOutput(poem){
     
-    let $recitationText = `You recite: "` + poem + `."<br><br>`;
+    let $poemText = ReplaceNReturnWithBr(poem);
+    
+    let $recitationText = `You recite:<br> "` + $poemText + `."<br><br>`;
     
     const $navOutput = GetElementById("navigationOutput");
     
@@ -90,10 +92,6 @@ function _AppendToNavOutput(poem){
     ClearInnerHTML($navOutputPlayerPoemSpeak);
     
     $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", $recitationText);
-    
-    const $adjustedInnerText = ParseNavigationText($navOutputPlayerPoemSpeak.innerText);
-    
-    SetInnerTextTo($navOutputPlayerPoemSpeak,$adjustedInnerText);
     
     CapitalizeLettersAfterAppropriatePunctuation($navOutputPlayerPoemSpeak.id);
 }

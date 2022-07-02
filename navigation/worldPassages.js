@@ -37,7 +37,7 @@ export function InitializeWorldPassages(){
     ]);
     
     hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"yseldaResponse",
-        `"Oh, 'ancient', yes. Now '{{keywords}}'. 'Chronowasted', even! -- I've heard it all, Clichéd Poietai. Is  that really all you can conjure? Heh heh heh."<br><br>
+        `"Oh yes, I know you see me and think 'ancient'. Now '{{keywords}}'. 'Chronowasted', some have even said!<br><br>I've heard it all, Clichéd Poietai. Is  that really all you can conjure? Heh heh heh."<br><br>
 
         [[North|hotApartmentCourtyard]]`, ["silver","old","grayed"])
         .conditionHandler.AddConditionGroup("or")
