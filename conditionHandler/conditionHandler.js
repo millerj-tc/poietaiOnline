@@ -59,6 +59,11 @@ export class conditionHandler
         return $condGrp
     }
     
+    AddConditionGroupByObjReference(condGrpObj){
+        
+        this.conditionGroups.push(condGrpObj);
+    }
+    
     Evaluate(){
         
         let $trueCondGrps = 0;
