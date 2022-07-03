@@ -48,10 +48,10 @@ export function GetPoemFromPoemCreatorOutput(mode = "text"){
         $returnString = $virtualDOM.innerText;
     }
     
-    return $returnString;
+    return $returnString.slice();
 }
 
-export function RestoreSpacesBeforePunctuation(poemText){
+export function RestoreSpacesBeforePunctuationAndStripCarriageReturns(poemText){
     
     let $poemText = poemText.slice();
     
@@ -62,6 +62,8 @@ export function RestoreSpacesBeforePunctuation(poemText){
             $poemText = $poemText.replace(match, " " + match);
         }
     }
+    
+    $poemText = $poemText.replace(/\n/gm,"");
     
     return $poemText;
 }

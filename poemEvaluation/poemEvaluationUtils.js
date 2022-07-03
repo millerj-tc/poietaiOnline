@@ -1,4 +1,4 @@
-import {GetPoemFromPoemCreatorOutput,RestoreSpacesBeforePunctuation} from "./../poemCreator/poemCreatorUtils.js";
+import {GetPoemFromPoemCreatorOutput,RestoreSpacesBeforePunctuationAndStripCarriageReturns} from "./../poemCreator/poemCreatorUtils.js";
 
 export function GetPlaintextListOfUsedKeywords(keywordsArr){
     
@@ -6,9 +6,7 @@ export function GetPlaintextListOfUsedKeywords(keywordsArr){
     
     let $poemText = GetPoemFromPoemCreatorOutput();
     
-    $poemText = RestoreSpacesBeforePunctuation($poemText);
-    
-    $poemText = $poemText.replace(/\n/gm,"");
+    $poemText = RestoreSpacesBeforePunctuationAndStripCarriageReturns($poemText);
     
     const $splitArr = $poemText.split(" ");
     

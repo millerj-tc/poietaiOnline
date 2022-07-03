@@ -1,10 +1,10 @@
-import {RestoreSpacesBeforePunctuation,GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
+import {RestoreSpacesBeforePunctuationAndStripCarriageReturns,GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
 
 export function PoemTextContainsWord(condWord){
     
-    let $poemText = GetPoemFromPoemCreatorOutput().slice();
+    let $poemText = GetPoemFromPoemCreatorOutput();
     
-    $poemText = RestoreSpacesBeforePunctuation($poemText);
+    $poemText = RestoreSpacesBeforePunctuationAndStripCarriageReturns($poemText);
     
     for(const word of $poemText.split(" ")){
         
