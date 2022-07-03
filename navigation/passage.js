@@ -38,6 +38,7 @@ export class passage
         this.text;
         this.passageFxHandler = new passageFxHandler();
         this.sources = [];
+        this.usedKeywords = [];
     }
     
     SetText(text){
@@ -54,6 +55,13 @@ export class passage
         this.sources.push($source);
         
         return $source
+    }
+    
+    SetUsedKeywords(arr){
+        
+        if(arr == null || !Array.isArray(arr)) console.error("passed non or null arr");
+        
+        this.usedKeywords = arr;
     }
     
 }

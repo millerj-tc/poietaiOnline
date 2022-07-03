@@ -1,6 +1,17 @@
 import {GetPoemFromPoemCreatorOutput,RestoreSpacesBeforePunctuationAndStripCarriageReturns} from "./../poemCreator/poemCreatorUtils.js";
 
-export function GetPlaintextListOfUsedKeywords(keywordsArr){
+export function InsertUsedKeywords(text,keyWordsArr,mode = "plaintext"){
+    
+    let $returnText = "";
+    
+    let $matchedKeywordsArr = GetMatchedKeywords(keyWordsArr,false);
+    
+    if(mode == "plaintext") $returnText = text.replace("{{keywords}}",_GetPlaintextListOfUsedKeywords($matchedKeywordsArr));
+    
+    return $returnText
+}
+
+export function GetMatchedKeywords(keywordsArr,unique = true){
     
     if(keywordsArr == null || !Array.isArray(keywordsArr)) return
     
@@ -10,7 +21,7 @@ export function GetPlaintextListOfUsedKeywords(keywordsArr){
     
     const $splitArr = $poemText.split(" ");
     
-    const $matchedWords = [];
+    let $matchedWords = [];
     
     for(const word of $splitArr){
         
@@ -20,15 +31,24 @@ export function GetPlaintextListOfUsedKeywords(keywordsArr){
         }
     }
     
+    if(unique) $matchedWords = [... new Set($matchedWords)];
+    
+    return $matchedWords
+}
+
+function _GetPlaintextListOfUsedKeywords(matchedKeywordsArr){
+    
     let $returnString = "";
     
-    if($matchedWords.length == 1) return $matchedWords[0]
-    if($matchedWords.length == 2) return $matchedWords[0] + " and " + $matchedWords[1]
+    if(matchedKeywordsArr.length == 1) return matchedKeywordsArr[0]
+    if(matchedKeywordsArr.length == 2) return matchedKeywordsArr[0] + " and " + matchedKeywordsArr[1]
     
-    for(const word of $matchedWords){
+    for(let i = 0; i < matchedKeywordsArr.length; i++){
         
-        if(word == $matchedWords[0]) $returnString += word;
-        else if(word == $matchedWords[$matchedWords.length -1]) $returnString += ", and " + word;
+        let word = matchedKeywordsArr[i];
+        
+        if(i == 0) $returnString += word;
+        else if(i == matchedKeywordsArr.length -1) $returnString += ", and " + word;
         else $returnString += ", " + word;
     }
     

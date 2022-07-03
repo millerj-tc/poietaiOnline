@@ -1,5 +1,5 @@
 import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM,SetInnerTextTo} from "./../ui.js";
-import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuation} from "./../poemCreator/poemCreatorUtils.js";
+import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuationAndStripCarriageReturns} from "./../poemCreator/poemCreatorUtils.js";
 import {PoemReciterTrayClose,CapitalizeLettersAfterAppropriatePunctuation,PoemCreatorTrayClose,ReplaceNReturnWithBr} from "./../uiUtils.js";
 import {ParseNavigationText} from "./../navigation/navigationUtils.js";
 
@@ -30,7 +30,7 @@ function _ParsePoemText(poem){
     
     let $poemText = poem.slice();
     
-    $poemText = RestoreSpacesBeforePunctuation($poemText);
+    $poemText = RestoreSpacesBeforePunctuationAndStripCarriageReturns($poemText);
     
     let $returnArr = [];
     

@@ -10,6 +10,8 @@ body{
     left:14vw;
     right:14vw;
     font-size:24px;
+    overflow-y: auto;
+    height: 75vh;
     
 }
 

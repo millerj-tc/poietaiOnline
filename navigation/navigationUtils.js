@@ -8,8 +8,6 @@ export function ParseNavigationText(text){
     
     $navText = _ParsePassageLinks($navText);
     
-//    $navText = _CapitalizeLettersAfterAppropriatePunctuation($navText);
-    
     return $navText
 }
 
@@ -47,25 +45,6 @@ function _ParsePassageLinks(text){
     
     return $navText
 }
-
-//function _CapitalizeLettersAfterAppropriatePunctuation(text){
-//        
-//    let $navText = text.slice();
-//    
-//    const $querySelectorAllArr = GetVirtualDOMQuerySelectorAll($navText);
-//    
-//    let $returnText = "";
-//    
-//    for(const item of $querySelectorAllArr){
-//
-//        SetInnerTextTo(item,item.innerText.replace(/(?<=\. \W*|\! \W*|\? \W*|\: \W*)\w/mg,`$&`.toUpperCase()));
-//        
-//        $returnText += item.outerHTML;
-//
-//    }
-//    
-//    return $returnText
-//}
 
 export function AttachEventListenersDOMs(DOMId){
     
