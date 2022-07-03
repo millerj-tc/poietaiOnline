@@ -69,6 +69,8 @@ function _AppendContent(div){
     
     let $appendDiv = CreateElement("div");
     
+    _CapitalizeIfFirstWordOrFollowsAppropriatePunctuation(div);
+    
     $appendDiv.innerHTML = div.innerHTML;
     
     $appendDiv.classList.add("cssPoemCreatorOutputContent");
@@ -108,6 +110,22 @@ function _AppendContent(div){
     }
     
     div.innerHTML = "";
+}
+
+function _CapitalizeIfFirstWordOrFollowsAppropriatePunctuation(div){
+    
+    const $output = GetElementById("poemCreatorOutput");
+    
+    let $capitalizationStacks = 0;
+    
+    if($output.children.length == 0) div.innerText = _FirstLetterToUppercase(div.innerText);
+    
+    else if($output.children[$output.children.length - 2].innerText.match(/\.|\!|\?|\:/gm) != null) div.innerText = _FirstLetterToUppercase(div.innerText);
+}
+
+function _FirstLetterToUppercase(text){
+    
+    return text.replace(/\w/m,function(match){return match.toUpperCase()});
 }
 
 function _RemoveSpacesBeforePunctuationDivs(appendDiv){
