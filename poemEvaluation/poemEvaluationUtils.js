@@ -8,6 +8,8 @@ export function GetPlaintextListOfUsedKeywords(keywordsArr){
     
     $poemText = RestoreSpacesBeforePunctuation($poemText);
     
+    $poemText = $poemText.replace(/\n/gm,"");
+    
     const $splitArr = $poemText.split(" ");
     
     const $matchedWords = [];
@@ -16,13 +18,14 @@ export function GetPlaintextListOfUsedKeywords(keywordsArr){
         
         for(const keyword of keywordsArr){
             
-            if(word.toLowerCase() == keyword.toLowerCase()) $matchedWords.push(word);
+            if(word.toLowerCase() == keyword.toLowerCase()) $matchedWords.push(word.toLowerCase());
         }
     }
     
     let $returnString = "";
     
     if($matchedWords.length == 1) return $matchedWords[0]
+    if($matchedWords.length == 2) return $matchedWords[0] + " and " + $matchedWords[1]
     
     for(const word of $matchedWords){
         
