@@ -3,6 +3,11 @@ body{
     font-family: Helvetica;
 }
 
+.versionInfo{
+    
+    color:white;
+}
+
 .navigationOutput{
     
     position:fixed;
