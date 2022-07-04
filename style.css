@@ -9,7 +9,7 @@ body{
     top:15vh;
     left:14vw;
     right:14vw;
-    font-size:24px;
+    font-size:calc(15px + 1.2vw);
     overflow-y: auto;
     height: 75vh;
     
@@ -64,7 +64,7 @@ body{
     top: -88vh;
     height: 94vh;
     left:10vw;
-    font-size:22px;
+    font-size:calc(13px + 1.2vw);
     border: 2px solid;
     border-radius:25px;
     transition: transform 0.75s;
@@ -82,7 +82,7 @@ body{
     
     position:relative;
     text-align: center;
-    font-size: 22px;
+    font-size:calc(13px + 1.2vw);
     top:50%;
     margin-top: -11px;
     
@@ -152,7 +152,7 @@ body{
     width:80%;
     top: 95vh;
     left:10vw;
-    font-size:22px;
+    font-size:calc(13px + 1.2vw);
     transition: transform 0.75s
 }
 
@@ -176,7 +176,7 @@ body{
 .cssPoemReciterDisplay{
     
     display:grid;
-    grid-template-columns: repeat(4,200px);
+    grid-template-columns: repeat(4,16vh);
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -192,7 +192,7 @@ body{
     
     position:relative;
     display:grid;
-    grid-template-columns: repeat(2,350px);
+    grid-template-columns: repeat(2,20vh);
     align-items: center;
     justify-content: center;
 }
