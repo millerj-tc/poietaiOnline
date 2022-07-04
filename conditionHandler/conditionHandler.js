@@ -39,6 +39,7 @@ class conditionGroup
         
         if($trueConds > 0 && this.type == "or") return true
         else if($trueConds == this.conds.length && this.type == "and") return true
+        else if($trueConds == 0 && this.type == "not") return true
         else return false
     }
 }

@@ -1,5 +1,5 @@
-import {GoToPassage,AppendToDivOnce} from "./passageFX.js";
-import {PoemTextContainsWord} from "./../poemEvaluation/poemFXConditions.js";
+import {GoToPassage,AppendToDivOnce,AddAllusionWordToSource} from "./passageFX.js";
+import {PoemTextContainsWord,PoemLength} from "./../poemEvaluation/poemFXConditions.js";
 
 export function InitializeWorldPassages(){
     const $passageHandler = window.gameHandler.passageHandler;
@@ -53,11 +53,63 @@ export function InitializeWorldPassages(){
     hotApartment.passageFxHandler.AddCharacterDefaultResponse("yselda",
     `"I shall consider this, clever Poietai. Thank you for sharing with me."`);
     
-    hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"courtyardButton",`[[North|hotApartmentCourtyard]]`);
+    hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"courtyardButton",`[[Courtyard|hotApartmentCourtyard]]`);
     
     const hotApartmentCourtyard = $passageHandler.AddPassage("hotApartmentCourtyard");
 
     hotApartmentCourtyard.SetText(`
+        You step into the courtyard of Yselda's inn. Bowed barrowwillow trees arc over the intricate brickwork of the courtyard's floor.<br>
+        Small spindly tables wobble under the burdens that they unfalteringly bear.<br>
+        A person, resplendent in rolls of fat, bushy beard hairs, and twinkling eye makeup gestures you over.<br><br>
+        "Regale me, Poietai, and I shall tell you something in return."<br><br>
         `);
+    const hotApartmentCourtyardSrc = hotApartmentCourtyard.AddSource("hotApartmentCourtyard");
+    
+    hotApartmentCourtyardSrc.SetAllusionWords([
+        {text:"barrowwillows",frequency:3},
+        {text:"wobbling",frequency:3},
+        {text:"burden",frequency:3},
+        {text:"glittering",frequency:3},
+        {text:"bricks",frequency:3},
+        {text:"roll",frequency:3},
+    ]);
+    
+    hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
+        `
+        "I love the barrowwillows here - they are probably hundreds of years old, brought over from Xosa before the cataclysm. Barrowwillow berries are poisonous of course, but if you make a tea of the stems you can see sights that are beyond description."
+                                                               `,[])
+        .conditionHandler.AddConditionGroup("and")
+        .AddCondition(PoemTextContainsWord,"barrowwillows");
+    
+    hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
+        `
+        "A poem about BERIN themself! There is no end to what one could say about Berin. The trick is to believe in yourself -- then you too can be an endless font. Perhaps you will get there some day -- BAHAHAHAHAHA -- I know you will! I look forward to it."
+                                                               `,[])
+        .conditionHandler.AddConditionGroup("and")
+        .AddCondition(PoemTextContainsWord,"BERIN");
+    
+    hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
+        `
+        "Brevity you've brought me {{last|as well}} I see, then I shall supply the wit -- BRAHAHAHAHOOHA!"<br><br>
+
+        They take a sip of their tea. "This story begins about twelve years ago when I was living with my friend Brick. We were impetuous fools, in love and in debt, when we hatched a scheme to achieve renown and fame....."<br><br>
+
+        You try to pay attention but are constantly distracted by the mesmerizing jiggles and jangles of their bangle-adorned body and the blinding flashes of light from their shining teeth. You have no idea how much time has passed.<br><br>
+
+        "...which of course brought us to our ruin, but also closer together. I tell you, I will never provoke a Time Koala again."
+
+        
+                                                               `,[])
+        .conditionHandler.AddConditionGroup("and")
+        .AddCondition(PoemLength,"lessThanOrEqualTo",3);
+    
+    hotApartmentCourtyard.passageFxHandler.AddCharacterDefaultResponse("berin",
+        `
+        "Lovely, Poietai, just lovely. For that I shall share my name: BERIN!! Didn't you know? For one great as me, merely uttering my name IS poetry -- BAHAHAHAHA! Good fun, good fun."
+                                                                      `);
+    
+    hotApartmentCourtyard.passageFxHandler.AddPassageFx(AddAllusionWordToSource,{text:"BERIN",frequency:3.25},hotApartmentCourtyardSrc)
+        .conditionHandler.AddConditionGroup("not")
+        .AddCondition(PoemTextContainsWord,"barrowwillows");
 
 }

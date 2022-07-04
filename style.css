@@ -25,6 +25,7 @@ body{
     font-weight:bold;
     text-decoration: underline;
     color:darkblue;
+    cursor: pointer;
 }
 
 .cssPoemCreatorGrid{

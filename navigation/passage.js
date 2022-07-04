@@ -20,6 +20,13 @@ class source
             this.allusionWords.push(word);
         }
     }
+    
+    AddAllusionWord(wordObj){
+        
+        if(!typeof wordObj == "Object") console.error(`passed non-object: passed a ${typeof wordObj}`);
+        
+        this.allusionWords.push(wordObj);
+    }
 }
 
 export class sourceHandler

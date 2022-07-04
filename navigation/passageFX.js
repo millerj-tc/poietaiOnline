@@ -37,3 +37,8 @@ function _StoreUsedKeywords(keywordsArr){
     
     console.log(window.gameHandler.passageHandler.currentPassage);
 }
+
+export function AddAllusionWordToSource(word,source){
+    
+    source.AddAllusionWord(word);
+}

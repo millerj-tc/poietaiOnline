@@ -43,7 +43,7 @@ function _GetCharacterResponseString(triggeredResponses,charResponseHandler){
         
          let $responseString = InsertUsedKeywords(charResponseHandler.defaultResponse.text,charResponseHandler.defaultResponse.keywordsArr);
         
-        return $responseString
+        return $responseString + "<br><br>"
     }
     for(const response of $charRespoArr){
         
