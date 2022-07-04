@@ -37,7 +37,8 @@ body{
     display:grid;
     position:absolute;
     top: 15vh;
-    left: 17.5vw;
+    left: 50%;
+    margin-left: -24vw;
     grid-template-columns: repeat(4,12vw);
     grid-template-rows: repeat(4,12vw);
     gap: 1vh;
@@ -100,9 +101,10 @@ body{
     position: relative;
     background-color: white;
     overflow-y: hidden;
-    width:80%;
+    left:50%;
+    margin-left: -37vw;
+    width:74vw;
     top: -48vh;
-    left:10vw;
     transition: transform 0.75s;
     z-index: 100;
 }
