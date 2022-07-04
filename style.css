@@ -156,6 +156,13 @@ body{
     transition: transform 0.75s
 }
 
+@media only screen and (max-width: 600px) {
+    .cssPoemReciterTray{
+     
+        top:88vh;
+    }
+}
+
 .cssPoemReciterDisplayWrapper{
     
     position: relative;
