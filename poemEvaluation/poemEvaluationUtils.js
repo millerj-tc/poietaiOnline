@@ -38,6 +38,8 @@ export function GetMatchedKeywords(keywordsArr,unique = true){
 
 function _GetPlaintextListOfUsedKeywords(matchedKeywordsArr){
     
+    if(!Array.isArray(matchedKeywordsArr) || matchedKeywordsArr.length == 0) return
+    
     let $returnString = "";
     
     if(matchedKeywordsArr.length == 1) return matchedKeywordsArr[0]

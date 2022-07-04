@@ -2,6 +2,7 @@ import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM,SetI
 import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuationAndStripCarriageReturns} from "./../poemCreator/poemCreatorUtils.js";
 import {PoemReciterTrayClose,CapitalizeLettersAfterAppropriatePunctuation,PoemCreatorTrayClose,ReplaceNReturnWithBr} from "./../uiUtils.js";
 import {ParseNavigationText} from "./../navigation/navigationUtils.js";
+import {AppendCharacterResponsesFlow} from "./AppendCharacterResponsesFlow.js";
 
 export function PoemEvaluationFlow(poem){
     
@@ -17,7 +18,7 @@ export function PoemEvaluationFlow(poem){
     
      _AppendToNavOutput($poemText);
     
-    _AppendCharResponses();
+    AppendCharacterResponsesFlow();
     
      _CollapseTheMenuThePoemCameFrom();
 }

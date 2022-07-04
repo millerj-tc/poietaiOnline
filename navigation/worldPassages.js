@@ -21,6 +21,7 @@ export function InitializeWorldPassages(){
         <span id='navigationOutputPlayerPoemSpeak'></span>
 
         <span id='yseldaResponse'></span>
+        <span id='courtyardButton'></span>
         <p><i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i></p>
 
     `);
@@ -36,28 +37,26 @@ export function InitializeWorldPassages(){
         {text:"silver",frequency:3},
     ]);
     
-    hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"yseldaResponse",
-        `"Oh yes, I know you see me and think 'ancient'. Now '{{keywords}}'. 'Chronowasted', some have even said!"<br><br>"I've heard it all, Clichéd Poietai. Maybe take it a different direction next time? Heh heh heh."<br><br>
-
-        [[North|hotApartmentCourtyard]]`, ["silver","old","grayed"])
+    hotApartment.passageFxHandler.AddCharacterResponse("yselda",
+        `"Oh yes, I know you see me and think 'ancient'. Now '{{keywords}}'. 'Chronowasted', some have even said!"<br><br>"I've heard it all, Clichéd Poietai. Maybe take it a different direction next time? Heh heh heh."`, ["silver","old","grayed"])
         .conditionHandler.AddConditionGroup("or")
         .AddCondition(PoemTextContainsWord,"silver")
         .AddCondition(PoemTextContainsWord,"old")
         .AddCondition(PoemTextContainsWord,"grayed");
     
-    hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"yseldaResponse",
-        `"'Keys', yes, 'keys'...Wait a second, where are my keys? Oh my oh my...." Yselda scooters away.<br><br>
-
-        [[North|hotApartmentCourtyard]]`                                          
+    hotApartment.passageFxHandler.AddCharacterResponse("yselda",
+        `"'Keys'{{last| you mentioned as well}}, yes, 'keys'...Wait a second, where are my keys? Oh my oh my...." Yselda scooters away.`
     )
         .conditionHandler.AddConditionGroup("and")
         .AddCondition(PoemTextContainsWord,"keys");
     
-    hotApartment.passageFxHandler.AddDefaultPassageFx(AppendToDivOnce,"yseldaResponse",
-    `"I shall consider this, clever Poietai. Thank you for sharing with me."<br><br>
+    hotApartment.passageFxHandler.AddCharacterDefaultResponse("yselda",
+    `"I shall consider this, clever Poietai. Thank you for sharing with me."
 
-        [[North|hotApartmentCourtyard]]
+        
     `);
+    
+    hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"courtyardButton",`[[North|hotApartmentCourtyard]]`);
     
     const hotApartmentCourtyard = $passageHandler.AddPassage("hotApartmentCourtyard");
 

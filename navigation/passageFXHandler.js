@@ -1,4 +1,4 @@
-angularimport {conditionHandler} from "./../conditionHandler/conditionHandler.js";
+import {conditionHandler} from "./../conditionHandler/conditionHandler.js";
 
 class passageFx
 {
@@ -19,6 +19,7 @@ class characterResponse
         
         this.text = text;
         this.keywordsArr = keywordsArr;
+        this.conditionHandler = new conditionHandler();
     }
 }
 
@@ -51,11 +52,23 @@ export class passageFxHandler
     
     AddCharacterResponse(characterId,text,keywordsArr){
         
+        const $crh = this._GetOrCreateCharResponseHandler(characterId);
+        
+        const $response = new characterResponse(text,keywordsArr)
+        
+        $crh.characterResponses.push($response);
+        
+        return $response
+        
+    }
+    
+    _GetOrCreateCharResponseHandler(characterId){
+        
         let $crh = null;
         
         for(const crh of this.characterResponseHandlers){
             
-            if(crh.characterId == characterId) $crh = crh
+            if(crh.characterId == characterId) return crh
         }
         
         if($crh == null){
@@ -64,10 +77,18 @@ export class passageFxHandler
             
             this.characterResponseHandlers.push($crh);
             
+            return $crh
+            
         }
+    }
+    
+    AddCharacterDefaultResponse(characterId,text,keywordsArr){
         
-        $crh.characterResponses.push(new characterResponse(text,keywordsArr));
+        const $crh = this._GetOrCreateCharResponseHandler(characterId);
         
+        $crh.defaultResponse = new characterResponse(text,keywordsArr);
+        
+        return $crh.defaultResponse;
     }
     
     AddDefaultPassageFx(FxFunc,arg0,arg1,arg2){
@@ -89,6 +110,8 @@ export class passageFxHandler
             }
         }
         
-        this.defaultFx.FxFunc(this.defaultFx.arg0,this.defaultFx.arg1,this.defaultFx.arg2);
+        if(this.defaultFx != null){
+            this.defaultFx.FxFunc(this.defaultFx.arg0,this.defaultFx.arg1,this.defaultFx.arg2);
+        }
     }
 }
