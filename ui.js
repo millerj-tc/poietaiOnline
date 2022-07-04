@@ -49,3 +49,8 @@ export function SetInnerTextTo(DOM,text){
     
     DOM.innerText = text;
 }
+
+export function ScrollIntoView(elem){
+    
+    elem.scrollIntoView(true);
+}

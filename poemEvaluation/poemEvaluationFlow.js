@@ -1,4 +1,4 @@
-import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM,SetInnerTextTo} from "./../ui.js";
+import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM,SetInnerTextTo,ScrollIntoView} from "./../ui.js";
 import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuationAndStripCarriageReturns} from "./../poemCreator/poemCreatorUtils.js";
 import {PoemReciterTrayClose,CapitalizeLettersAfterAppropriatePunctuation,PoemCreatorTrayClose,ReplaceNReturnWithBr} from "./../uiUtils.js";
 import {ParseNavigationText} from "./../navigation/navigationUtils.js";
@@ -17,6 +17,8 @@ export function PoemEvaluationFlow(poem){
      _PassageFXEvaluate();
     
      _AppendToNavOutput($poemText);
+    
+    _ScrollToRecitationSpan();
     
     AppendCharacterResponsesFlow();
     
@@ -95,6 +97,13 @@ function _AppendToNavOutput(poem){
     ClearInnerHTML($navOutputPlayerPoemSpeak);
     
     $navOutputPlayerPoemSpeak.insertAdjacentHTML("beforeend", $recitationText);
+}
+
+function _ScrollToRecitationSpan(){
+    
+    const $navOutputPlayerPoemSpeak = GetElementById("navigationOutputPlayerPoemSpeak");
+    
+    ScrollIntoView($navOutputPlayerPoemSpeak);
 }
 
 function _CollapseTheMenuThePoemCameFrom(){
