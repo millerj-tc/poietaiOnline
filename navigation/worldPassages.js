@@ -51,10 +51,7 @@ export function InitializeWorldPassages(){
         .AddCondition(PoemTextContainsWord,"keys");
     
     hotApartment.passageFxHandler.AddCharacterDefaultResponse("yselda",
-    `"I shall consider this, clever Poietai. Thank you for sharing with me."
-
-        
-    `);
+    `"I shall consider this, clever Poietai. Thank you for sharing with me."`);
     
     hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"courtyardButton",`[[North|hotApartmentCourtyard]]`);
     
