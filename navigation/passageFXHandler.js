@@ -1,4 +1,4 @@
-import {conditionHandler} from "./../conditionHandler/conditionHandler.js";
+angularimport {conditionHandler} from "./../conditionHandler/conditionHandler.js";
 
 class passageFx
 {
@@ -13,12 +13,31 @@ class passageFx
     }
 }
 
+class characterResponse
+{
+    constructor(text,keywordsArr){
+        
+        this.text = text;
+        this.keywordsArr = keywordsArr;
+    }
+}
+
+class characterResponseHandler
+{
+    constructor(characterId){
+        
+        this.characterId = characterId;
+        this.characterResponses = [];
+    }
+}
+
 export class passageFxHandler
 {
     constructor(){
         
         this.passageFxs = [];
         this.defaultFx;
+        this.characterResponseHandlers = [];
     }
     
     AddPassageFx(FxFunc,arg0,arg1,arg2){
@@ -28,6 +47,27 @@ export class passageFxHandler
         this.passageFxs.push($psgFx);
         
         return $psgFx
+    }
+    
+    AddCharacterResponse(characterId,text,keywordsArr){
+        
+        let $crh = null;
+        
+        for(const crh of this.characterResponseHandlers){
+            
+            if(crh.characterId == characterId) $crh = crh
+        }
+        
+        if($crh == null){
+            
+            $crh = new characterResponseHandler(characterId);
+            
+            this.characterResponseHandlers.push($crh);
+            
+        }
+        
+        $crh.characterResponses.push(new characterResponse(text,keywordsArr));
+        
     }
     
     AddDefaultPassageFx(FxFunc,arg0,arg1,arg2){

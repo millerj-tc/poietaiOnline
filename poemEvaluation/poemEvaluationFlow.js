@@ -17,6 +17,8 @@ export function PoemEvaluationFlow(poem){
     
      _AppendToNavOutput($poemText);
     
+    _AppendCharResponses();
+    
      _CollapseTheMenuThePoemCameFrom();
 }
 
