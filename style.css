@@ -32,9 +32,9 @@ body{
     display:grid;
     position:absolute;
     top: 15vh;
-    left: 25%;
-    grid-template-columns: repeat(4,16vh);
-    grid-template-rows: repeat(4,16vh);
+    left: 17.5vw;
+    grid-template-columns: repeat(4,12vw);
+    grid-template-rows: repeat(4,12vw);
     gap: 1vh;
     align-items: center;
     justify-content: center;
@@ -171,12 +171,13 @@ body{
     border-radius:25px;
     padding: 10px;
     padding-top: 5px;
+    overflow-y: auto;
 }
 
 .cssPoemReciterDisplay{
     
     display:grid;
-    grid-template-columns: repeat(4,16vh);
+    grid-template-columns: repeat(4,16vw);
     align-items: center;
     justify-content: center;
     gap: 10px;
