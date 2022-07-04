@@ -50,8 +50,8 @@ body{
     border: 2px solid;
     border-radius:25px;
     border-color: gray;
-    width: 15vh;
-    height: 15vh;
+    width: 12vw;
+    height: 12vw;
     margin:2px;
 }
 
@@ -82,7 +82,9 @@ body{
     
     position:relative;
     text-align: center;
-    font-size:calc(13px + 1.2vw);
+    font-size:calc(5px + 1.75vw);
+    overflow-wrap: break-word;
+    hyphens: auto;
     top:50%;
     margin-top: -11px;
     

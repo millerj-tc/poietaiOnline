@@ -110,6 +110,8 @@ export function InitializeWorldPassages(){
     
     hotApartmentCourtyard.passageFxHandler.AddPassageFx(AddAllusionWordToSource,{text:"BERIN",frequency:3.25},hotApartmentCourtyardSrc)
         .conditionHandler.AddConditionGroup("not")
+        .AddCondition(PoemLength,"lessThanOrEqualTo",3)
+        .AddCondition(PoemTextContainsWord,"BERIN")
         .AddCondition(PoemTextContainsWord,"barrowwillows");
 
 }
