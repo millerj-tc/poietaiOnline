@@ -52,5 +52,5 @@ export function SetInnerTextTo(DOM,text){
 
 export function ScrollIntoView(elem){
     
-    elem.scrollIntoView(true);
+    elem.scrollIntoView(); //trying without "true" for mobile
 }
