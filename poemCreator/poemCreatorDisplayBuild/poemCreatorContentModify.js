@@ -63,7 +63,7 @@ function _PreloadModWraps(){
     
     const $returnArr = [];
     
-    $returnArr.push({content:{text:"X"}},{content:{text:"/"}},{content:{text:"/"}})
+    $returnArr.push({content:{text:`X`}},{content:{text:"/"}},{content:{text:"/"}})
     
     return $returnArr
 }

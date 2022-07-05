@@ -11,7 +11,7 @@ export function ContentDivPressed(div){
         
         _MovePlayerIndicatorToPressedDivPos(div);
         _AppendContent($contentDiv);
-        _UnhideMemorizeButton();
+        _UnhideMemorizeAndReciteButtons();
     }
 }
 
@@ -155,11 +155,15 @@ function _RemoveLastAddedClassFromOutputDivs(){
     }
 }
 
-function _UnhideMemorizeButton(){
+function _UnhideMemorizeAndReciteButtons(){
     
     const $memButton = GetElementById("memorizeCreatedPoemButton");
     
+    const $recButton = GetElementById("reciteCreatedPoemButton");
+    
     SetDisplayTo($memButton,"inline-block");
+    
+    SetDisplayTo($recButton,"inline-block");
 }
 
 function _RemoveAllusionWordClass(appendDiv){

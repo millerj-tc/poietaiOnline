@@ -39,11 +39,18 @@ body{
     top: 15vh;
     left: 50%;
     margin-left: -24vw;
-    grid-template-columns: repeat(4,12vw);
-    grid-template-rows: repeat(4,12vw);
+    grid-template-columns:auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
     gap: 1vh;
     align-items: center;
     justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .cssPoemCreatorGrid{
+        left:8%;
+        margin-left: 5vw;
+    }
 }
 
 .allusionWord{
@@ -57,7 +64,8 @@ body{
     border-radius:25px;
     border-color: gray;
     width: 12vw;
-    height: 12vw;
+    height: 17vh;
+    max-height: 20vw;
     margin:2px;
 }
 
@@ -70,7 +78,7 @@ body{
     top: -88vh;
     height: 94vh;
     left:10vw;
-    font-size:calc(13px + 1.2vw);
+    font-size:calc(14px + 1.2vw);
     border: 2px solid;
     border-radius:25px;
     transition: transform 0.75s;
@@ -82,6 +90,7 @@ body{
     position: absolute;
     top: 96%;
     margin-left: 10px;
+    margin-bottom: -20px;
 }
 
 .cssPoemCreatorGridContent{
@@ -95,7 +104,15 @@ body{
     margin-top: -11px;
     
 }
-
+.cssPoemCreatorPlayerIndicator{
+    
+    font-size: calc(45px + 1.2vw);
+    font-weight: bold;
+    color: mediumpurple;
+    top:50%;
+    margin-top: -30px;
+    
+}
 .cssPoemCreatorOutputTray{
     
     position: relative;
@@ -112,13 +129,15 @@ body{
 .poemCreatorOutputTrayButton{
     
     position: relative;
-    top: 96%;
+    top: 94%;
     margin-left: 10px;
+    margin-bottom: 10px;
 }
 
-.reciteCreateToggleFlowButton{
-    
-    float:right;
+@media only screen and (max-width: 600px) {
+    .poemCreatorOutputTrayButton{
+        top:95%;
+    }
 }
 
 .cssPoemCreatorOutputWrapper{

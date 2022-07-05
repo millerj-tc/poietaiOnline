@@ -4,7 +4,7 @@ export function poemCreatorPrepPoemOutputTray(){
     
     _ClearOutput();
     
-    _HideMemorizeButton();
+    _HideMemorizeAndReciteButtons();
 }
 
 function _ClearOutput(){
@@ -14,9 +14,13 @@ function _ClearOutput(){
     ClearAllChildren($output);
 }
 
-function _HideMemorizeButton(){
+function _HideMemorizeAndReciteButtons(){
     
     const $memButton = GetElementById("memorizeCreatedPoemButton");
     
+    const $recButton = GetElementById("reciteCreatedPoemButton")
+    
     SetDisplayTo($memButton,"none");
+    
+    SetDisplayTo($recButton,"none");
 }
