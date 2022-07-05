@@ -76,11 +76,11 @@ export function InitializeWorldPassages(){
         {text:"roll",frequency:3},
     ]);
     
-    const $berinBerinResponse = hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
+    const $berinBarrowwillowResponse = hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
         `
         "I love the barrowwillows here - they are probably hundreds of years old, brought over from Xosa before the cataclysm. Barrowwillow berries are poisonous of course, but if you make a tea of the stems you can see sights that are beyond description."
                                                                `,[]);
-        const $barrowwillowsCon = $berinBerinResponse.conditionHandler.AddConditionGroup("and");
+        const $barrowwillowsCon = $berinBarrowwillowResponse.conditionHandler.AddConditionGroup("and");
         $barrowwillowsCon.AddCondition(PoemTextContainsWord,"barrowwillows");
     
     hotApartmentCourtyard.passageFxHandler.AddPassageFx(PermanentlyUnlockPassageSpan,"climbBarrowwillows")
