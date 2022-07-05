@@ -1,5 +1,5 @@
 import {NavigationFlow} from "./navigationFlow.js";
-import {GetOrCreateDivInsideDOM,GetElementById,ClearInnerHTML} from "./../ui.js";
+import {GetOrCreateDivInsideDOM,GetElementById,ClearInnerHTML,SetDisplayTo} from "./../ui.js";
 import {ParseNavigationText,AttachEventListenersDOMs} from "./navigationUtils.js";
 import {InsertUsedKeywords,GetMatchedKeywords} from "./../poemEvaluation/poemEvaluationUtils.js";
 
@@ -41,4 +41,11 @@ function _StoreUsedKeywords(keywordsArr){
 export function AddAllusionWordToSource(word,source){
     
     source.AddAllusionWord(word);
+}
+
+export function PermanentlyUnlockPassageSpan(id){
+    
+    const $unlockSpan = GetElementById(id);
+    
+    SetDisplayTo($unlockSpan,"inline-block");
 }

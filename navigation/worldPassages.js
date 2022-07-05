@@ -1,4 +1,4 @@
-import {GoToPassage,AppendToDivOnce,AddAllusionWordToSource} from "./passageFX.js";
+import {GoToPassage,AppendToDivOnce,AddAllusionWordToSource,PermanentlyUnlockPassageSpan} from "./passageFX.js";
 import {PoemTextContainsWord,PoemLength} from "./../poemEvaluation/poemFXConditions.js";
 
 export function InitializeWorldPassages(){
@@ -61,6 +61,8 @@ export function InitializeWorldPassages(){
         You step into the courtyard of Yselda's inn. Bowed barrowwillow trees arc over the intricate brickwork of the courtyard's floor.<br>
         Small spindly tables wobble under the burdens that they unfalteringly bear.<br>
         A person, resplendent in rolls of fat, bushy beard hairs, and twinkling eye makeup gestures you over.<br><br>
+
+        <span id="climbBarrowwillows" style='display:none'><i>Climb barrowwillows functionality coming soon :)</i><br><br></span>
         "Regale me, Poietai, and I shall tell you something in return."<br><br>
         `);
     const hotApartmentCourtyardSrc = hotApartmentCourtyard.AddSource("hotApartmentCourtyard");
@@ -74,12 +76,15 @@ export function InitializeWorldPassages(){
         {text:"roll",frequency:3},
     ]);
     
-    hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
+    const $berinBerinResponse = hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
         `
         "I love the barrowwillows here - they are probably hundreds of years old, brought over from Xosa before the cataclysm. Barrowwillow berries are poisonous of course, but if you make a tea of the stems you can see sights that are beyond description."
-                                                               `,[])
-        .conditionHandler.AddConditionGroup("and")
-        .AddCondition(PoemTextContainsWord,"barrowwillows");
+                                                               `,[]);
+        const $barrowwillowsCon = $berinBerinResponse.conditionHandler.AddConditionGroup("and");
+        $barrowwillowsCon.AddCondition(PoemTextContainsWord,"barrowwillows");
+    
+    hotApartmentCourtyard.passageFxHandler.AddPassageFx(PermanentlyUnlockPassageSpan,"climbBarrowwillows")
+        .conditionHandler.AddConditionGroupByObjReference($barrowwillowsCon);
     
     hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
         `

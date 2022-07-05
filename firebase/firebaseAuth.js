@@ -14,6 +14,8 @@ export function Register(){
     
     const email = GetElementById("newUserEmail").value;
     const pass = GetElementById("newUserPass").value;
+    
+    if(pass.length < 7) window.alert("Password is too few characters :(");
 
     const auth = getAuth();   
 

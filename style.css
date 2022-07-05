@@ -62,6 +62,7 @@ body{
     
     border: 2px solid;
     border-radius:25px;
+    padding:3px;
     border-color: gray;
     width: 12vw;
     height: 17vh;
