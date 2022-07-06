@@ -7,9 +7,15 @@ export class gameHandler
 {
     constructor(){
         
+        this.playerName;
         this.poemMemoryHandler = new poemMemoryHandler();
         this.sourceHandler = new sourceHandler();
         this.passageHandler = new passageHandler();
         this.actionLogger = new actionLogger();
+    }
+    
+    SetPlayerName(name){
+        
+        this.playerName = name;
     }
 }

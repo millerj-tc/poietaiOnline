@@ -6,8 +6,6 @@ import {LoginFlow} from "./loginFlow.js";
 
 import {GetElementById} from "./../ui.js";
 
-import {TestRetrieveName} from "./firebaseGetUserData.js";
-
 export function Register(){
     
     SignOut();
@@ -25,6 +23,7 @@ export function Register(){
         const user = userCredential.user;
         
         _PushCharacterNameAndOptOutToDatabase();
+        _EstablishSession();
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -37,7 +36,7 @@ function _PushCharacterNameAndOptOutToDatabase(){
     
     const db = getDatabase();
     
-    const optOutValue = GetElementById("optOutCheckbox").value;
+    const optOutValue = GetElementById("optOutCheckbox").checked;
 
     const name = GetElementById("newUserChar").value
     
@@ -59,7 +58,7 @@ export function Login(){
     // Signed in 
     const user = userCredential.user;
     
-    _SaveLoginDate();
+    _EstablishSession();
     LoginFlow();        
     
   })
@@ -70,7 +69,7 @@ export function Login(){
 
 }
 
-function _SaveLoginDate(){
+function _EstablishSession(){
     
     const db = getDatabase();
 
@@ -82,7 +81,7 @@ function _SaveLoginDate(){
   };
 
   // Get a key for a new Post.
-  const newSessionKey = push(child(ref(db), 'logins ')).key;
+  const newSessionKey = push(child(ref(db), 'sessions ')).key;
     
   window.gameHandler.actionLogger.SetSessionKey(newSessionKey);
 

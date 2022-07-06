@@ -7,6 +7,12 @@ export class actionLogger
         this.sessionKey;
         this.actionLog = [];
         this.intervalId = 0;
+        this.optOut;
+    }
+    
+    SetOptOut(bool){
+        
+        this.optOut = bool;
     }
     
     SetSessionKey(key){
