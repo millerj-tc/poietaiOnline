@@ -11,7 +11,5 @@ export class gameHandler
         this.sourceHandler = new sourceHandler();
         this.passageHandler = new passageHandler();
         this.actionLogger = new actionLogger();
-        
-        setInterval(function(){window.gameHandler.actionLogger.ReportAndStartNewInterval()},10000);
     }
 }

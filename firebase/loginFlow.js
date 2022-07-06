@@ -7,6 +7,8 @@ export function LoginFlow(){
     
     const $lw = GetElementById("loginWrapper");
     
+    setInterval(function(){window.gameHandler.actionLogger.ReportAndStartNewInterval()},10000)
+    
     SetDisplayTo($lw,"none");
     
     GetUserPoems();

@@ -2,7 +2,7 @@ export function poemCreatorContentPassFlow(modWrapArr){
 
     const $contentTextArr = _ExtractedTextPropsFromModWraps(modWrapArr);
     
-    _SaveContentTextArrToActionLog();
+    _SaveContentTextArrToActionLog($contentTextArr);
 
     return _BuildContentDivs($contentTextArr);
 }

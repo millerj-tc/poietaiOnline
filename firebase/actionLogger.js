@@ -29,7 +29,7 @@ export class actionLogger
             
             for(const action of this.actionLog){
                 
-                this._ReportAction(ation);
+                this._ReportAction(action);
             }
         }
         
