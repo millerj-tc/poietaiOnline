@@ -2,6 +2,9 @@ import {GoToPassage,AppendToDivOnce,AddAllusionWordToSource,PermanentlyUnlockPas
 import {PoemTextContainsWord,PoemLength} from "./../poemEvaluation/poemFXConditions.js";
 
 export function InitializeWorldPassages(){
+    
+    const playerName = window.gameHandler.playerName;
+    
     const $passageHandler = window.gameHandler.passageHandler;
 
     const hotApartment = $passageHandler.AddPassage("hotApartment");
@@ -38,7 +41,7 @@ export function InitializeWorldPassages(){
     ]);
     
     hotApartment.passageFxHandler.AddCharacterResponse("yselda",
-        `"Oh yes, I know you see me and think 'ancient'. Now '{{keywords}}'. 'Chronowasted', some have even said!"<br><br>"I've heard it all, Clichéd Poietai. Maybe take it a different direction next time? Heh heh heh."`, ["silver","old","grayed"])
+        `"Oh yes, I know you see me and think 'ancient'. Now '{{keywords}}'. 'Chronowasted', some have even said!"<br><br>"I've heard it all, Clichéd ${playerName}. Maybe take it a different direction next time? Heh heh heh."`, ["silver","old","grayed"])
         .conditionHandler.AddConditionGroup("or")
         .AddCondition(PoemTextContainsWord,"silver")
         .AddCondition(PoemTextContainsWord,"old")
@@ -51,7 +54,7 @@ export function InitializeWorldPassages(){
         .AddCondition(PoemTextContainsWord,"keys");
     
     hotApartment.passageFxHandler.AddCharacterDefaultResponse("yselda",
-    `"I shall consider this, clever Poietai. Thank you for sharing with me."`);
+    `"I shall consider this, clever ${playerName}. Thank you for sharing with me."`);
     
     hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"courtyardButton",`[[Courtyard|hotApartmentCourtyard]]`);
     

@@ -2,13 +2,14 @@
     <script type="module">
         import {poemCreatorDisplayFlow} from './poemCreator/poemCreatorDisplayBuild/poemCreatorDisplayFlow.js';
         window.poemCreatorDisplayFlow = poemCreatorDisplayFlow;
-        import {Login,SignOut} from "./firebase/firebaseAuth.js";
+        import {Login,SignOut,EstablishSession} from "./firebase/firebaseAuth.js";
         import {Register} from "./firebase/firebaseAuth.js";
         import {TestLoginMe} from "./firebase/firebaseAuth.js";
         window.Login = Login;
         window.TestLoginMe = TestLoginMe;
         window.Register = Register;
         window.SignOut = SignOut;
+        window.EstablishSession = EstablishSession;
         import {MemorizePoemFlow} from "./poemCreator/memorizePoem/memorizePoemFlow.js";
         window.MemorizePoemFlow = MemorizePoemFlow;
         import {TogglePoemCreatorOutputCollapsed,TogglePoemReciterCollapsed,TogglePoemCreatorTrayCollapsed} from "./uiUtils.js";
@@ -127,8 +128,8 @@
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         window.uid = user.uid;
-        console.log(window.uid + " login successful");
         LoginFlow();
+        EstablishSession();
       } else {
         // User is signed out
         // ...

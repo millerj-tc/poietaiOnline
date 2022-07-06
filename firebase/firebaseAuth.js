@@ -58,8 +58,8 @@ export function Login(){
     // Signed in 
     const user = userCredential.user;
     
-    _EstablishSession();
-    LoginFlow();        
+    //_EstablishSession();
+    //LoginFlow();        
     
   })
   .catch((error) => {
@@ -69,7 +69,7 @@ export function Login(){
 
 }
 
-function _EstablishSession(){
+export function EstablishSession(){
     
     const db = getDatabase();
 

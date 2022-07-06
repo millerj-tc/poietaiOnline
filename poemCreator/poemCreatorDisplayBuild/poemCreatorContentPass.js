@@ -1,8 +1,8 @@
 export function poemCreatorContentPassFlow(modWrapArr){
 
-    const $contentTextArr = _ExtractedTextPropsFromModWraps(modWrapArr);
+    _SaveContentTextArrToActionLog(modWrapArr);
     
-    _SaveContentTextArrToActionLog($contentTextArr);
+    const $contentTextArr = _ExtractedTextPropsFromModWraps(modWrapArr);
 
     return _BuildContentDivs($contentTextArr);
 }
@@ -25,13 +25,13 @@ function _ExtractedTextPropsFromModWraps(modWrapArr){
 
 }
 
-function _SaveContentTextArrToActionLog(contentTextArr){
+function _SaveContentTextArrToActionLog(modWrapArr){
     
     let $returnString = "";
     
-    for(const word of contentTextArr){
+    for(const modWrap of modWrapArr){
         
-        $returnString += word + ",";
+        $returnString += modWrap.content.text + ",";
     }
     
     window.gameHandler.actionLogger.AddAction($returnString);
