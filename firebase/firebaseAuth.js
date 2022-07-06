@@ -79,11 +79,13 @@ function _SaveLoginDate(){
   };
 
   // Get a key for a new Post.
-  const newLoginKey = push(child(ref(db), 'logins ')).key;
+  const newSessionKey = push(child(ref(db), 'logins ')).key;
+    
+  window.gameHandler.actionLogger.SetSessionKey(newSessionKey);
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
   const updates = {};
-  updates[`/logins/` + newLoginKey + `/` ] = postData;
+  updates[`/sessions/` + newSessionKey + `/` ] = postData;
 
   return update(ref(db), updates);
 }

@@ -8,6 +8,8 @@ export function PoemEvaluationFlow(poem){
     
     const $poemText = _GetPoemCreatorPoemIfArgIsNull(poem);
     
+    _StoreRecitedPoemTextToActionLogger($poemText);
+    
     const $wordArr = _ParsePoemText($poemText);
     
     const $srcPkgArr = _GetAlludedSources($wordArr);
@@ -29,6 +31,11 @@ function _GetPoemCreatorPoemIfArgIsNull(poem){
     
     if(poem != null) return poem
     else return GetPoemHTMLFromPoemCreatorOutput();
+}
+
+function _StoreRecitedPoemTextToActionLogger(poemText){
+    
+    window.gameHandler.actionLogger.AddAction(poemText);
 }
 
 function _ParsePoemText(poem){

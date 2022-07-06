@@ -2,6 +2,8 @@ import {GetElementById,ClearInnerHTML,CreateElement} from "./../ui.js";
 import {ParseNavigationText,AttachEventListenersDOMs} from "./navigationUtils.js";
 
 export function NavigationFlow(destPassage){
+    
+    _StoreDestPassageToActionLogger(destPassage);
 
     const $passageHandler = window.gameHandler.passageHandler;
     
@@ -10,6 +12,11 @@ export function NavigationFlow(destPassage){
      _ParseCurrentPassage($passageHandler);
     
     _DisplayCurrentPassage($passageHandler);
+}
+
+function _StoreDestPassageToActionLogger(destPassage){
+    
+    window.gameHandler.actionLogger.AddAction(destPassage);
 }
 
 function _SetCurrentPassage(passageHandler,destPassage){
