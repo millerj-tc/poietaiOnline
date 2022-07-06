@@ -1,6 +1,6 @@
 import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js";
 
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
+import { getDatabase, ref, set, child, push, update } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
 
 import {LoginFlow} from "./loginFlow.js";
 
@@ -56,6 +56,7 @@ export function Login(){
     // Signed in 
     const user = userCredential.user;
     
+    _SaveLoginDate();
     LoginFlow();        
     
   })
@@ -64,6 +65,27 @@ export function Login(){
     const errorMessage = error.message;
   });
 
+}
+
+function _SaveLoginDate(){
+    
+    const db = getDatabase();
+
+  // A post entry.
+  const postData = {
+
+    loginDate: Date.now(),
+
+  };
+
+  // Get a key for a new Post.
+  const newLoginKey = push(child(ref(db), 'logins ')).key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  const updates = {};
+  updates[`/logins/` + newLoginKey + `/` ] = postData;
+
+  return update(ref(db), updates);
 }
 
 export function TestLoginMe(){
