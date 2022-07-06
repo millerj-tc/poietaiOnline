@@ -221,10 +221,12 @@ body{
 .loginWrapper{
     
     position:relative;
+    top: 20vh;
     display:grid;
-    grid-template-columns: repeat(2,20vh);
+    grid-template-columns: repeat(2,40vh);
     align-items: center;
     justify-content: center;
+    gap: 5vw;
 }
 
 .loginWrapper > div {

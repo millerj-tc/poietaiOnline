@@ -43,7 +43,6 @@ export class actionLogger
 
       // A post entry.
       const postData = {
-        intervalId: objIntervalId,
         action: actionString,
       };
 
@@ -52,7 +51,7 @@ export class actionLogger
 
       // Write the new post's data simultaneously in the posts list and the user's post list.
       const updates = {};
-      updates['/sessions/' + this.sessionKey + `/actions/` + newActionKey + `/` ] = postData;
+      updates['/sessions/' + this.sessionKey + `/actions/` + objIntervalId + `/` ] = postData;
 
       return update(ref(db), updates);
     }

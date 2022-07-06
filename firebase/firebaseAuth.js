@@ -24,7 +24,7 @@ export function Register(){
         // Signed in 
         const user = userCredential.user;
         
-        _PushCharacterNameToDatabase();
+        _PushCharacterNameAndOptOutToDatabase();
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -33,14 +33,17 @@ export function Register(){
       });
     }
 
-function _PushCharacterNameToDatabase(){
+function _PushCharacterNameAndOptOutToDatabase(){
     
     const db = getDatabase();
     
+    const optOutValue = GetElementById("optOutCheckbox").value;
+
     const name = GetElementById("newUserChar").value
     
     set(ref(db, 'users/' + window.uid), {
         name: name,
+        optOut: optOutValue,
         poems: {}
   });
 

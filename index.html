@@ -2,12 +2,13 @@
     <script type="module">
         import {poemCreatorDisplayFlow} from './poemCreator/poemCreatorDisplayBuild/poemCreatorDisplayFlow.js';
         window.poemCreatorDisplayFlow = poemCreatorDisplayFlow;
-        import {Login} from "./firebase/firebaseAuth.js";
+        import {Login,SignOut} from "./firebase/firebaseAuth.js";
         import {Register} from "./firebase/firebaseAuth.js";
         import {TestLoginMe} from "./firebase/firebaseAuth.js";
         window.Login = Login;
         window.TestLoginMe = TestLoginMe;
         window.Register = Register;
+        window.SignOut = SignOut;
         import {MemorizePoemFlow} from "./poemCreator/memorizePoem/memorizePoemFlow.js";
         window.MemorizePoemFlow = MemorizePoemFlow;
         import {TogglePoemCreatorOutputCollapsed,TogglePoemReciterCollapsed,TogglePoemCreatorTrayCollapsed} from "./uiUtils.js";
@@ -25,7 +26,7 @@
 </head>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 
-<div class="versionInfo">0.05</div>
+<div class="versionInfo" onclick="SignOut()">0.05</div>
 
 <div class="poemCreatorTray" id="poemCreatorTray">
     <div class="cssPoemCreatorOutputTray" id="poemCreatorOutputTray">
@@ -69,6 +70,8 @@
         <input type="password" id="newUserPass" name="newUserPass"><br><br>
         <label for="newUserChar">Character name:</label>
         <input type="text" id="newUserChar" name="newUserChar"><br><br>
+        <input type="checkbox" id="optOutCheckbox" name="optOutCheckbox" value="optOut">
+        <label for="optOutCheckbox">Opt out of anonymized data collection (collected data is game actions only)</label><br><br>
         <button class="cssRegisterButton" onclick="Register()">Register</button>
         
     </div>
