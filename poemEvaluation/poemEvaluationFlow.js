@@ -35,7 +35,7 @@ function _GetPoemCreatorPoemIfArgIsNull(poem){
 
 function _StoreRecitedPoemTextToActionLogger(poemText){
     
-    window.gameHandler.actionLogger.AddAction(poemText);
+    window.gameHandler.actionLogger.AddAction(`RECITE: ${poemText}`);
 }
 
 function _ParsePoemText(poem){
