@@ -1,12 +1,15 @@
 import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM,SetInnerTextTo,ScrollIntoView} from "./../ui.js";
-import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuationAndStripCarriageReturns} from "./../poemCreator/poemCreatorUtils.js";
+import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuationAndStripCarriageReturns,GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
 import {PoemReciterTrayClose,CapitalizeLettersAfterAppropriatePunctuation,PoemCreatorTrayClose,ReplaceNReturnWithBr} from "./../uiUtils.js";
 import {ParseNavigationText} from "./../navigation/navigationUtils.js";
 import {AppendCharacterResponsesFlow} from "./AppendCharacterResponsesFlow.js";
+import {HeardPoemToCharacterDatabaseEntry} from "./../firebase/characterDatabaseValues.js";
 
 export function PoemEvaluationFlow(poem){
     
     const $poemText = _GetPoemCreatorPoemIfArgIsNull(poem);
+    
+    _PresentCharactersHearPoemStoreToDatabase();
     
     _StoreRecitedPoemTextToActionLogger($poemText);
     
@@ -36,6 +39,28 @@ function _GetPoemCreatorPoemIfArgIsNull(poem){
 function _StoreRecitedPoemTextToActionLogger(poemText){
     
     window.gameHandler.actionLogger.AddAction(`RECITE: ${poemText}`);
+}
+
+function _PresentCharactersHearPoemStoreToDatabase(){
+    
+    const $poemText = GetPoemFromPoemCreatorOutput();
+    
+    const $currPassage = window.gameHandler.passageHandler.currentPassage;
+    
+    console.log(`${$poemText} ${$currPassage.id}`);
+    
+    for (const char of window.gameHandler.characterHandler.characters){
+        
+        for(const presentPassageId of char.presentPassages){
+            
+            console.log(`${presentPassageId}`);
+            
+            if(presentPassageId == $currPassage.id) {
+                
+                HeardPoemToCharacterDatabaseEntry($poemText,char.id);
+            }
+        }
+    }
 }
 
 function _ParsePoemText(poem){

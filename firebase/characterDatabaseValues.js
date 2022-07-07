@@ -1,4 +1,4 @@
-import { getDatabase, ref, child, push, update } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
+import { getDatabase, ref, child, push, update, onValue } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
 
 export function HeardPoemToCharacterDatabaseEntry(poemText,characterId) {
   const db = getDatabase();
@@ -21,18 +21,20 @@ export function HeardPoemToCharacterDatabaseEntry(poemText,characterId) {
   return update(ref(db), updates);
 }
 
-export function GetCharacterHeardPoems(characterId){
+export function GetCharacterHeardPoems(characterObj){
     
     const db = getDatabase();
+    const characterId = characterObj.id;
     const poems = ref(db, 'characters/' + characterId + '/heardPoems');
     onValue(poems, (snapshot) => {
         const data = snapshot.val();
 
-        _PassPoemsToCharacterObj(data);
+        _PassPoemsToCharacterObj(data,characterObj);
+        console.log(characterObj.heardPoems);
     });
 }
 
-function _PassPoemsToCharacterObj(data){
+function _PassPoemsToCharacterObj(data,characterObj){
     
     const poemObjArr = data;
 
@@ -40,8 +42,6 @@ function _PassPoemsToCharacterObj(data){
         
         const pulledPoemObj = poemObjArr[poemObjString];
         
-        console.error("this needs to feed it into the right character from gameHandler.charArray")
-    
-        //window.gameHandler.poemMemoryHandler.AddHeardPoem(pulledPoemObj.poemText,poemObjString);
+        characterObj.AddHeardPoem(pulledPoemObj.poemText,poemObjString);
     }
 }

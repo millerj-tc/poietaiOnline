@@ -6,6 +6,12 @@ export function InitializeWorldPassages(){
     const playerName = window.gameHandler.playerName;
     
     const $passageHandler = window.gameHandler.passageHandler;
+    
+    const $characterHandler = window.gameHandler.characterHandler;
+    
+    const $yselda = $characterHandler.AddCharacter("yselda");
+    
+    $yselda.AddToPassagePresence("hotApartment");
 
     const hotApartment = $passageHandler.AddPassage("hotApartment");
 

@@ -2,13 +2,14 @@ import {poem} from "./../poemRememberer/poemMemoryHandler.js";
 
 export class character
 {
-    constructor(){
+    constructor(id){
         
-        
+        this.id = id;
         this.attentive = true;
         this.usedKeywords = [];
         this.recitedToToday = false;
         this.heardPoems = [];
+        this.presentPassages = [];
     }
     
     AddHeardPoem(parsedPoemText,poemKey){
@@ -21,5 +22,10 @@ export class character
         const $poem = new poem(parsedPoemText,poemKey)
         
         this.heardPoems.push($poem);
+    }
+    
+    AddToPassagePresence(passageId){
+        
+        this.presentPassages.push(passageId);
     }
 }
