@@ -48,6 +48,12 @@ export function InitializeWorldPassages(){
         .AddCondition(PoemTextContainsWord,"grayed");
     
     hotApartment.passageFxHandler.AddCharacterResponse("yselda",
+        `"{{middle|And }} Berin got ahold of you, eh? One of my all time favorites and now they've inspired you too. It's wonderful to connect with people, isn't it?"`
+    )
+        .conditionHandler.AddConditionGroup("and")
+        .AddCondition(PoemTextContainsWord,"BERIN");
+    
+    hotApartment.passageFxHandler.AddCharacterResponse("yselda",
         `"'Keys'{{last| you mentioned as well}}, yes, 'keys'...Wait a second, where are my keys? Oh my oh my...." Yselda scooters away.`
     )
         .conditionHandler.AddConditionGroup("and")
@@ -109,7 +115,7 @@ export function InitializeWorldPassages(){
         
                                                                `,[])
         .conditionHandler.AddConditionGroup("and")
-        .AddCondition(PoemLength,"lessThanOrEqualTo",3);
+        .AddCondition(PoemLength,"lessThanOrEqualTo",5);
     
     hotApartmentCourtyard.passageFxHandler.AddCharacterDefaultResponse("berin",
         `

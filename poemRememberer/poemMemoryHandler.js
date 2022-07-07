@@ -1,7 +1,7 @@
 import {CreateElement} from "./../ui.js";
 import {PoemEvaluationFlow} from "./../poemEvaluation/poemEvaluationFlow.js";
 
-class poem
+export class poem
 {
     constructor(parsedPoemText,poemKey){
         
