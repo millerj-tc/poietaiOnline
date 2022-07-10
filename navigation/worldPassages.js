@@ -9,13 +9,22 @@ export function InitializeWorldPassages(){
     
     const $characterHandler = window.gameHandler.characterHandler;
     
-    const $yselda = $characterHandler.AddCharacter("yselda","Yselda","she");
-    $yselda.AddPoemEvalMetric(5,PoemLength,"<=",15);
-    $yselda.AddPoemEvalMetric(-100,PoemLength,"<=",4);
-    
-    $yselda.AddToPassagePresence("hotApartment");
+    /// HOT APARTMENT
 
     const hotApartment = $passageHandler.AddPassage("hotApartment");
+    
+    const $yselda = $characterHandler.AddCharacter("yselda","Yselda","she");
+    $yselda.AddToPassagePresence("hotApartment");
+    $yselda.AddPoemEvalMetric(5,PoemLength,"<=",15);
+    $yselda.AddPoemEvalMetric(5,PoemLength,"<=",12);
+    $yselda.AddPoemEvalMetric(5,PoemLength,"<=",10);
+    $yselda.AddPoemEvalMetric(5,PoemLength,"<=",8);
+    $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"stones");
+    $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"BERIN");
+    $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"dirt");
+    $yselda.AddPoemEvalMetric(10,PoemTextContainsWord,"piss");
+    $yselda.AddPoemEvalMetric(15,PoemTextContainsWord,"barrowwillows");
+    $yselda.AddPoemEvalMetric(-100,PoemLength,"<=",4);
 
     hotApartment.SetText(`
         You smell sweat and sweet as you wake in a cozy place<br>
@@ -32,6 +41,7 @@ export function InitializeWorldPassages(){
         <span id='navigationOutputPlayerPoemSpeak'></span>
 
         <span id='yseldaResponse'></span>
+        <span id='yseldaFavoriteLink'></span>
         <span id='courtyardButton'></span>
         <p><i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i></p>
 
@@ -72,12 +82,31 @@ export function InitializeWorldPassages(){
     
     hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"courtyardButton",`[[Courtyard|hotApartmentCourtyard]]`);
     
+    /// HOT APARTMENT COURTYARD
+    
     const hotApartmentCourtyard = $passageHandler.AddPassage("hotApartmentCourtyard");
+    
+    const $berin = $characterHandler.AddCharacter("berin","Berin","they");
+    $berin.AddToPassagePresence("hotApartmentCourtyard");
+    $berin.AddPoemEvalMetric(-100,PoemLength,"<=",6);
+    $berin.AddPoemEvalMetric(5,PoemLength,">=",8);
+    $berin.AddPoemEvalMetric(5,PoemLength,">=",10);
+    $berin.AddPoemEvalMetric(5,PoemLength,">=",12);
+    $berin.AddPoemEvalMetric(5,PoemLength,">=",14);
+    $berin.AddPoemEvalMetric(10,PoemLength,">=",16);
+    $berin.AddPoemEvalMetric(10,PoemLength,">=",18);
+    $berin.AddPoemEvalMetric(10,PoemLength,">=",20);
+    $berin.AddPoemEvalMetric(10,PoemTextContainsWord,"licked");
+    $berin.AddPoemEvalMetric(10,PoemTextContainsWord,"tender");
+    $berin.AddPoemEvalMetric(10,PoemTextContainsWord,"ate");
+    $berin.AddPoemEvalMetric(15,PoemTextContainsWord,"feet");
+    $berin.AddPoemEvalMetric(30,PoemTextContainsWord,"BERIN");
+    
 
     hotApartmentCourtyard.SetText(`
         You step into the courtyard of Yselda's inn. Bowed barrowwillow trees arc over the intricate brickwork of the courtyard's floor.<br>
         Small spindly tables wobble under the burdens that they unfalteringly bear.<br>
-        A person, resplendent in rolls of fat, bushy beard hairs, and twinkling eye makeup gestures you over.<br><br>
+        Sitting at one of the tables is Berin. They are resplendent in rolls of fat, bushy beard hairs, and twinkling eye makeup and gesture you over.<br><br>
 
         <span id="climbBarrowwillows" style='display:none'><i>Climb barrowwillows functionality coming soon :)</i><br><br></span>
         "Regale me, Poietai, and I shall tell you something in return."<br><br>
@@ -127,13 +156,11 @@ export function InitializeWorldPassages(){
     
     hotApartmentCourtyard.passageFxHandler.AddCharacterDefaultResponse("berin",
         `
-        "Lovely, Poietai, just lovely. For that I shall share my name: BERIN!! Didn't you know? For one great as me, merely uttering my name IS poetry -- BAHAHAHAHA! Good fun, good fun."
+        "Lovely, Poietai, just lovely. For that I shall share a beautiful poem as well: BERIN!! Didn't you know? For one great as me, merely uttering my name IS poetry -- BAHAHAHAHA! Good fun, good fun."
                                                                       `);
     
     hotApartmentCourtyard.passageFxHandler.AddPassageFx(AddAllusionWordToSource,{text:"BERIN",frequency:3.25},hotApartmentCourtyardSrc)
-        .conditionHandler.AddConditionGroup("not")
-        .AddCondition(PoemLength,"poemCreator","lessThanOrEqualTo",3)
-        .AddCondition(PoemTextContainsWord,"poemCreator","BERIN")
-        .AddCondition(PoemTextContainsWord,"poemCreator","barrowwillows");
+        .conditionHandler.AddConditionGroup("and")
+        .AddCondition(PoemLength,"poemCreator",">=",0)
 
 }
