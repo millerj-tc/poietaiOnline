@@ -1,5 +1,6 @@
-import {GetElementById,ClearInnerHTML,CreateElement} from "./../ui.js";
+import {GetElementById,ClearInnerHTML,CreateElement,GetOrCreateDivInsideDOM,SetInnerTextTo} from "./../ui.js";
 import {ParseNavigationText,AttachEventListenersDOMs} from "./navigationUtils.js";
+import {ReplacePronouns} from "./../utils.js";
 
 export function NavigationFlow(destPassage){
     
@@ -12,6 +13,8 @@ export function NavigationFlow(destPassage){
      _ParseCurrentPassage($passageHandler);
     
     _DisplayCurrentPassage($passageHandler);
+    
+    _DisplayAskFavoriteButtons();
 }
 
 function _StoreDestPassageToActionLogger(destPassage){
@@ -40,4 +43,27 @@ function _DisplayCurrentPassage(passageHandler){
     $navOutput.insertAdjacentHTML("beforeend",passageHandler.currentPassage.text)
     
     AttachEventListenersDOMs("navigationOutput");
+}
+
+function _DisplayAskFavoriteLinks(){
+    
+    gh = window.gameHandler;
+    
+    
+    
+    for (const char gh.characterHandler.characters){
+        
+        if(char.presentPassages.includes(gh.passageHandler.currentPassage)){
+            
+            const $favLink = GetOrCreateDivInsideDOM(`${char.id}FavoriteLink`,"navigationOutput");
+            
+            const $their = char.GetPronouns().their;
+            
+            SetInnerTextTo($favLink, `Ask ${char.GetCharacterName()} ${$their} favorite poem.`)
+            
+            $favLink.classList.add("passageLink");
+            
+            $favLink.addEventListener("onclick",function(){char.ShareFavoritePoems()})
+        }
+    }
 }

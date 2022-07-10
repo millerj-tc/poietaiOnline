@@ -9,7 +9,7 @@ export function InitializeWorldPassages(){
     
     const $characterHandler = window.gameHandler.characterHandler;
     
-    const $yselda = $characterHandler.AddCharacter("yselda");
+    const $yselda = $characterHandler.AddCharacter("yselda","Yselda","she");
     
     $yselda.AddToPassagePresence("hotApartment");
 

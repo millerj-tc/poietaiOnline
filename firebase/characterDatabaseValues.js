@@ -7,7 +7,7 @@ export function HeardPoemToCharacterDatabaseEntry(poemText,characterId) {
   const postData = {
     reciterName: window.gameHandler.playerName,
     poemText: poemText,
-    memorizationDate: Date.now(),
+    heardPoemDate: Date.now(),
 
   };
 
@@ -42,6 +42,6 @@ function _PassPoemsToCharacterObj(data,characterObj){
         
         const pulledPoemObj = poemObjArr[poemObjString];
         
-        characterObj.AddHeardPoem(pulledPoemObj.poemText,poemObjString);
+        characterObj.AddHeardPoem(pulledPoemObj.poemText,poemObjString,pulledPoemObj.heardPoemDate);
     }
 }
