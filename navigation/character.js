@@ -1,9 +1,10 @@
 import {poem} from "./../poemRememberer/poemMemoryHandler.js";
-import {GetElementById,SetInnerTextTo} from "./../ui.js";
+import {GetElementById,SetInnerTextTo,ClearInnerHTML} from "./../ui.js";
+import {ReplaceNReturnWithBr} from "./../uiUtils.js";
 
 export class character
 {
-    constructor(id,name,prounouns = "they"){
+    constructor(id,name,pronouns = "they"){
         
         this.id = id;
         this.name = name;
@@ -51,22 +52,24 @@ export class character
         this.unrevealedDesription = descrip;
     }
     
-    SetPoemEvalMetric(points,func,arg0,arg1,arg2){
+    AddPoemEvalMetric(points,func,arg0,arg1,arg2){
     
         this.favoritePoemMetrics.push({points:points,func:func,arg0:arg0,arg1:arg1,arg2:arg2});
     }
     
-    AddHeardPoem(parsedPoemText,poemKey,heardPoemDate){
+    AddHeardPoem(poemText,poemKey,heardPoemDate,reciterName){
         
         for(const poem of this.heardPoems){
             
             if(poem.poemKey == poemKey) return
         }
         
-        const $poem = new poem(parsedPoemText,poemKey);
+        const $poem = new poem(poemText,poemKey);
         
         $poem.heardPoemDate = heardPoemDate;
         
+        $poem.reciterName = reciterName;
+                
         this.heardPoems.push($poem);
     }
     
@@ -77,10 +80,72 @@ export class character
     
     ShareFavoritePoems(){
         
+        let $displayString = "";
+        
         const $favLink = GetElementById(`${this.id}FavoriteLink`);
         
-        const $twoDaysOfMilliseconds = 86,400,000 * 2;
+        const $recentlyHeardPoems = this._GetPoemsHeardInLast48Hours();
         
-        const $last48HoursPoems = this.heardPoems.filter(p => p.heardPoemDate >= (Date.now() - $twoDaysOfMilliseconds))
+        let $favRecentPoem = null;
+        
+        if($recentlyHeardPoems.length >= 1){
+        
+            $favRecentPoem = this._HeardPoemEvaluatedPkgsArrOrderedByEvalMetrics($recentlyHeardPoems)[0];
+            
+        }
+        
+        const $favAllTimePoem = this._HeardPoemEvaluatedPkgsArrOrderedByEvalMetrics(this.heardPoems)[0];
+        
+        if($favRecentPoem != null && $favRecentPoem.points >= 0 && $favRecentPoem.poem.poemText != $favAllTimePoem.poem.poemText){
+            
+            console.log(``)
+            
+            $displayString += `My favorite poem I've heard recently is by ${$favRecentPoem.poem.reciterName} and goes like this:<br><br>${$favRecentPoem.poem.poemText}<br><br>`;
+        }
+        
+        $displayString += `My favorite poem of all time is by ${$favAllTimePoem.poem.reciterName}:<br><br>${$favAllTimePoem.poem.poemText}`;
+        
+        $displayString = ReplaceNReturnWithBr($displayString);
+        
+        ClearInnerHTML($favLink);
+        
+        $favLink.insertAdjacentHTML("beforeend",$displayString);
+        
+        $favLink.classList.remove("passageLink");
+    }
+    
+    _GetPoemsHeardInLast48Hours(){
+        
+        const $twoDaysOfMilliseconds = 172800000;
+        
+        return this.heardPoems.filter(p => p.heardPoemDate >= (Date.now() - $twoDaysOfMilliseconds))
+    }
+    
+    _HeardPoemEvaluatedPkgsArrOrderedByEvalMetrics(heardPoemArr){
+        
+        const $returnArr = [];
+        
+        if(this.favoritePoemMetrics.length == 0) console.error("Character has no poem evaluation metrics to determine favorite");
+        
+        for(const poem of heardPoemArr){
+            
+            const $evaluatedPoemPkg = {poem:poem,points:0};
+            
+            for(const metric of this.favoritePoemMetrics){
+                
+                if(metric.func(poem.poemText,metric.arg0,metric.arg1,metric.arg2)){ 
+
+                    $evaluatedPoemPkg.points += metric.points;
+                }
+            }
+            
+            $returnArr.push($evaluatedPoemPkg);
+        }
+        
+        const $sortedArr = $returnArr.sort((a,b) => b.points - a.points);
+        
+        console.log($sortedArr);
+        
+        return $sortedArr;
     }
 }

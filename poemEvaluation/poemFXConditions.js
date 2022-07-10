@@ -1,8 +1,12 @@
-import {RestoreSpacesBeforePunctuationAndStripCarriageReturns,GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
+import {RestoreSpacesBeforePunctuationAndStripCarriageReturns} from "./../poemCreator/poemCreatorUtils.js";
+import {GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
 
-export function PoemTextContainsWord(condWord){
+export function PoemTextContainsWord(poem = "poemCreator",condWord){
     
-    let $poemText = GetPoemFromPoemCreatorOutput();
+    let $poemText;
+    
+    if(poem == "poemCreator") $poemText = GetPoemFromPoemCreatorOutput();
+    else $poemText = poem.slice();
     
     $poemText = RestoreSpacesBeforePunctuationAndStripCarriageReturns($poemText);
     
@@ -12,9 +16,12 @@ export function PoemTextContainsWord(condWord){
     }
 }
 
-export function PoemLength(comparison,length){
+export function PoemLength(poem = "poemCreator",comparison,length){
     
-    let $poemText = GetPoemFromPoemCreatorOutput();
+    let $poemText;
+    
+    if(poem == "poemCreator") $poemText = GetPoemFromPoemCreatorOutput();
+    else $poemText = poem.slice();
     
     let $wordCount = 0;
     
@@ -25,6 +32,7 @@ export function PoemLength(comparison,length){
         if(word.match(/\w*/gm)) $wordCount++
     }
     
-    if(comparison == "lessThanOrEqualTo" && $wordCount <= length) return true
+    if(comparison == "<=" && $wordCount <= length) return true
+    else if(comparison == ">=" && $wordCount >= length) return true
     else return false
 }

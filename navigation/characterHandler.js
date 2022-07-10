@@ -7,9 +7,9 @@ export class characterHandler{
         this.characters = [];
     }
     
-    AddCharacter(id){
+    AddCharacter(id,name,pronouns){
         
-        const $char = new character(id);
+        const $char = new character(id,name,pronouns);
         
         this.characters.push($char);
         

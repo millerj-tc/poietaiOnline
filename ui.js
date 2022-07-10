@@ -10,6 +10,8 @@ export function CreateElement(type){
 
 export function GetOrCreateDivInsideDOM(id,DOM){
     
+    if(typeof DOM == "string") console.error("Passed string -- please pass DOM object");
+    
     for(const child of DOM.children){
         
         if(child.id == id) return child

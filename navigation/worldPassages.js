@@ -10,6 +10,8 @@ export function InitializeWorldPassages(){
     const $characterHandler = window.gameHandler.characterHandler;
     
     const $yselda = $characterHandler.AddCharacter("yselda","Yselda","she");
+    $yselda.AddPoemEvalMetric(5,PoemLength,"<=",15);
+    $yselda.AddPoemEvalMetric(-100,PoemLength,"<=",4);
     
     $yselda.AddToPassagePresence("hotApartment");
 
@@ -49,21 +51,21 @@ export function InitializeWorldPassages(){
     hotApartment.passageFxHandler.AddCharacterResponse("yselda",
         `"Oh yes, I know you see me and think 'ancient'. Now '{{keywords}}'. 'Chronowasted', some have even said!"<br><br>"I've heard it all, Clichéd ${playerName}. Maybe take it a different direction next time? Heh heh heh."`, ["silver","old","grayed"])
         .conditionHandler.AddConditionGroup("or")
-        .AddCondition(PoemTextContainsWord,"silver")
-        .AddCondition(PoemTextContainsWord,"old")
-        .AddCondition(PoemTextContainsWord,"grayed");
+        .AddCondition(PoemTextContainsWord,"poemCreator","silver")
+        .AddCondition(PoemTextContainsWord,"poemCreator","old")
+        .AddCondition(PoemTextContainsWord,"poemCreator","grayed");
     
     hotApartment.passageFxHandler.AddCharacterResponse("yselda",
         `"{{middle|And }} Berin got ahold of you, eh? One of my all time favorites and now they've inspired you too. It's wonderful to connect with people, isn't it?"`
     )
         .conditionHandler.AddConditionGroup("and")
-        .AddCondition(PoemTextContainsWord,"BERIN");
+        .AddCondition(PoemTextContainsWord,"poemCreator","BERIN");
     
     hotApartment.passageFxHandler.AddCharacterResponse("yselda",
         `"'Keys'{{last| you mentioned as well}}, yes, 'keys'...Wait a second, where are my keys? Oh my oh my...." Yselda scooters away.`
     )
         .conditionHandler.AddConditionGroup("and")
-        .AddCondition(PoemTextContainsWord,"keys");
+        .AddCondition(PoemTextContainsWord,"poemCreator","keys");
     
     hotApartment.passageFxHandler.AddCharacterDefaultResponse("yselda",
     `"I shall consider this, clever ${playerName}. Thank you for sharing with me."`);
@@ -96,7 +98,7 @@ export function InitializeWorldPassages(){
         "I love the barrowwillows here - they are probably hundreds of years old, brought over from Xosa before the cataclysm. Barrowwillow berries are poisonous of course, but if you make a tea of the stems you can see sights that are beyond description."
                                                                `,[]);
         const $barrowwillowsCon = $berinBarrowwillowResponse.conditionHandler.AddConditionGroup("and");
-        $barrowwillowsCon.AddCondition(PoemTextContainsWord,"barrowwillows");
+        $barrowwillowsCon.AddCondition(PoemTextContainsWord,"poemCreator","barrowwillows");
     
     hotApartmentCourtyard.passageFxHandler.AddPassageFx(PermanentlyUnlockPassageSpan,"climbBarrowwillows")
         .conditionHandler.AddConditionGroupByObjReference($barrowwillowsCon);
@@ -106,7 +108,7 @@ export function InitializeWorldPassages(){
         "A poem about BERIN themself! There is no end to what one could say about Berin. The trick is to believe in yourself -- then you too can be an endless font. Perhaps you will get there some day -- BAHAHAHAHAHA -- I know you will! I look forward to it."
                                                                `,[])
         .conditionHandler.AddConditionGroup("and")
-        .AddCondition(PoemTextContainsWord,"BERIN");
+        .AddCondition(PoemTextContainsWord,"poemCreator","BERIN");
     
     hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
         `
@@ -121,7 +123,7 @@ export function InitializeWorldPassages(){
         
                                                                `,[])
         .conditionHandler.AddConditionGroup("and")
-        .AddCondition(PoemLength,"lessThanOrEqualTo",5);
+        .AddCondition(PoemLength,"poemCreator","<=",5);
     
     hotApartmentCourtyard.passageFxHandler.AddCharacterDefaultResponse("berin",
         `
@@ -130,8 +132,8 @@ export function InitializeWorldPassages(){
     
     hotApartmentCourtyard.passageFxHandler.AddPassageFx(AddAllusionWordToSource,{text:"BERIN",frequency:3.25},hotApartmentCourtyardSrc)
         .conditionHandler.AddConditionGroup("not")
-        .AddCondition(PoemLength,"lessThanOrEqualTo",3)
-        .AddCondition(PoemTextContainsWord,"BERIN")
-        .AddCondition(PoemTextContainsWord,"barrowwillows");
+        .AddCondition(PoemLength,"poemCreator","lessThanOrEqualTo",3)
+        .AddCondition(PoemTextContainsWord,"poemCreator","BERIN")
+        .AddCondition(PoemTextContainsWord,"poemCreator","barrowwillows");
 
 }

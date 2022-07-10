@@ -3,9 +3,9 @@ import {PoemEvaluationFlow} from "./../poemEvaluation/poemEvaluationFlow.js";
 
 export class poem
 {
-    constructor(parsedPoemText,poemKey){
+    constructor(poemText,poemKey){
         
-        this.parsedPoemText = parsedPoemText;
+        this.poemText = poemText;
         
         this.poemKey = poemKey;
     }
@@ -18,7 +18,7 @@ export class poemMemoryHandler
         this.poems = [];
     }
     
-    AddPoemToMemory(parsedPoemText,poemKey){
+    AddPoemToMemory(poemText,poemKey){
         
         
         for(const poem of this.poems){
@@ -26,7 +26,7 @@ export class poemMemoryHandler
             if(poem.poemKey == poemKey) return
         }
         
-        const $poem = new poem(parsedPoemText,poemKey)
+        const $poem = new poem(poemText,poemKey)
         
         this.poems.push($poem);
     }
@@ -49,9 +49,9 @@ export class poemMemoryHandler
         
         $poemButton.classList.add("poemRemembererPoemButton");
         
-        $poemButton.innerHTML = poem.parsedPoemText;
+        $poemButton.innerHTML = poem.poemText;
         
-        $poemButton.addEventListener("click",function(){PoemEvaluationFlow(poem.parsedPoemText)});
+        $poemButton.addEventListener("click",function(){PoemEvaluationFlow(poem.poemText)});
     
         return $poemButton;
     }

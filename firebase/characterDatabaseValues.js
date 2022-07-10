@@ -30,7 +30,6 @@ export function GetCharacterHeardPoems(characterObj){
         const data = snapshot.val();
 
         _PassPoemsToCharacterObj(data,characterObj);
-        console.log(characterObj.heardPoems);
     });
 }
 
@@ -40,8 +39,7 @@ function _PassPoemsToCharacterObj(data,characterObj){
 
     for(const poemObjString in poemObjArr){
         
-        const pulledPoemObj = poemObjArr[poemObjString];
-        
-        characterObj.AddHeardPoem(pulledPoemObj.poemText,poemObjString,pulledPoemObj.heardPoemDate);
+        const pulledPoemObj = poemObjArr[poemObjString];        
+        characterObj.AddHeardPoem(pulledPoemObj.poemText,poemObjString,pulledPoemObj.heardPoemDate,pulledPoemObj.reciterName);
     }
 }

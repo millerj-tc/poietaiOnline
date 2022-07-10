@@ -14,7 +14,7 @@ export function NavigationFlow(destPassage){
     
     _DisplayCurrentPassage($passageHandler);
     
-    _DisplayAskFavoriteButtons();
+    _DisplayAskFavoriteLinks();
 }
 
 function _StoreDestPassageToActionLogger(destPassage){
@@ -47,23 +47,23 @@ function _DisplayCurrentPassage(passageHandler){
 
 function _DisplayAskFavoriteLinks(){
     
-    gh = window.gameHandler;
+    const gh = window.gameHandler;
     
+    const navOutput = GetElementById("navigationOutput");
     
-    
-    for (const char gh.characterHandler.characters){
+    for (const char of gh.characterHandler.characters){
         
-        if(char.presentPassages.includes(gh.passageHandler.currentPassage)){
+        if(char.presentPassages.includes(gh.passageHandler.currentPassage.id)){
             
-            const $favLink = GetOrCreateDivInsideDOM(`${char.id}FavoriteLink`,"navigationOutput");
+            const $favLink = GetOrCreateDivInsideDOM(`${char.id}FavoriteLink`,navOutput);
             
             const $their = char.GetPronouns().their;
             
-            SetInnerTextTo($favLink, `Ask ${char.GetCharacterName()} ${$their} favorite poem.`)
+            SetInnerTextTo($favLink, `Ask ${char.GetCharacterName()} ${$their} favorite poem`)
             
             $favLink.classList.add("passageLink");
             
-            $favLink.addEventListener("onclick",function(){char.ShareFavoritePoems()})
+            $favLink.addEventListener("click",function(){char.ShareFavoritePoems()})
         }
     }
 }
