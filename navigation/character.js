@@ -80,7 +80,7 @@ export class character
     
     ShareFavoritePoems(){
         
-        window.gameHandler.actionLogger.AddAction(`askFaves: ${this.id}`);
+        window.gameHandler.actionLogger.AddAction(`AskFaves: ${this.id}`);
         
         let $displayString = "";
         

@@ -33,9 +33,12 @@ export class actionLogger
         }
         else{
             
+            let actionIndex = 0;
+            
             for(const action of this.actionLog){
                 
-                this._ReportAction(action.actionHeader,action.actionString);
+                this._ReportAction(actionIndex + " " + action.actionHeader,action.actionString);
+                actionIndex++;
             }
         }
         
