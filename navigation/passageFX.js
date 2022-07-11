@@ -30,10 +30,7 @@ export function AppendToDivOnce(id,text,keyWordsArr){
 function _StoreUsedKeywords(keywordsArr){
     
     const $usedKeywords = GetMatchedKeywords(keywordsArr);
-    
-    console.log($usedKeywords);
-    
-    window.gameHandler.passageHandler.currentPassage.SetUsedKeywords($usedKeywords);
+        window.gameHandler.passageHandler.currentPassage.SetUsedKeywords($usedKeywords);
     
     console.log(window.gameHandler.passageHandler.currentPassage);
 }

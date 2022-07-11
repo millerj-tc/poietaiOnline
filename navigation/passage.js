@@ -66,8 +66,6 @@ export class passage
     
     SetUsedKeywords(arr){
         
-        if(arr == null || !Array.isArray(arr)) console.error("passed non or null arr");
-        
         this.usedKeywords = arr;
     }
     

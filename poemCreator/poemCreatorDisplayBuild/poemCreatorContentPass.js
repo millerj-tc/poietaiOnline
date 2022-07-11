@@ -34,7 +34,7 @@ function _SaveContentTextArrToActionLog(modWrapArr){
         $returnString += modWrap.content.text + ",";
     }
     
-    window.gameHandler.actionLogger.AddAction($returnString);
+    window.gameHandler.actionLogger.AddAction("open poem creation tray",$returnString);
 }
     
 function _BuildContentDivs(contentArr){

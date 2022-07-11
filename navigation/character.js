@@ -80,6 +80,8 @@ export class character
     
     ShareFavoritePoems(){
         
+        window.gameHandler.actionLogger.AddAction(`askFaves: ${this.id}`);
+        
         let $displayString = "";
         
         const $favLink = GetElementById(`${this.id}FavoriteLink`);
@@ -100,10 +102,10 @@ export class character
             
             console.log(``)
             
-            $displayString += `My favorite poem I've heard recently is by ${$favRecentPoem.poem.reciterName} and goes like this:<br><br>${$favRecentPoem.poem.poemText}<br><br>`;
+            $displayString += `"My favorite poem I've heard recently is by ${$favRecentPoem.poem.reciterName} and goes like this:<br><br>'${$favRecentPoem.poem.poemText}'"<br><br>`;
         }
         
-        $displayString += `My favorite poem of all time is by ${$favAllTimePoem.poem.reciterName}:<br><br>${$favAllTimePoem.poem.poemText}`;
+        $displayString += `"My favorite poem of all time is by ${$favAllTimePoem.poem.reciterName}:<br><br>'${$favAllTimePoem.poem.poemText}'"<br><br>`;
         
         $displayString = ReplaceNReturnWithBr($displayString);
         
@@ -143,8 +145,6 @@ export class character
         }
         
         const $sortedArr = $returnArr.sort((a,b) => b.points - a.points);
-        
-        console.log($sortedArr);
         
         return $sortedArr;
     }

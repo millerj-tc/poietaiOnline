@@ -17,8 +17,6 @@ export function PoemEvaluationFlow(poem){
     
     const $srcPkgArr = _GetAlludedSources($wordArr);
     
-    console.log($srcPkgArr);
-    
      _PassageFXEvaluate();
     
      _AppendToNavOutput($poemText);
@@ -38,7 +36,7 @@ function _GetPoemCreatorPoemIfArgIsNull(poem){
 
 function _StoreRecitedPoemTextToActionLogger(poemText){
     
-    window.gameHandler.actionLogger.AddAction(`RECITE: ${poemText}`);
+    window.gameHandler.actionLogger.AddAction(`Recite poem`,poemText);
 }
 
 function _PresentCharactersHearPoemStoreToDatabase(){
@@ -47,13 +45,9 @@ function _PresentCharactersHearPoemStoreToDatabase(){
     
     const $currPassage = window.gameHandler.passageHandler.currentPassage;
     
-    console.log(`${$poemText} ${$currPassage.id}`);
-    
     for (const char of window.gameHandler.characterHandler.characters){
         
         for(const presentPassageId of char.presentPassages){
-            
-            console.log(`${presentPassageId}`);
             
             if(presentPassageId == $currPassage.id) {
                 

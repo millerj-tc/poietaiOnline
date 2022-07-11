@@ -19,7 +19,7 @@ export function NavigationFlow(destPassage){
 
 function _StoreDestPassageToActionLogger(destPassage){
     
-    window.gameHandler.actionLogger.AddAction(destPassage);
+    window.gameHandler.actionLogger.AddAction("navigate to " + destPassage);
 }
 
 function _SetCurrentPassage(passageHandler,destPassage){
@@ -59,7 +59,7 @@ function _DisplayAskFavoriteLinks(){
             
             const $their = char.GetPronouns().their;
             
-            SetInnerTextTo($favLink, `Ask ${char.GetCharacterName()} ${$their} favorite poem`)
+            $favLink.insertAdjacentHTML("beforeend", `Ask ${char.GetCharacterName()} ${$their} favorite poem<br><br>`)
             
             $favLink.classList.add("passageLink");
             

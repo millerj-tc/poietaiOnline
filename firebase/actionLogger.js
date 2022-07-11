@@ -20,9 +20,9 @@ export class actionLogger
         this.sessionKey = key;
     }
     
-    AddAction(actionString){
+    AddAction(actionHeader,actionString = "none"){
         
-        this.actionLog.push(actionString);
+        this.actionLog.push({actionHeader:actionHeader,actionString:actionString});
     }
     
     ReportAndStartNewInterval(){
@@ -35,7 +35,7 @@ export class actionLogger
             
             for(const action of this.actionLog){
                 
-                this._ReportAction(action);
+                this._ReportAction(action.actionHeader,action.actionString);
             }
         }
         
@@ -43,7 +43,7 @@ export class actionLogger
         this.intervalId += 10;
     }
     
-    _ReportAction(actionString) {
+    _ReportAction(actionHeader,actionString) {
       const db = getDatabase();
         const objIntervalId = this.intervalId;
 
@@ -57,7 +57,7 @@ export class actionLogger
 
       // Write the new post's data simultaneously in the posts list and the user's post list.
       const updates = {};
-      updates['/sessions/' + this.sessionKey + `/actions/` + objIntervalId + `/` ] = postData;
+      updates['/sessions/' + this.sessionKey + `/actions/` + objIntervalId + `/` + actionHeader + `/` +  newActionKey] = postData;
 
       return update(ref(db), updates);
     }
