@@ -19,9 +19,10 @@ export function InitializeWorldPassages(){
     $yselda.AddPoemEvalMetric(5,PoemLength,"<=",12);
     $yselda.AddPoemEvalMetric(5,PoemLength,"<=",10);
     $yselda.AddPoemEvalMetric(5,PoemLength,"<=",8);
-    $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"stones");
+    $yselda.AddPoemEvalMetric(10,PoemTextContainsWord,"stones");
     $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"BERIN");
-    $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"dirt");
+    $yselda.AddPoemEvalMetric(10,PoemTextContainsWord,"dirt");
+    $yselda.AddPoemEvalMetric(15,PoemTextContainsWord,"tender");
     $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"glittering");
     $yselda.AddPoemEvalMetric(15,PoemTextContainsWord,"barrowwillows");
     $yselda.AddPoemEvalMetric(-15,PoemTextContainsWord,"silver");
