@@ -29,7 +29,7 @@ export class actionLogger
         
         if(this.actionLog.length == 0){
             
-            this._ReportAction("none");
+            //this._ReportAction("none","none");
         }
         else{
             

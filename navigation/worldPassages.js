@@ -22,8 +22,11 @@ export function InitializeWorldPassages(){
     $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"stones");
     $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"BERIN");
     $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"dirt");
-    $yselda.AddPoemEvalMetric(10,PoemTextContainsWord,"piss");
+    $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"glittering");
     $yselda.AddPoemEvalMetric(15,PoemTextContainsWord,"barrowwillows");
+    $yselda.AddPoemEvalMetric(-15,PoemTextContainsWord,"silver");
+    $yselda.AddPoemEvalMetric(-15,PoemTextContainsWord,"old");
+    $yselda.AddPoemEvalMetric(-15,PoemTextContainsWord,"grayed");
     $yselda.AddPoemEvalMetric(-100,PoemLength,"<=",4);
 
     hotApartment.SetText(`
