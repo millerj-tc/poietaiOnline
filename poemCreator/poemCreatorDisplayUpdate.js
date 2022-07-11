@@ -27,10 +27,11 @@ function _CheckIfPlayerIndicatorIsWithinNMovesOfDiv(div,n=1){
     const playerIndicatorWrapperDivPos = _GetPlayerIndicatorWrapperDivPos();
     
     const gridspaceWidth = div.getBoundingClientRect().width;
+    const gridspaceHeight = div.getBoundingClientRect().height;
     
     const distance = GetDistance(divPos[0],divPos[1],playerIndicatorWrapperDivPos[0],playerIndicatorWrapperDivPos[1]);
     
-    if(distance < (gridspaceWidth + (gridspaceWidth/3))) return true
+    if(distance < (gridspaceWidth + (gridspaceWidth/3)) || distance < (gridspaceHeight + (gridspaceHeight/3))) return true
     else return false
 }
 
