@@ -34,7 +34,7 @@
         <div class="cssPoemCreatorOutputWrapper">
             <div class="cssPoemCreatorOutput" id="poemCreatorOutput"></div>
             <button class="poemCreatorOutputTrayButton" id="poemCreatorOutputCollapseToggler" onclick="TogglePoemCreatorOutputCollapsed()">\/</button>
-            <button class="poemCreatorOutputTrayButton" id="poemCreatorHelp" onclick="window.alert('Tap words adjacent to the X to move to that space and add that word to your poem. You may save poems to your profile by pressing Memorize. Say your poem out loud with Recite.')">Help</button>
+            <button class="poemCreatorOutputTrayButton" id="poemCreatorHelp" onclick="window.alert('Tap words adjacent to the X to move to that space and add that word to your poem. You may save poems to your profile by pressing Memorize. Say your poem out loud with Recite.');window.gameHandler.actionLogger.AddAction('HELP')">Help</button>
             <button class="poemCreatorOutputTrayButton" id="memorizeCreatedPoemButton" onclick="MemorizePoemFlow()">Memorize</button>
             <button class="poemCreatorOutputTrayButton reciteButton" id="reciteCreatedPoemButton" onclick="PoemEvaluationFlow()">Recite</button>
         </div>

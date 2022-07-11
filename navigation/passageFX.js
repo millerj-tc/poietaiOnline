@@ -31,8 +31,6 @@ function _StoreUsedKeywords(keywordsArr){
     
     const $usedKeywords = GetMatchedKeywords(keywordsArr);
         window.gameHandler.passageHandler.currentPassage.SetUsedKeywords($usedKeywords);
-    
-    console.log(window.gameHandler.passageHandler.currentPassage);
 }
 
 export function AddAllusionWordToSource(word,source){
