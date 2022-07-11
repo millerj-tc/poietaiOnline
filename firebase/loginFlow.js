@@ -34,4 +34,6 @@ export function PostUserDataRetrievalFlow(){
     //** DetermineUserLocation();
     
     NavigationFlow("hotApartment");
+    
+    window.gameHandler.loggingIn = false;
 }

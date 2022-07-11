@@ -21,5 +21,5 @@ export function MemorizePoemFlow(){
 
 function _AddMemorizeActionToLogger(){
     
-    window.gameHandler.actionLogger.AddAction("memorize poem");
+    window.gameHandler.actionLogger.AddAction("memorize poem",GetPoemHTMLFromPoemCreatorOutput());
 }

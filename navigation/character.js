@@ -98,9 +98,9 @@ export class character
         
         const $favAllTimePoem = this._HeardPoemEvaluatedPkgsArrOrderedByEvalMetrics(this.heardPoems)[0];
         
+        console.log($favRecentPoem);
+        
         if($favRecentPoem != null && $favRecentPoem.points >= 0 && $favRecentPoem.poem.poemText != $favAllTimePoem.poem.poemText){
-            
-            console.log(``)
             
             $displayString += `"My favorite poem I've heard recently is by ${$favRecentPoem.poem.reciterName} and goes like this:<br><br>'${$favRecentPoem.poem.poemText}'"<br><br>`;
         }

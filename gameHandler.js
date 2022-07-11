@@ -14,6 +14,7 @@ export class gameHandler
         this.passageHandler = new passageHandler();
         this.actionLogger = new actionLogger();
         this.characterHandler = new characterHandler();
+        this.loggingIn = true;
     }
     
     SetPlayerName(name){

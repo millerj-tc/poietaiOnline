@@ -9,7 +9,7 @@ export function GetUserDataAtLoginFlow(){
     _RetrieveName(true);
 }
 
-function _RetrieveName(loginCallback){
+function _RetrieveName(loginCallback=false){
     const dbRef = ref(getDatabase());
     get(child(dbRef, `users/` + window.uid + `/name`)).then((snapshot) => {
       if (snapshot.exists()) {
@@ -25,7 +25,7 @@ function _RetrieveName(loginCallback){
     });
 }
 
-function _RetreiveOptOutStatus(loginCallback){
+function _RetreiveOptOutStatus(loginCallback=false){
     
     const dbRef = ref(getDatabase());
     get(child(dbRef, `users/` + window.uid + `/optOut`)).then((snapshot) => {
@@ -47,7 +47,7 @@ function _RetreiveOptOutStatus(loginCallback){
     });
 }
 
-export function GetUserPoems(n=3,loginCallback){
+export function GetUserPoems(n=3,loginCallback=false){
     
     const db = getDatabase();
     const poems = ref(db, 'users/' + window.uid + '/poems');
@@ -56,6 +56,6 @@ export function GetUserPoems(n=3,loginCallback){
 
         PullPoemsFromProfileIntoMemoryFlow(data);
         
-        if(loginCallback) PostUserDataRetrievalFlow();
+        if(window.gameHandler.loggingIn) PostUserDataRetrievalFlow();
     });
 }
