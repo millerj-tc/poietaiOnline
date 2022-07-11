@@ -53,6 +53,20 @@ body{
     }
 }
 
+@media only screen and (max-width: 400px) {
+    .cssPoemCreatorGrid{
+        left:-3%;
+        margin-left: 5vw;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .cssPoemCreatorGrid{
+        left:-6%;
+        margin-left: 5vw;
+    }
+}
+
 .allusionWord{
     
     font-style: italic;
@@ -138,6 +152,15 @@ body{
 @media only screen and (max-width: 600px) {
     .poemCreatorOutputTrayButton{
         top:95%;
+        margin-left: 5px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .poemCreatorOutputTrayButton{
+        top:95%;
+        margin-left: 2px;
+        font-size: 11px;
     }
 }
 
