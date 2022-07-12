@@ -111,6 +111,13 @@ body{
     z-index:99;
 }
 
+@media only screen and (max-width: 600px) {
+    .poemCreatorTray{
+        top: -86vh;
+        height:90vh;
+    }
+}
+
 .poemCreatorTrayButton{
     
     position: absolute;
