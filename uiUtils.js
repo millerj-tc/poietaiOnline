@@ -62,6 +62,8 @@ export function TogglePoemCreatorOutputCollapsed(){
         
         $button.innerHTML = `/\\`;
         
+        window.gameHandler.actionLogger.AddAction("open output tray");
+        
         $tray.style.transform = "translateY(55vh)"; ;
     }
     else _PoemCreatorOutputClose();

@@ -23,9 +23,19 @@ export function PostUserDataRetrievalFlow(){
     
      const $lw = GetElementById("loginWrapper");
     
+    const $pc = GetElementById("poemCreatorTray");
+    
+    const $pr = GetElementById("poemReciterTray")
+    
     if(!window.gameHandler.actionLogger.optOut) EstablishSession()
     
     SetDisplayTo($lw,"none");
+    
+    SetDisplayTo($pc,"block");
+    
+    SetDisplayTo($pr,"block");
+    
+    SetDisplayTo
     
     InitializeWorldPassages();
     

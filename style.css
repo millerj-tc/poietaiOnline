@@ -5,9 +5,17 @@ body{
     color: white;
 }
 
-.versionInfo{
-    
-    color:black;
+.signOutButtonWrapper{
+
+}
+
+.signOutButton{
+
+    display:block;
+    position:relative;
+    transform: rotate(-90deg);
+    top:20px;
+    left:-30px;
 }
 
 .navigationOutput{
@@ -89,6 +97,7 @@ body{
 .poemCreatorTray{
     
     position: fixed;
+    display:none;
     background-color: inherit;
     overflow-y: hidden;
     width:80%;
@@ -204,6 +213,7 @@ body{
 .cssPoemReciterTray{
     
     position: fixed;
+    display:none;
     background-color: inherit;
     overflow-y: hidden;
     width:80%;
