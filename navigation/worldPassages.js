@@ -63,12 +63,12 @@ export function InitializeWorldPassages(){
     const hotApartmentSrc = hotApartment.AddSource("hotApartment");
 
     hotApartmentSrc.SetAllusionWords([
-        {text:"sweet",frequency:2.5,domeFrequency: 0.75},
-        {text:"sweat",frequency:2.5,domeFrequency: 0.75},
-        {text:"winks",frequency:2.5,domeFrequency: 0.6},
-        {text:"sipping",frequency:2.5,domeFrequency: 0.4},
-        {text:"old",frequency:3,domeFrequency: 0.85},
-        {text:"silver",frequency:3,domeFrequency: 0.70},
+        {text:"sweet",frequency:1.2,domeFrequency: 0.75},
+        {text:"sweat",frequency:1.2,domeFrequency: 0.75},
+        {text:"winks",frequency:1.2,domeFrequency: 0.6},
+        {text:"sipping",frequency:1.2,domeFrequency: 0.4},
+        {text:"old",frequency:1.8,domeFrequency: 0.85},
+        {text:"silver",frequency:1.8,domeFrequency: 0.70},
     ]);
     
     hotApartment.passageFxHandler.AddCharacterResponse("yselda",
@@ -136,12 +136,12 @@ export function InitializeWorldPassages(){
     const hotApartmentCourtyardSrc = hotApartmentCourtyard.AddSource("hotApartmentCourtyard");
     
     hotApartmentCourtyardSrc.SetAllusionWords([
-        {text:"barrowwillows",frequency:3,domeFrequency: 0.33},
-        {text:"wobbling",frequency:3,domeFrequency: 0.4},
-        {text:"burden",frequency:3,domeFrequency: 0.78},
-        {text:"glittering",frequency:3,domeFrequency: 0.72},
-        {text:"bricks",frequency:3,domeFrequency: 0.6},
-        {text:"roll",frequency:3,domeFrequency: 0.68},
+        {text:"barrowwillows",frequency:1.6,domeFrequency: 0.33},
+        {text:"wobbling",frequency:1.6,domeFrequency: 0.4},
+        {text:"burden",frequency:1.6,domeFrequency: 0.78},
+        {text:"glittering",frequency:1.6,domeFrequency: 0.72},
+        {text:"bricks",frequency:1.6,domeFrequency: 0.6},
+        {text:"roll",frequency:1.6,domeFrequency: 0.68},
     ]);
     
     const $berinBarrowwillowResponse = hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
@@ -187,10 +187,11 @@ export function InitializeWorldPassages(){
     const yseldasKitchens = $passageHandler.AddPassage("yseldasKitchens");
 
     yseldasKitchens.SetText(`
-        Yselda is nowhere to be found inside, her kitchens alone are a maze of teetering piles of cookware and odd objects.<br>
+        Yselda is nowhere to be found inside, you can't even make it through her kitches without her guidance<br>
+        It's a maze of teetering piles of cookware and odd objects.<br>
         Pots and pans of belly-filling-loving-kindness simmer on the range, tended to by scores of dormouse assistants wearing tiny cook hats.<br>
         You admire their vim (perhaps even more their vigor!)<br>
-        The smells wafting to your nose are pure enticement.
+        The smells wafting to your nose are pure enticement.<br>
         They are too busy to speak to you at the moment, however.<br><br>
 
         <span id='navigationOutputPlayerPoemSpeak'></span>
@@ -202,12 +203,12 @@ export function InitializeWorldPassages(){
     const yseldasKitchensSrc = yseldasKitchens.AddSource("yseldasKitchens");
 
     yseldasKitchensSrc.SetAllusionWords([
-        {text:"vigor",frequency:2.5,domeFrequency: 0.5},
-        {text:"simmer",frequency:2.5,domeFrequency: 0.4},
-        {text:"cooks",frequency:2.5,domeFrequency: 0.6},
-        {text:"teetering",frequency:2.5,domeFrequency: 0.4},
-        {text:"wafting",frequency:2.5,domeFrequency: 0.42},
-        {text:"kindness",frequency:2.5,domeFrequency: 0.75},
-        {text:"vim",frequency:2.5,domeFrequency: 0.4},
+        {text:"vigor",frequency:1.4,domeFrequency: 0.5},
+        {text:"simmer",frequency:1.4,domeFrequency: 0.4},
+        {text:"cooks",frequency:1.4,domeFrequency: 0.6},
+        {text:"teetering",frequency:1.4,domeFrequency: 0.4},
+        {text:"wafting",frequency:1.4,domeFrequency: 0.42},
+        {text:"kindness",frequency:1.4,domeFrequency: 0.75},
+        {text:"vim",frequency:1.4,domeFrequency: 0.4},
     ]);
 }
