@@ -54,7 +54,14 @@ function _PresentCharactersHearPoemStoreToDatabase(poemText){
             
             if(presentPassageId == $currPassage.id) {
                 
-                HeardPoemToCharacterDatabaseEntry($poemText,char.id);
+                let $match = false;
+                
+                for(const poem of char.heardPoems){
+                    
+                    if(poem.reciterName == window.gameHandler.playerName && poem.poemText == $poemText) $match = true
+                }
+                
+                if(!$match) HeardPoemToCharacterDatabaseEntry($poemText,char.id);
             }
         }
     }
