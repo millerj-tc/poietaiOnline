@@ -1,11 +1,13 @@
 body{
     
     font-family: Helvetica;
+    background-color: black;
+    color: white;
 }
 
 .versionInfo{
     
-    color:white;
+    color:black;
 }
 
 .navigationOutput{
@@ -29,7 +31,7 @@ body{
     
     font-weight:bold;
     text-decoration: underline;
-    color:darkblue;
+    color:deepskyblue;
     cursor: pointer;
 }
 
@@ -87,7 +89,7 @@ body{
 .poemCreatorTray{
     
     position: fixed;
-    background-color: white;
+    background-color: inherit;
     overflow-y: hidden;
     width:80%;
     top: -88vh;
@@ -131,7 +133,7 @@ body{
 .cssPoemCreatorOutputTray{
     
     position: relative;
-    background-color: white;
+    background-color: inherit;
     overflow-y: hidden;
     left:50%;
     margin-left: -37vw;
@@ -167,6 +169,7 @@ body{
 .cssPoemCreatorOutputWrapper{
     
     position: relative;
+    background-color: inherit;
     height: 60vh;
     border: 2px solid;
     border-radius:25px;
@@ -178,6 +181,7 @@ body{
 .cssPoemCreatorOutput {
     
     position: absolute;
+    background-color: inherit;
     bottom: 0;
     display:inline-block;
     padding-bottom: 40px;
@@ -186,20 +190,21 @@ body{
 
 .cssPoemCreatorOutputContent{
     
+    background-color: inherit;
     display:inline-block;
 }
 
 .lastAddedOutputContent{
     
     font-weight: bold;
-    color: darkblue;
+    color: gold;
     
 }
 
 .cssPoemReciterTray{
     
     position: fixed;
-    background-color: white;
+    background-color: inherit;
     overflow-y: hidden;
     width:80%;
     top: 95vh;
@@ -218,6 +223,7 @@ body{
 .cssPoemReciterDisplayWrapper{
     
     position: relative;
+    background-color: inherit;
     height: 45vh;
     border: 2px solid;
     border-radius:25px;
