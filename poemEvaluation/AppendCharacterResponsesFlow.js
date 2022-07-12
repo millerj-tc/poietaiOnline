@@ -33,8 +33,6 @@ function _LoadTriggeredResponses(charResponseHandler){
         
         window.gameHandler.actionLogger.AddAction(`>>>` + response.actionLoggerString,response.actionLoggerDetails)
         
-        console.log(window.gameHandler.actionLogger);
-        
         $returnArr.push(response);
     }
     

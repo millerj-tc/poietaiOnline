@@ -196,7 +196,7 @@ export function InitializeWorldPassages(){
     
     $pfxBerinDefaultRespo.SetActionLoggerString("berinDefaultResponse");
     
-    hotApartmentCourtyard.passageFxHandler.AddPassageFx(AddAllusionWordToSource,{text:"BERIN",frequency:3.25},hotApartmentCourtyardSrc)
+    hotApartmentCourtyard.passageFxHandler.AddPassageFx(AddAllusionWordToSource,{text:"BERIN",frequency:3.25,domeFrequency: 0.25},hotApartmentCourtyardSrc)
         .conditionHandler.AddConditionGroup("and")
         .AddCondition(PoemLength,"poemCreator",">=",0)
     
