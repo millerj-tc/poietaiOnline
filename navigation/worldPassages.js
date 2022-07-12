@@ -229,4 +229,23 @@ export function InitializeWorldPassages(){
         {text:"kindness",frequency:1.4,domeFrequency: 0.75},
         {text:"vim",frequency:1.4,domeFrequency: 0.4},
     ]);
+    
+    ///
+    
+    const $noda = $characterHandler.AddCharacter("noda","Noda","he");
+    $noda.AddToPassagePresence("");
+    $noda.AddPoemEvalMetric(-100,PoemLength,"<=",2);
+    $noda.AddPoemEvalMetric(5,PoemLength,"<=",6);
+    $noda.AddPoemEvalMetric(20,PoemLength,"==",7);
+    $noda.AddPoemEvalMetric(5,PoemLength,">=",8);
+    $noda.AddPoemEvalMetric(8,PoemTextContainsWord,"wafting");
+    $noda.AddPoemEvalMetric(8,PoemTextContainsWord,"vim");
+    $noda.AddPoemEvalMetric(5,PoemTextContainsWord,"barrowwillows");
+    $noda.AddPoemEvalMetric(5,PoemTextContainsWord,"bricks");
+    $noda.AddPoemEvalMetric(5,PoemTextContainsWord,"silver");
+    $noda.AddPoemEvalMetric(5,PoemTextContainsWord,"winks");
+    $noda.AddPoemEvalMetric(5,PoemTextContainsWord,"little");
+    $noda.AddPoemEvalMetric(5,PoemTextContainsWord,"note");
+    $noda.AddPoemEvalMetric(5,PoemTextContainsWord,"sighs");
+    $noda.AddPoemEvalMetric(5,PoemTextContainsWord,"shard");
 }

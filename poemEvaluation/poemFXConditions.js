@@ -34,5 +34,6 @@ export function PoemLength(poem = "poemCreator",comparison,length){
     
     if(comparison == "<=" && $wordCount <= length) return true
     else if(comparison == ">=" && $wordCount >= length) return true
+    else if(comparison == "==" && $wordCount == length) return true
     else return false
 }
