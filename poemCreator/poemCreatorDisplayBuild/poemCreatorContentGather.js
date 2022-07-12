@@ -9,8 +9,6 @@ export function poemCreatorContentGatherFlow(contentArr){
 
     _AddPlayerDomeContent(contentArr);
     
-    console.log(contentArr);
-    
     return contentArr
 }
 
@@ -67,7 +65,7 @@ function _AddPlayerDomeContent(contentArr){
         for(const w of contentArr){
             
             if(w.text == dw.text) {
-                console.log(`skipping ${w.text} as already present`);
+
                 $match = true;
             }
             

@@ -53,7 +53,7 @@ export function InitializeWorldPassages(){
 
         <span id='yseldaResponse'></span>
         <span id='yseldaFavoriteLink'></span>
-        <span id='courtyardButton'></span>[[Courtyard|hotApartmentCourtyard]]
+        <span id='courtyardButton'></span>
         <p><i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i></p>
 
     `);
