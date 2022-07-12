@@ -60,7 +60,7 @@ export class actionLogger
 
       // Write the new post's data simultaneously in the posts list and the user's post list.
       const updates = {};
-      updates['/sessions/' + this.sessionKey + `/actions/` + objIntervalId + `/` + actionHeader + `/` +  newActionKey] = postData;
+      updates['/sessions/' + this.sessionKey + `/actions/` + objIntervalId + "-" + actionHeader + `/` +  newActionKey] = postData;
 
       return update(ref(db), updates);
     }
