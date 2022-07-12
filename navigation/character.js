@@ -16,6 +16,8 @@ export class character
         this.heardPoems = [];
         this.presentPassages = [];
         this.favoritePoemMetrics = [];
+        this.bestPoemEver = `"That is the best poem I've ever heard!"`;
+        this.bestRecentPoem = `"That is the best poem I've heard in a few days!"`;
         
         if(pronouns == "he"){
             
@@ -84,21 +86,19 @@ export class character
         
         let $displayString = "";
         
-        const $favLink = GetElementById(`${this.id}FavoriteLink`);
-        
         const $recentlyHeardPoems = this._GetPoemsHeardInLast48Hours();
+        
+        const $favLink = GetElementById(`${this.id}FavoriteLink`);
         
         let $favRecentPoem = null;
         
         if($recentlyHeardPoems.length >= 1){
         
-            $favRecentPoem = this._HeardPoemEvaluatedPkgsArrOrderedByEvalMetrics($recentlyHeardPoems)[0];
+            $favRecentPoem = this.GetFavoriteRecentPoem();
             
         }
         
-        const $favAllTimePoem = this._HeardPoemEvaluatedPkgsArrOrderedByEvalMetrics(this.heardPoems)[0];
-        
-        console.log($favRecentPoem);
+        const $favAllTimePoem = this.GetFavoriteAllTimePoem();
         
         if($favRecentPoem != null && $favRecentPoem.points >= 0 && $favRecentPoem.poem.poemText != $favAllTimePoem.poem.poemText){
             
@@ -114,6 +114,18 @@ export class character
         $favLink.insertAdjacentHTML("beforeend",$displayString);
         
         $favLink.classList.remove("passageLink");
+    }
+    
+    GetFavoriteAllTimePoem(){
+            
+        return this._HeardPoemEvaluatedPkgsArrOrderedByEvalMetrics(this.heardPoems)[0]
+    }
+    
+    GetFavoriteRecentPoem(){
+        
+        const $recentlyHeardPoems = this._GetPoemsHeardInLast48Hours();
+            
+        return this._HeardPoemEvaluatedPkgsArrOrderedByEvalMetrics($recentlyHeardPoems)[0]
     }
     
     _GetPoemsHeardInLast48Hours(){

@@ -11,6 +11,8 @@ export function PoemEvaluationFlow(poem){
     
     _PresentCharactersHearPoemStoreToDatabase();
     
+    _PresentCharactersConvertFaveTextToFaveLink();
+    
     _StoreRecitedPoemTextToActionLogger($poemText);
     
     const $wordArr = _ParsePoemText($poemText);
@@ -54,6 +56,30 @@ function _PresentCharactersHearPoemStoreToDatabase(){
                 HeardPoemToCharacterDatabaseEntry($poemText,char.id);
             }
         }
+    }
+}
+
+function _PresentCharactersConvertFaveTextToFaveLink(){
+    
+    const gh = window.gameHandler;
+    
+    for(const char of window.gameHandler.characterHandler.characters){
+        
+        if(char.presentPassages.includes(gh.passageHandler.currentPassage.id)){
+        
+            const $favLink = GetElementById(`${char.id}FavoriteLink`);
+
+            ClearInnerHTML($favLink);
+
+            const $their = char.GetPronouns().their;
+
+            $favLink.insertAdjacentHTML("beforeend", `Ask ${char.GetCharacterName()} ${$their} favorite poem<br><br>`)
+
+            $favLink.classList.add("passageLink");
+
+            $favLink.addEventListener("click",function(){char.ShareFavoritePoems()})
+        }
+        
     }
 }
 

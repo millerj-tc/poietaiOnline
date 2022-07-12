@@ -1,5 +1,6 @@
 import {AppendToDivOnce} from "./../navigation/passageFX.js";
 import {InsertUsedKeywords} from "./poemEvaluationUtils.js";
+import {GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
 
 export function AppendCharacterResponsesFlow(){
 
@@ -10,6 +11,8 @@ export function AppendCharacterResponsesFlow(){
         let $triggeredResponses = _LoadTriggeredResponses(charResponseHandler);
         
         let $charResponseString = _GetCharacterResponseString($triggeredResponses,charResponseHandler);
+        
+        $charResponseString = _StateIfFavePoem(charResponseHandler) + $charResponseString;
         
         AppendToDivOnce(charResponseHandler.characterId + "Response", $charResponseString)
         
@@ -63,6 +66,34 @@ function _GetCharacterResponseString(triggeredResponses,charResponseHandler){
     }
     
     return $returnString
+}
+
+function _StateIfFavePoem(charResponseHandler){
+    
+    const $char = window.gameHandler.characterHandler.GetCharacterById(charResponseHandler.characterId);
+    
+    console.log(GetPoemFromPoemCreatorOutput());
+    
+    const $favAllTime = $char.GetFavoriteAllTimePoem().poem.poemText;
+    
+    const $favRecent = $char.GetFavoriteRecentPoem().poem.poemText;
+    
+    console.log($favRecent);
+    
+    if(GetPoemFromPoemCreatorOutput() == $favAllTime){
+        
+        console.log("all time fave");
+        
+        return $char.bestPoemEver + "<br><br>";
+    }
+    else if(GetPoemFromPoemCreatorOutput() == $favRecent){
+        
+        console.log("best recent"); 
+        
+        return $char.bestRecentPoem + "<br><br>";
+    }
+    
+    return "";
 }
 
 function _ParseFirstResponseString(text){

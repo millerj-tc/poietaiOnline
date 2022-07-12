@@ -15,4 +15,12 @@ export class characterHandler{
         
         return $char
     }
+    
+    GetCharacterById(id){
+        
+        for(const char of this.characters){
+            
+            if(char.id == id) return char
+        }
+    }
 }
