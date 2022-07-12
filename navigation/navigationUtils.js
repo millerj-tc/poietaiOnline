@@ -15,11 +15,13 @@ function _ParsePassageLinks(text){
     
     let $navText = text.slice();
     
-    if($navText.match(/\[\[(\S*)]]/gm) != null){
+    if($navText.match(/\[\[(.*)]]/gm) != null){
     
-        for(const m of $navText.match(/\[\[(\S*)]]/gm)){
-
-            let $displayText = m.match(/\[\[(\S*)\|/gm)[0];
+        for(const m of $navText.match(/\[\[(.*)]]/gm)){
+        
+            let $displayText = m.match(/\[\[(.*)\|/gm)[0];
+            
+            console.log($displayText);
 
             $displayText = $displayText.replace("[[","");
 

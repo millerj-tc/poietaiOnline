@@ -19,11 +19,18 @@ export function InitializeWorldPassages(){
     $yselda.AddPoemEvalMetric(5,PoemLength,"<=",12);
     $yselda.AddPoemEvalMetric(5,PoemLength,"<=",10);
     $yselda.AddPoemEvalMetric(5,PoemLength,"<=",8);
+    $yselda.AddPoemEvalMetric(3,PoemTextContainsWord,"—");
+    $yselda.AddPoemEvalMetric(2,PoemTextContainsWord,".");
+    $yselda.AddPoemEvalMetric(2,PoemTextContainsWord,",");
     $yselda.AddPoemEvalMetric(10,PoemTextContainsWord,"stones");
     $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"BERIN");
     $yselda.AddPoemEvalMetric(10,PoemTextContainsWord,"dirt");
     $yselda.AddPoemEvalMetric(15,PoemTextContainsWord,"tender");
     $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"glittering");
+    $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"sweet");
+    $yselda.AddPoemEvalMetric(10,PoemTextContainsWord,"wafting");
+    $yselda.AddPoemEvalMetric(5,PoemTextContainsWord,"winks");
+    $yselda.AddPoemEvalMetric(15,PoemTextContainsWord,"kindness");
     $yselda.AddPoemEvalMetric(15,PoemTextContainsWord,"barrowwillows");
     $yselda.AddPoemEvalMetric(-15,PoemTextContainsWord,"silver");
     $yselda.AddPoemEvalMetric(-15,PoemTextContainsWord,"old");
@@ -46,7 +53,7 @@ export function InitializeWorldPassages(){
 
         <span id='yseldaResponse'></span>
         <span id='yseldaFavoriteLink'></span>
-        <span id='courtyardButton'></span>
+        <span id='courtyardButton'></span>[[Courtyard|hotApartmentCourtyard]]
         <p><i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i></p>
 
     `);
@@ -93,6 +100,7 @@ export function InitializeWorldPassages(){
     const $berin = $characterHandler.AddCharacter("berin","Berin","they");
     $berin.AddToPassagePresence("hotApartmentCourtyard");
     $berin.AddPoemEvalMetric(-100,PoemLength,"<=",6);
+    $berin.AddPoemEvalMetric(-15,PoemTextContainsWord,"burden");
     $berin.AddPoemEvalMetric(5,PoemLength,">=",8);
     $berin.AddPoemEvalMetric(5,PoemLength,">=",10);
     $berin.AddPoemEvalMetric(5,PoemLength,">=",12);
@@ -100,6 +108,13 @@ export function InitializeWorldPassages(){
     $berin.AddPoemEvalMetric(10,PoemLength,">=",16);
     $berin.AddPoemEvalMetric(10,PoemLength,">=",18);
     $berin.AddPoemEvalMetric(10,PoemLength,">=",20);
+    $berin.AddPoemEvalMetric(8,PoemTextContainsWord,"pray");
+    $berin.AddPoemEvalMetric(8,PoemTextContainsWord,"roll");
+    $berin.AddPoemEvalMetric(8,PoemTextContainsWord,"wobbling");
+    $berin.AddPoemEvalMetric(8,PoemTextContainsWord,"vigor");
+    $berin.AddPoemEvalMetric(15,PoemTextContainsWord,"vim");
+    $berin.AddPoemEvalMetric(4,PoemTextContainsWord,"teetering");
+    $berin.AddPoemEvalMetric(8,PoemTextContainsWord,"glittering");
     $berin.AddPoemEvalMetric(10,PoemTextContainsWord,"licked");
     $berin.AddPoemEvalMetric(10,PoemTextContainsWord,"tender");
     $berin.AddPoemEvalMetric(10,PoemTextContainsWord,"ate");
@@ -112,8 +127,9 @@ export function InitializeWorldPassages(){
         Small spindly tables wobble under the burdens that they unfalteringly bear.<br>
         Sitting at one of the tables is Berin. They are resplendent in rolls of fat, bushy beard hairs, and twinkling eye makeup and gesture you over.<br><br>
 
-        <span id="climbBarrowwillows" style='display:none'><i>Climb barrowwillows functionality coming soon :)</i><br><br></span>
         "Regale me, Poietai, and I shall tell you something in return."<br><br>
+
+        [[Back inside|yseldasKitchens]]<br><br>
         `);
     const hotApartmentCourtyardSrc = hotApartmentCourtyard.AddSource("hotApartmentCourtyard");
     
@@ -132,9 +148,6 @@ export function InitializeWorldPassages(){
                                                                `,[]);
         const $barrowwillowsCon = $berinBarrowwillowResponse.conditionHandler.AddConditionGroup("and");
         $barrowwillowsCon.AddCondition(PoemTextContainsWord,"poemCreator","barrowwillows");
-    
-    hotApartmentCourtyard.passageFxHandler.AddPassageFx(PermanentlyUnlockPassageSpan,"climbBarrowwillows")
-        .conditionHandler.AddConditionGroupByObjReference($barrowwillowsCon);
     
     hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
         `
@@ -166,5 +179,33 @@ export function InitializeWorldPassages(){
     hotApartmentCourtyard.passageFxHandler.AddPassageFx(AddAllusionWordToSource,{text:"BERIN",frequency:3.25},hotApartmentCourtyardSrc)
         .conditionHandler.AddConditionGroup("and")
         .AddCondition(PoemLength,"poemCreator",">=",0)
+    
+    /// YSELDA'S KITCHENS
+    
+    const yseldasKitchens = $passageHandler.AddPassage("yseldasKitchens");
 
+    yseldasKitchens.SetText(`
+        Yselda is nowhere to be found inside, her kitchens alone are a maze of teetering piles of cookware and odd objects.<br>
+        Pots and pans of belly-filling-loving-kindness simmer on the range, tended to by scores of dormouse assistants wearing tiny cook hats.<br>
+        You admire their vim (perhaps even more their vigor!)<br>
+        The smells wafting to your nose are pure enticement.
+        They are too busy to speak to you at the moment, however.<br><br>
+
+        <span id='navigationOutputPlayerPoemSpeak'></span>
+
+        [[Courtyard|hotApartmentCourtyard]]
+
+    `);
+
+    const yseldasKitchensSrc = yseldasKitchens.AddSource("yseldasKitchens");
+
+    yseldasKitchensSrc.SetAllusionWords([
+        {text:"vigor",frequency:2},
+        {text:"simmer",frequency:2},
+        {text:"cooks",frequency:2},
+        {text:"teetering",frequency:2},
+        {text:"wafting",frequency:2},
+        {text:"kindness",frequency:2},
+        {text:"vim",frequency:2},
+    ]);
 }
