@@ -1,6 +1,6 @@
 import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
 
-import {PullPoemsFromProfileIntoMemoryFlow} from "./firebasePullPoemsFromProfileIntoMemoryFlow.js";
+import {PullPoemsFromProfileIntoMemoryFlow,PullDomeWordsFromDBIntoMindFlow} from "./pullFromDatabaseIntoHandlersFlows.js";
 
 import {PostUserDataRetrievalFlow} from "./loginFlow.js";
 
@@ -37,13 +37,26 @@ function _RetreiveOptOutStatus(loginCallback=false){
               setInterval(function(){window.gameHandler.actionLogger.ReportAndStartNewInterval()},10000);
           }
           
-          GetUserPoems(3,loginCallback);
+        GetUserDomeWords();  
 
       } else {
         console.log("No data available");
       }
     }).catch((error) => {
       console.error(error);
+    });
+}
+
+function GetUserDomeWords(){
+    
+    const db = getDatabase();
+    const domeWords = ref(db, 'users/' + window.uid + '/domeWords');
+    onValue(domeWords, (snapshot) => {
+        const data = snapshot.val();
+
+        PullDomeWordsFromDBIntoMindFlow(data);
+        
+        if(window.gameHandler.loggingIn) GetUserPoems(3);
     });
 }
 

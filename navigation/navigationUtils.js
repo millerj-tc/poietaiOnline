@@ -20,8 +20,6 @@ function _ParsePassageLinks(text){
         for(const m of $navText.match(/\[\[(.*)]]/gm)){
         
             let $displayText = m.match(/\[\[(.*)\|/gm)[0];
-            
-            console.log($displayText);
 
             $displayText = $displayText.replace("[[","");
 

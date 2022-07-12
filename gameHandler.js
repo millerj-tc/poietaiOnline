@@ -3,6 +3,7 @@ import {sourceHandler} from "./navigation/passage.js";
 import {passageHandler} from "./navigation/passageHandler.js";
 import {actionLogger} from "./firebase/actionLogger.js";
 import {characterHandler} from "./navigation/characterHandler.js";
+import {domeWordHandler} from "./poemCreator/domeWordHandler.js";
 
 export class gameHandler
 {
@@ -14,6 +15,7 @@ export class gameHandler
         this.passageHandler = new passageHandler();
         this.actionLogger = new actionLogger();
         this.characterHandler = new characterHandler();
+        this.domeWordHandler = new domeWordHandler();
         this.loggingIn = true;
     }
     

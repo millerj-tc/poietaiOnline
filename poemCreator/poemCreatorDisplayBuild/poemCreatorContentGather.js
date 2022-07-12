@@ -1,28 +1,20 @@
 import {defaultPoemContent} from "./defaultPoemContent.js"
+import {SaveDomeWordToProfile} from "./../../firebase/saveDataToUserProfile.js";
 
 export function poemCreatorContentGatherFlow(contentArr){
 
-    // how to control frequencies to make it good?
-
-//    const $loc = _GetPlayerLocation()
-
-    _AddCurrentPassageSources(contentArr);
+    _AddCurrentPassageSourcesAndSaveDomeWords(contentArr);
 
     _AddDefaultContent(contentArr);
 
     _AddPlayerDomeContent(contentArr);
     
+    console.log(contentArr);
+    
     return contentArr
 }
 
-//function _GetPlayerLocation(){
-//
-//    let $loc
-//
-//    return $loc
-//}
-
-function _AddCurrentPassageSources(contentArr){
+function _AddCurrentPassageSourcesAndSaveDomeWords(contentArr){
 
     //push copies
     
@@ -37,8 +29,19 @@ function _AddCurrentPassageSources(contentArr){
             $copiedWord.source = src.id;
             
             contentArr.push($copiedWord);
+            
+            _SaveSourceWordToUserDomeWords($copiedWord);
         }
     }
+}
+
+function _SaveSourceWordToUserDomeWords(copiedWord){
+    
+    const dwh = window.gameHandler.domeWordHandler;
+    
+    if(dwh.IsAlreadyDomeWord(copiedWord.text)) return
+    
+    SaveDomeWordToProfile(copiedWord.text,copiedWord.domeFrequency);
 }
 
 function _AddDefaultContent(contentArr){
@@ -55,7 +58,23 @@ function _AddDefaultContent(contentArr){
 
 function _AddPlayerDomeContent(contentArr){
 
-    // coming soon, push copies
+    const dwh = window.gameHandler.domeWordHandler;
+    
+    for (const dw of dwh.domeWords){
+        
+        let $match = false;
+        
+        for(const w of contentArr){
+            
+            if(w.text == dw.text) {
+                console.log(`skipping ${w.text} as already present`);
+                $match = true;
+            }
+            
+        }
+        
+        if(!$match) contentArr.push(dw);
+    }
 }
 
 // validate number of contents passed

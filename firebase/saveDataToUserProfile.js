@@ -20,3 +20,25 @@ export function MemorizePoemToProfile(poemText) {
 
   return update(ref(db), updates);
 }
+
+export function SaveDomeWordToProfile(text,frequency) {
+  const db = getDatabase();
+
+  // A post entry.
+  const postData = {
+    uid: window.uid,
+    text: text,
+    frequency: frequency,  
+    learnDate: Date.now(),
+
+  };
+
+  // Get a key for a new Post.
+  const newWordKey = push(child(ref(db), 'domeWords ')).key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  const updates = {};
+  updates['/users/' + window.uid + `/domeWords/` + newWordKey + `/` ] = postData;
+
+  return update(ref(db), updates);
+}

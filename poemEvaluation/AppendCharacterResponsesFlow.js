@@ -72,13 +72,9 @@ function _StateIfFavePoem(charResponseHandler){
     
     const $char = window.gameHandler.characterHandler.GetCharacterById(charResponseHandler.characterId);
     
-    console.log(GetPoemFromPoemCreatorOutput());
-    
     const $favAllTime = $char.GetFavoriteAllTimePoem().poem.poemText;
     
     const $favRecent = $char.GetFavoriteRecentPoem().poem.poemText;
-    
-    console.log($favRecent);
     
     if(GetPoemFromPoemCreatorOutput() == $favAllTime){
         

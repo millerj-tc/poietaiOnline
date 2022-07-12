@@ -61,12 +61,12 @@ export function InitializeWorldPassages(){
     const hotApartmentSrc = hotApartment.AddSource("hotApartment");
 
     hotApartmentSrc.SetAllusionWords([
-        {text:"sweet",frequency:2.5},
-        {text:"sweat",frequency:2.5},
-        {text:"winks",frequency:2.5},
-        {text:"sipping",frequency:2.5},
-        {text:"old",frequency:3},
-        {text:"silver",frequency:3},
+        {text:"sweet",frequency:2.5,domeFrequency: 0.75},
+        {text:"sweat",frequency:2.5,domeFrequency: 0.75},
+        {text:"winks",frequency:2.5,domeFrequency: 0.6},
+        {text:"sipping",frequency:2.5,domeFrequency: 0.4},
+        {text:"old",frequency:3,domeFrequency: 0.85},
+        {text:"silver",frequency:3,domeFrequency: 0.70},
     ]);
     
     hotApartment.passageFxHandler.AddCharacterResponse("yselda",
@@ -134,12 +134,12 @@ export function InitializeWorldPassages(){
     const hotApartmentCourtyardSrc = hotApartmentCourtyard.AddSource("hotApartmentCourtyard");
     
     hotApartmentCourtyardSrc.SetAllusionWords([
-        {text:"barrowwillows",frequency:3},
-        {text:"wobbling",frequency:3},
-        {text:"burden",frequency:3},
-        {text:"glittering",frequency:3},
-        {text:"bricks",frequency:3},
-        {text:"roll",frequency:3},
+        {text:"barrowwillows",frequency:3,domeFrequency: 0.33},
+        {text:"wobbling",frequency:3,domeFrequency: 0.4},
+        {text:"burden",frequency:3,domeFrequency: 0.78},
+        {text:"glittering",frequency:3,domeFrequency: 0.72},
+        {text:"bricks",frequency:3,domeFrequency: 0.6},
+        {text:"roll",frequency:3,domeFrequency: 0.68},
     ]);
     
     const $berinBarrowwillowResponse = hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
@@ -200,12 +200,12 @@ export function InitializeWorldPassages(){
     const yseldasKitchensSrc = yseldasKitchens.AddSource("yseldasKitchens");
 
     yseldasKitchensSrc.SetAllusionWords([
-        {text:"vigor",frequency:2},
-        {text:"simmer",frequency:2},
-        {text:"cooks",frequency:2},
-        {text:"teetering",frequency:2},
-        {text:"wafting",frequency:2},
-        {text:"kindness",frequency:2},
-        {text:"vim",frequency:2},
+        {text:"vigor",frequency:2.5,domeFrequency: 0.5},
+        {text:"simmer",frequency:2.5,domeFrequency: 0.4},
+        {text:"cooks",frequency:2.5,domeFrequency: 0.6},
+        {text:"teetering",frequency:2.5,domeFrequency: 0.4},
+        {text:"wafting",frequency:2.5,domeFrequency: 0.42},
+        {text:"kindness",frequency:2.5,domeFrequency: 0.75},
+        {text:"vim",frequency:2.5,domeFrequency: 0.4},
     ]);
 }

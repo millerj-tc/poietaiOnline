@@ -1,4 +1,4 @@
-import {MemorizePoemToProfile} from "./../../firebase/firebaseMemorizePoemToUserProfile.js";
+import {MemorizePoemToProfile} from "./../../firebase/saveDataToUserProfile.js";
 import {GetElementById} from "./../../ui.js";
 import {GetPoemHTMLFromPoemCreatorOutput} from "./../poemCreatorUtils.js";
 

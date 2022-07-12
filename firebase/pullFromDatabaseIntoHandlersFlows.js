@@ -16,3 +16,15 @@ function _ParsePoemText(data,poemObjArr){
         window.gameHandler.poemMemoryHandler.AddPoemToMemory(pulledPoemObj.poemText,poemObjString);
     }
 }
+
+export function PullDomeWordsFromDBIntoMindFlow(data){
+    
+    const domeObjArr = data;
+    
+    for(const domeObjString in domeObjArr){
+        
+        const pulledDomeObj = data[domeObjString];
+        
+        window.gameHandler.domeWordHandler.AddDomeWord(pulledDomeObj.text,pulledDomeObj.frequency,domeObjString);
+    }
+}
