@@ -1,6 +1,7 @@
 import {AppendToDivOnce} from "./../navigation/passageFX.js";
 import {InsertUsedKeywords} from "./poemEvaluationUtils.js";
 import {GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
+import {GetPoemFromNavigationOutputPlayerPoemSpeak} from "./../navigation/navigationUtils.js";
 
 export function AppendCharacterResponsesFlow(){
 
@@ -76,15 +77,11 @@ function _StateIfFavePoem(charResponseHandler){
     
     const $favRecent = $char.GetFavoriteRecentPoem().poem.poemText;
     
-    if(GetPoemFromPoemCreatorOutput() == $favAllTime){
-        
-        console.log("all time fave");
+    if(GetPoemFromNavigationOutputPlayerPoemSpeak() == $favAllTime){
         
         return $char.bestPoemEver + "<br><br>";
     }
-    else if(GetPoemFromPoemCreatorOutput() == $favRecent){
-        
-        console.log("best recent"); 
+    else if(GetPoemFromNavigationOutputPlayerPoemSpeak() == $favRecent){
         
         return $char.bestRecentPoem + "<br><br>";
     }

@@ -65,11 +65,9 @@ export function GetPoemFromNavigationOutputPlayerPoemSpeak(){
     
     let $returnString = "";
     
-    const $navOutput = GetElementById("navigationOutputPlayerPoemSpeak");
+    const $navOutput = GetElementById("recitePoemText");
     
     $returnString = $navOutput.innerText;
-    
-    $returnString = $returnString.replace(`You recite:\n"`,"");
     
     return $returnString
 }
