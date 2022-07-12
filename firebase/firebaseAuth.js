@@ -106,7 +106,7 @@ export function SignOut(){
 
     const auth = getAuth();
     signOut(auth).then(() => {
-      // Sign-out successful.
+      location.reload();
     }).catch((error) => {
       // An error happened.
     });

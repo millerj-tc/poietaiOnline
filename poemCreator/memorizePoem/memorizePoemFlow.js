@@ -6,7 +6,7 @@ export function MemorizePoemFlow(){
     
     _AddMemorizeActionToLogger();
     
-    window.alert("Memorized! Open the tray at the bottom of the window with the /\ button to see memorized poems.");
+    window.alert("Memorized! Open the tray at the bottom of the window with the /\\ button to see memorized poems.");
     
     //** _CheckIfRememberSlotsAreFull();
     
