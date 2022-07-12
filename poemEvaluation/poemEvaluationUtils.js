@@ -1,4 +1,6 @@
 import {GetPoemFromPoemCreatorOutput,RestoreSpacesBeforePunctuationAndStripCarriageReturns} from "./../poemCreator/poemCreatorUtils.js";
+import {GetPoemFromNavigationOutputPlayerPoemSpeak} from "./../navigation/navigationUtils.js";
+import {CreateElement} from "./../ui.js";
 
 export function InsertUsedKeywords(text,keyWordsArr,mode = "plaintext"){
     
@@ -15,7 +17,7 @@ export function GetMatchedKeywords(keywordsArr,unique = true){
     
     if(keywordsArr == null || !Array.isArray(keywordsArr)) return
     
-    let $poemText = GetPoemFromPoemCreatorOutput();
+    let $poemText = GetPoemFromNavigationOutputPlayerPoemSpeak();
     
     $poemText = RestoreSpacesBeforePunctuationAndStripCarriageReturns($poemText);
     
@@ -55,4 +57,13 @@ function _GetPlaintextListOfUsedKeywords(matchedKeywordsArr){
     }
     
     return $returnString
+}
+
+export function ConvertStringWithHTMLToPlainText(string){
+    
+    const $virtualDOM = CreateElement("div");
+    
+    $virtualDOM.innerHTML = string;
+    
+    return $virtualDOM.innerText;
 }

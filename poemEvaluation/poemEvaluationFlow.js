@@ -4,12 +4,13 @@ import {PoemReciterTrayClose,CapitalizeLettersAfterAppropriatePunctuation,PoemCr
 import {ParseNavigationText} from "./../navigation/navigationUtils.js";
 import {AppendCharacterResponsesFlow} from "./AppendCharacterResponsesFlow.js";
 import {HeardPoemToCharacterDatabaseEntry} from "./../firebase/characterDatabaseValues.js";
+import {ConvertStringWithHTMLToPlainText} from "./poemEvaluationUtils.js";
 
 export function PoemEvaluationFlow(poem){
     
     const $poemText = _GetPoemCreatorPoemIfArgIsNull(poem);
     
-    _PresentCharactersHearPoemStoreToDatabase();
+    _PresentCharactersHearPoemStoreToDatabase($poemText);
     
     _PresentCharactersConvertFaveTextToFaveLink();
     
@@ -41,9 +42,9 @@ function _StoreRecitedPoemTextToActionLogger(poemText){
     window.gameHandler.actionLogger.AddAction(`Recite poem`,poemText);
 }
 
-function _PresentCharactersHearPoemStoreToDatabase(){
+function _PresentCharactersHearPoemStoreToDatabase(poemText){
     
-    const $poemText = GetPoemFromPoemCreatorOutput();
+    const $poemText = ConvertStringWithHTMLToPlainText(poemText);
     
     const $currPassage = window.gameHandler.passageHandler.currentPassage;
     
