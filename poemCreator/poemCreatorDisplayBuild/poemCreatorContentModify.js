@@ -77,8 +77,6 @@ function _RollUntilFulfillN(modWrapArr,n,preloadedModWrapArr){
     let modN = n - $returnArr.length;
     
     for(const wrap of modWrapArr){
-        
-        console.log(`${wrap.content.text}: ${wrap.rollFloor}-${wrap.rollCeiling} (${wrap.modifiedFrequency/1})`);
     }
     
     while(i < modN){
@@ -98,8 +96,6 @@ function _RollUntilFulfillN(modWrapArr,n,preloadedModWrapArr){
                     
                     break
                 }
-                
-                console.log(`matching ${modWrap.content.text} on roll ${$roll}`);
 
                 $returnArr.push(modWrap);
                 i++;

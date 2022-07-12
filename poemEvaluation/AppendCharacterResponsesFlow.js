@@ -31,6 +31,10 @@ function _LoadTriggeredResponses(charResponseHandler){
         
         if(!response.conditionHandler.Evaluate()) continue
         
+        window.gameHandler.actionLogger.AddAction(`>>>` + response.actionLoggerString,response.actionLoggerDetails)
+        
+        console.log(window.gameHandler.actionLogger);
+        
         $returnArr.push(response);
     }
     
@@ -43,9 +47,13 @@ function _GetCharacterResponseString(triggeredResponses,charResponseHandler){
     
     let $charRespoArr = triggeredResponses;
     
-    if($charRespoArr.length == 0){ 
+    if($charRespoArr.length == 0){
         
-         let $responseString = InsertUsedKeywords(charResponseHandler.defaultResponse.text,charResponseHandler.defaultResponse.keywordsArr);
+        const $defaultResponse = charResponseHandler.defaultResponse;
+        
+         let $responseString = InsertUsedKeywords($defaultResponse.text,$defaultResponse.keywordsArr);
+        
+        window.gameHandler.actionLogger.AddAction(`>>>` + $defaultResponse.actionLoggerString,$defaultResponse.actionLoggerDetails)
         
         return $responseString + "<br><br>"
     }

@@ -71,28 +71,38 @@ export function InitializeWorldPassages(){
         {text:"silver",frequency:1.8,domeFrequency: 0.70},
     ]);
     
-    hotApartment.passageFxHandler.AddCharacterResponse("yselda",
-        `"Oh yes, I know you see me and think 'ancient'. Now '{{keywords}}'. 'Chronowasted', some have even said!"<br><br>"I've heard it all, Clichéd ${playerName}. Maybe take it a different direction next time? Heh heh heh."`, ["silver","old","grayed"])
-        .conditionHandler.AddConditionGroup("or")
+    const $pfxYseldaOldRespo = hotApartment.passageFxHandler.AddCharacterResponse("yselda",
+        `"Oh yes, I know you see me and think 'ancient'. Now '{{keywords}}'. 'Chronowasted', some have even said!"<br><br>"I've heard it all, Clichéd ${playerName}. Maybe take it a different direction next time? Heh heh heh."`, ["silver","old","grayed"]);
+    
+    $pfxYseldaOldRespo.conditionHandler.AddConditionGroup("or")
         .AddCondition(PoemTextContainsWord,"poemCreator","silver")
         .AddCondition(PoemTextContainsWord,"poemCreator","old")
         .AddCondition(PoemTextContainsWord,"poemCreator","grayed");
     
-    hotApartment.passageFxHandler.AddCharacterResponse("yselda",
+    $pfxYseldaOldRespo.SetActionLoggerString("yseldaOldResponse");
+    
+    const $pfxYseldaBerinRespo = hotApartment.passageFxHandler.AddCharacterResponse("yselda",
         `"{{middle|And }} Berin got ahold of you, eh? One of my all time favorites and now they've inspired you too. It's wonderful to connect with people, isn't it?"`
     )
-        .conditionHandler.AddConditionGroup("and")
+    
+    $pfxYseldaBerinRespo.conditionHandler.AddConditionGroup("and")
         .AddCondition(PoemTextContainsWord,"poemCreator","BERIN");
     
-    hotApartment.passageFxHandler.AddCharacterResponse("yselda",
+    $pfxYseldaBerinRespo.SetActionLoggerString("yseldaBerinResponse");
+    
+    const $pfxYseldaKeysRespo = hotApartment.passageFxHandler.AddCharacterResponse("yselda",
         `"'Keys'{{last| you mentioned as well}}, yes, 'keys'...Wait a second, where are my keys? Oh my oh my...." Yselda scooters away.`
-    )
-        .conditionHandler.AddConditionGroup("and")
+    );
+    
+    $pfxYseldaKeysRespo.conditionHandler.AddConditionGroup("and")
         .AddCondition(PoemTextContainsWord,"poemCreator","keys");
     
-    hotApartment.passageFxHandler.AddCharacterDefaultResponse("yselda",
+    $pfxYseldaKeysRespo.SetActionLoggerString("yseldaKeysResponse");
+    
+    const $pfxYseldaDefaultRespo = hotApartment.passageFxHandler.AddCharacterDefaultResponse("yselda",
     `"I shall consider this, clever ${playerName}. Thank you for sharing with me."`);
     
+    $pfxYseldaDefaultRespo.SetActionLoggerString("yseldaDefaultResponse");
     hotApartment.passageFxHandler.AddPassageFx(AppendToDivOnce,"courtyardButton",`[[Courtyard|hotApartmentCourtyard]]`);
     
     /// HOT APARTMENT COURTYARD
@@ -144,21 +154,25 @@ export function InitializeWorldPassages(){
         {text:"roll",frequency:1.6,domeFrequency: 0.68},
     ]);
     
-    const $berinBarrowwillowResponse = hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
+    const $pfxBerinBarrowwillowResponse = hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
         `
         "I love the barrowwillows here - they are probably hundreds of years old, brought over from Xosa before the cataclysm. Barrowwillow berries are poisonous of course, but if you make a tea of the stems you can see sights that are beyond description."
                                                                `,[]);
-        const $barrowwillowsCon = $berinBarrowwillowResponse.conditionHandler.AddConditionGroup("and");
+        const $barrowwillowsCon = $pfxBerinBarrowwillowResponse.conditionHandler.AddConditionGroup("and");
         $barrowwillowsCon.AddCondition(PoemTextContainsWord,"poemCreator","barrowwillows");
     
-    hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
+    $pfxBerinBarrowwillowResponse.SetActionLoggerString("berinBarrowwillowsResponse");
+    
+    const $pfxBerinBerinRespo = hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
         `
         "A poem about BERIN themself! There is no end to what one could say about Berin. The trick is to believe in yourself -- then you too can be an endless font. Perhaps you will get there some day -- BAHAHAHAHAHA -- I know you will! I look forward to it."
-                                                               `,[])
-        .conditionHandler.AddConditionGroup("and")
+                                                               `,[]);
+    $pfxBerinBerinRespo.conditionHandler.AddConditionGroup("and")
         .AddCondition(PoemTextContainsWord,"poemCreator","BERIN");
     
-    hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
+    $pfxBerinBerinRespo.SetActionLoggerString("berinBerinResponse");
+    
+    const $pfxBerinBriefResponse = hotApartmentCourtyard.passageFxHandler.AddCharacterResponse("berin",
         `
         "Brevity you've brought me {{last|as well}} I see, then I shall supply the wit -- BRAHAHAHAHOOHA!"<br><br>
 
@@ -169,14 +183,18 @@ export function InitializeWorldPassages(){
         "...which of course brought us to our ruin, but also closer together. I tell you, I will never provoke a Time Koala again."
 
         
-                                                               `,[])
-        .conditionHandler.AddConditionGroup("and")
+                                                               `,[]);
+    $pfxBerinBriefResponse.conditionHandler.AddConditionGroup("and")
         .AddCondition(PoemLength,"poemCreator","<=",5);
     
-    hotApartmentCourtyard.passageFxHandler.AddCharacterDefaultResponse("berin",
+    $pfxBerinBriefResponse.SetActionLoggerString("berinBriefResponse");
+    
+    const $pfxBerinDefaultRespo = hotApartmentCourtyard.passageFxHandler.AddCharacterDefaultResponse("berin",
         `
         "Lovely, Poietai, just lovely. For that I shall share a beautiful poem as well: BERIN!! Didn't you know? For one great as me, merely uttering my name IS poetry -- BAHAHAHAHA! Good fun, good fun."
                                                                       `);
+    
+    $pfxBerinDefaultRespo.SetActionLoggerString("berinDefaultResponse");
     
     hotApartmentCourtyard.passageFxHandler.AddPassageFx(AddAllusionWordToSource,{text:"BERIN",frequency:3.25},hotApartmentCourtyardSrc)
         .conditionHandler.AddConditionGroup("and")

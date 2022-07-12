@@ -20,9 +20,9 @@ export function PoemEvaluationFlow(poem){
     
     const $srcPkgArr = _GetAlludedSources($wordArr);
     
-     _PassageFXEvaluate();
-    
      _AppendToNavOutput($poemText);
+    
+    _PassageFXEvaluate();
     
     _ScrollToRecitationSpan();
     

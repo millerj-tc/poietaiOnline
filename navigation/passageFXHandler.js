@@ -5,11 +5,18 @@ class passageFx
     constructor(fxHandlerOwner,FxFunc,arg0,arg1,arg2){
         
         this.fxHandlerOwner = fxHandlerOwner;
+        this.actionLoggerString = "";
+        this.actionLoggerDetails = "";
         this.FxFunc = FxFunc;
         this.conditionHandler = new conditionHandler();
         this.arg0 = arg0;
         this.arg1 = arg1;
         this.arg2 = arg2;
+    }
+    
+    SetActionLoggerString(string){
+        
+        this.actionLoggerString = string;
     }
 }
 
@@ -20,6 +27,13 @@ class characterResponse
         this.text = text;
         this.keywordsArr = keywordsArr;
         this.conditionHandler = new conditionHandler();
+        this.actionLoggerString = "";
+        this.actionLoggerDetails = "";
+    }
+    
+    SetActionLoggerString(string){
+        
+        this.actionLoggerString = string;
     }
 }
 
@@ -104,8 +118,12 @@ export class passageFxHandler
         
         for(const fx of this.passageFxs){
             
-            if(fx.conditionHandler.Evaluate()){ 
+            if(fx.conditionHandler.Evaluate()){
+                
+                if(fx.actionLoggerString != "") this._ReportToActionLogger(`>>>` + fx.actionLoggerString,fx.actionLogerDetails);
+                
                 fx.FxFunc(fx.arg0,fx.arg1,fx.arg2);
+                
                 return
             }
         }
@@ -113,5 +131,10 @@ export class passageFxHandler
         if(this.defaultFx != null){
             this.defaultFx.FxFunc(this.defaultFx.arg0,this.defaultFx.arg1,this.defaultFx.arg2);
         }
+    }
+    
+    _ReportToActionLogger(string,details=""){
+        
+        window.gameHandler.actionLogger.AddAction(string,details);
     }
 }
