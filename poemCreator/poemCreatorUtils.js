@@ -55,15 +55,15 @@ export function RestoreSpacesBeforePunctuationAndStripCarriageReturns(poemText){
     
     let $poemText = poemText.slice();
     
-    if($poemText.match(/\.|,|!|\?|\[|]/gm) != null){
+    if($poemText.match(/\.|,|!|\?|\[|]|\"|\'/gm) != null){
     
-        for(const match of $poemText.match(/\.|,|!|\?|\[|]/gm)){
+        for(const match of $poemText.match(/\.|,|!|\?|\[|]|\"|\'/gm)){
 
             $poemText = $poemText.replace(match, " " + match);
         }
     }
     
-    $poemText = $poemText.replace(/\n/gm,"");
+    $poemText = $poemText.replace(/\n/gm," ");
     
     return $poemText;
 }

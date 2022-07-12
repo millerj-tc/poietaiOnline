@@ -60,3 +60,16 @@ export function AttachEventListenersDOMs(DOMId){
         }
     }
 }
+
+export function GetPoemFromNavigationOutputPlayerPoemSpeak(){
+    
+    let $returnString = "";
+    
+    const $navOutput = GetElementById("navigationOutputPlayerPoemSpeak");
+    
+    $returnString = $navOutput.innerText;
+    
+    $returnString = $returnString.replace(`You recite:\n"`,"");
+    
+    return $returnString
+}

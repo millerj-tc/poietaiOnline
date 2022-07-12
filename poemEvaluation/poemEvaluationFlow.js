@@ -138,7 +138,7 @@ function _AppendToNavOutput(poem){
     
     let $poemText = ReplaceNReturnWithBr(poem);
     
-    let $recitationText = `You recite:<br> "` + $poemText + `."<br><br>`;
+    let $recitationText = `You recite:<br> "` + $poemText + `"<br><br>`;
     
     const $navOutput = GetElementById("navigationOutput");
     

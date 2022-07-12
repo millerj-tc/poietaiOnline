@@ -1,11 +1,11 @@
 import {RestoreSpacesBeforePunctuationAndStripCarriageReturns} from "./../poemCreator/poemCreatorUtils.js";
-import {GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
+import {GetPoemFromNavigationOutputPlayerPoemSpeak} from "./../navigation/navigationUtils.js";
 
 export function PoemTextContainsWord(poem = "poemCreator",condWord){
     
     let $poemText;
     
-    if(poem == "poemCreator") $poemText = GetPoemFromPoemCreatorOutput();
+    if(poem == "poemCreator") $poemText = GetPoemFromNavigationOutputPlayerPoemSpeak();
     else $poemText = poem.slice();
     
     $poemText = RestoreSpacesBeforePunctuationAndStripCarriageReturns($poemText);
@@ -20,7 +20,7 @@ export function PoemLength(poem = "poemCreator",comparison,length){
     
     let $poemText;
     
-    if(poem == "poemCreator") $poemText = GetPoemFromPoemCreatorOutput();
+    if(poem == "poemCreator") $poemText = GetPoemFromNavigationOutputPlayerPoemSpeak();
     else $poemText = poem.slice();
     
     let $wordCount = 0;
