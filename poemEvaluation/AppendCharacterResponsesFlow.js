@@ -87,9 +87,13 @@ function _StateIfFavePoem(charResponseHandler){
     
     if(GetPoemFromNavigationOutputPlayerPoemSpeak() == $favAllTime){
         
+        window.gameHandler.actionLogger.AddAction(">>>fave all time!",$favAllTime);
+        
         return $char.bestPoemEver + "<br><br>";
     }
     else if(GetPoemFromNavigationOutputPlayerPoemSpeak() == $favRecent){
+        
+        window.gameHandler.actionLogger.AddAction(">>>fave recent!",$favRecent);
         
         return $char.bestRecentPoem + "<br><br>";
     }
