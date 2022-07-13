@@ -27,9 +27,21 @@ export function PoemLength(poem = "poemCreator",comparison,length){
     
     $poemText = RestoreSpacesBeforePunctuationAndStripCarriageReturns($poemText);
     
+    const $uncountedWords = ["/","",",",".","—","|","[","]","?","!"];
+    
     for(const word of $poemText.split(" ")){
         
-        if(word.match(/\w*/gm)) $wordCount++
+        let $match = false;
+        
+        for(const uncountedWord of $uncountedWords){
+            
+            if(word == uncountedWord) {
+                $match = true;
+                break
+            }
+        }
+        
+        if(!$match) $wordCount++
     }
     
     if(comparison == "<=" && $wordCount <= length) return true

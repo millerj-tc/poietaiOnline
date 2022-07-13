@@ -27,6 +27,17 @@ export const defaultPoemContent =
     },
     
     {
+       text: "|",
+       frequency: 0.35,
+    },
+    
+    {
+       text: "multiDiv",
+       texts:["[","]"],
+       frequency: -1.00,
+    },
+    
+    {
        text: "was",
        frequency: 0.80,
     },
@@ -170,15 +181,4 @@ export const defaultPoemContent =
        text: "coiled",
        frequency: 0.5,
     },
-    
-    {
-       text: "|",
-       frequency: 0.35,
-    },
-    
-    {
-       text: "multiDiv",
-       texts:["[","]"],
-       frequency: -1.00,
-    }
 ]
