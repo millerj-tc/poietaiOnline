@@ -39,7 +39,8 @@ function _PassPoemsToCharacterObj(data,characterObj){
 
     for(const poemObjString in poemObjArr){
         
-        const pulledPoemObj = poemObjArr[poemObjString];        
+        const pulledPoemObj = poemObjArr[poemObjString]; 
+
         characterObj.AddHeardPoem(pulledPoemObj.poemText,poemObjString,pulledPoemObj.heardPoemDate,pulledPoemObj.reciterName);
     }
 }

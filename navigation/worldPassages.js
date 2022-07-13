@@ -248,11 +248,9 @@ export function InitializeWorldPassages(){
         This mystery and more await you.<br>
         All you have to do is take a step.<br><br>
 
-        But before you can...a familiar friend approaches. Tall and tall and grinning — Nodasol the Wanderer.<br><br>
+        <span id='navigationOutputPlayerPoemSpeak'></span><span id='nodasolResponse'>But before you can...a familiar friend approaches. Tall and tall and grinning — Nodasol the Wanderer.<br><br>
 
-        <span id='navigationOutputPlayerPoemSpeak'></span>
-
-        <span id='nodasolResponse'>"Hail, Poietai."</span><br><br>
+        "Hail, Poietai."</span><br><br>
 
         [[Back to Yselda's courtyard|hotApartmentCourtyard]]<br><br>
 
