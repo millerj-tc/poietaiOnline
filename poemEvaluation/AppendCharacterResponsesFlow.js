@@ -79,6 +79,8 @@ function _StateIfFavePoem(charResponseHandler){
     
     const $char = window.gameHandler.characterHandler.GetCharacterById(charResponseHandler.characterId);
     
+    if($char.GetFavoriteAllTimePoem() == null) return ""
+    
     const $favAllTime = $char.GetFavoriteAllTimePoem().poem.poemText;
     
     const $favRecent = $char.GetFavoriteRecentPoem().poem.poemText;
@@ -117,6 +119,11 @@ function _ParseFirstResponseString(text){
 function _RemoveFirstSections(text){
     
     return text.replace(/\{\{first\|.*\}\}/gm,"");
+}
+
+function _RemoveNotFirstSections(text){
+    
+    return text.replace(/\{\{notFirst\|.*\}\}/gm,"");
 }
 
 function _ParseMiddleResponseString(text){
