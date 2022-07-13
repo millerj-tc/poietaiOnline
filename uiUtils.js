@@ -6,6 +6,8 @@ export function TogglePoemCreatorTrayCollapsed(){
     
     const $tray = GetElementById("poemCreatorTray");
     
+    if($tray.dataset.transitioning == "true") return
+    
     const $trayTop = $tray.getBoundingClientRect().y;
     
     const $button = GetElementById("poemCreatorTrayCollapseToggler");
@@ -37,6 +39,8 @@ export function PoemCreatorTrayClose(){
     const $grid = GetElementById("poemCreatorGrid");
 
     $tray.addEventListener('transitionend', _ClearPoemCreatorGridOnCollapse);
+    
+    TransitioningBool($tray,true);
 }
 
 function _ClearPoemCreatorGridOnCollapse(){
@@ -44,6 +48,8 @@ function _ClearPoemCreatorGridOnCollapse(){
     const $output = GetElementById("poemCreatorGrid");
     
     const $tray = GetElementById("poemCreatorTray");
+    
+    $tray.dataset.transitioning = false;
     
     ClearAllChildren($output);
     
@@ -64,9 +70,14 @@ export function TogglePoemCreatorOutputCollapsed(){
         
         window.gameHandler.actionLogger.AddAction("open output tray");
         
-        $tray.style.transform = "translateY(55vh)"; ;
+        $tray.style.transform = "translateY(55vh)";
     }
     else _PoemCreatorOutputClose();
+}
+
+export function TransitioningBool(elem,trueFalse){
+    
+    elem.dataset.transitioning = trueFalse;
 }
 
 function _PoemCreatorOutputClose(){
@@ -83,6 +94,8 @@ function _PoemCreatorOutputClose(){
 export function TogglePoemReciterCollapsed(){
     
     const $tray = GetElementById("poemReciterTray");
+    
+    if($tray.dataset.transitioning == "true") return
     
     const $output = GetElementById("poemRemembererDisplay");
     
@@ -114,6 +127,8 @@ export function PoemReciterTrayClose(){
     $tray.style.transform = "translateY(0)";
 
     $tray.addEventListener('transitionend', _ClearPoemRemembererChildrenOnCollapse);
+    
+    TransitioningBool($tray,true);
 }
 
 function _ClearPoemRemembererChildrenOnCollapse(){

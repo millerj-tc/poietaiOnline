@@ -4,6 +4,7 @@ import {InitializeWorldPassages} from "./../navigation/worldPassages.js";
 import {NavigationFlow} from "./../navigation/navigationFlow.js";
 import {GetCharacterHeardPoems} from "./characterDatabaseValues.js";
 import {EstablishSession} from "./firebaseAuth.js";
+import {UiInit} from "./../uiInit.js";
 
 export function LoginFlow(){
     
@@ -44,6 +45,8 @@ export function PostUserDataRetrievalFlow(){
     //** DetermineUserLocation();
     
     NavigationFlow("hotApartment");
+    
+    UiInit();
     
     window.gameHandler.loggingIn = false;
 }
