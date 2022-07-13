@@ -1,16 +1,18 @@
 import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM,SetInnerTextTo,ScrollIntoView} from "./../ui.js";
 import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuationAndStripCarriageReturns,GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
 import {PoemReciterTrayClose,CapitalizeLettersAfterAppropriatePunctuation,PoemCreatorTrayClose,ReplaceNReturnWithBr} from "./../uiUtils.js";
-import {ParseNavigationText} from "./../navigation/navigationUtils.js";
+import {ParseNavigationText,GetPoemFromNavigationOutputPlayerPoemSpeak} from "./../navigation/navigationUtils.js";
 import {AppendCharacterResponsesFlow} from "./AppendCharacterResponsesFlow.js";
 import {HeardPoemToCharacterDatabaseEntry} from "./../firebase/characterDatabaseValues.js";
 import {ConvertStringWithHTMLToPlainText} from "./poemEvaluationUtils.js";
 
 export function PoemEvaluationFlow(poem){
     
-    const $poemText = _GetPoemCreatorPoemIfArgIsNull(poem);
+    let $poemText = _GetPoemCreatorPoemIfArgIsNull(poem);
     
     _AppendToNavOutput($poemText);
+    
+    $poemText = GetPoemFromNavigationOutputPlayerPoemSpeak();
     
     _PresentCharactersHearPoemStoreToDatabase($poemText);
     
