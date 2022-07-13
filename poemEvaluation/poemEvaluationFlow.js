@@ -10,6 +10,8 @@ export function PoemEvaluationFlow(poem){
     
     const $poemText = _GetPoemCreatorPoemIfArgIsNull(poem);
     
+    _AppendToNavOutput($poemText);
+    
     _PresentCharactersHearPoemStoreToDatabase($poemText);
     
     _PresentCharactersConvertFaveTextToFaveLink();
@@ -19,8 +21,6 @@ export function PoemEvaluationFlow(poem){
     const $wordArr = _ParsePoemText($poemText);
     
     const $srcPkgArr = _GetAlludedSources($wordArr);
-    
-     _AppendToNavOutput($poemText);
     
     _PassageFXEvaluate();
     
