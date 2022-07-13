@@ -209,7 +209,7 @@ export function InitializeWorldPassages(){
     const yseldasKitchens = $passageHandler.AddPassage("yseldasKitchens");
 
     yseldasKitchens.SetText(`
-        Yselda is nowhere to be found inside, you can't even make it through her kitches without her guidance<br>
+        Yselda is nowhere to be found inside, you can't even make it through her kitches without her guidance.<br>
         It's a maze of teetering piles of cookware and odd objects.<br>
         Pots and pans of belly-filling-loving-kindness simmer on the range, tended to by scores of dormouse assistants wearing tiny cook hats.<br>
         You admire their vim (perhaps even more their vigor!)<br>
@@ -241,7 +241,7 @@ export function InitializeWorldPassages(){
     yseldaRoadToSpires.SetText(`
         
         And now you see there is road and road and road,<br>
-        Unceasing — uncompromising — unknown.<br>
+        unceasing — uncompromising — unknown.<br>
         Far and tucked away in the clouds you see the tall Spires,<br>
         and wonder at their lost wonder.<br>
         Most know that they use to shine with a light like a second moon.<br>

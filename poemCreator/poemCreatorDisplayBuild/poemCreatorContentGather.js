@@ -39,8 +39,6 @@ function _SaveSourceWordToUserDomeWords(copiedWord){
     
     if(dwh.IsAlreadyDomeWord(copiedWord.text)) return
     
-    console.log(copiedWord);
-    
     SaveDomeWordToProfile(copiedWord.text,copiedWord.domeFrequency);
 }
 
