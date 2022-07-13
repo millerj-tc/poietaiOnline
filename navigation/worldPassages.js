@@ -142,7 +142,7 @@ export function InitializeWorldPassages(){
         Small spindly tables wobble under the burdens that they unfalteringly bear.<br>
         Sitting at one of the tables is Berin. They are resplendent in rolls of fat, bushy beard hairs, and twinkling eye makeup and gesture you over.<br><br>
 
-        "Regale me, Poietai, and I shall tell you something in return."<br><br>
+        <span id='navigationOutputPlayerPoemSpeak'></span><span id='berinResponse'>"Regale me, Poietai, and I shall tell you something in return."</span><br><br>
 
         [[Back inside|yseldasKitchens]]<br><br>
         [[Out into the world!|yseldaRoadToSpires]]<br><br>
