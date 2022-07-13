@@ -43,17 +43,13 @@ export function InitializeWorldPassages(){
         You smell sweat and sweet as you wake in a cozy place<br>
         -- one familiar for all the Poietai like yourself.<br><br>
 
-        You get up from your little roll up mattress while trying not to wake your slumbering peers.<br><br>
+        <span id='navigationOutputPlayerPoemSpeak'></span><span id='yseldaResponse'>You get up from your little roll up mattress while trying not to wake your slumbering peers.<br><br>
 
         Yselda walks in with a smile and hands you a mug.<br>
         She waits patiently while you finishing sipping it,<br>
         admiring the birds out the window.<br><br>
 
-        "You've gotten your winks and your water. Now pay me, itinerant one."<br><br>
-
-        <span id='navigationOutputPlayerPoemSpeak'></span>
-
-        <span id='yseldaResponse'></span>
+        "You've gotten your winks and your water. Now pay me, itinerant one."</span>
 
         <span id='courtyardButton'></span>
         <p><i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i></p><br><br>
@@ -69,8 +65,8 @@ export function InitializeWorldPassages(){
         {text:"sweat",frequency:1.2,domeFrequency: 0.75},
         {text:"winks",frequency:1.2,domeFrequency: 0.6},
         {text:"sipping",frequency:1.2,domeFrequency: 0.4},
-        {text:"old",frequency:1.8,domeFrequency: 0.85},
-        {text:"silver",frequency:1.8,domeFrequency: 0.70},
+        {text:"old",frequency:1.5,domeFrequency: 0.85},
+        {text:"silver",frequency:1.5,domeFrequency: 0.70},
     ]);
     
     const $pfxYseldaOldRespo = hotApartment.passageFxHandler.AddCharacterResponse("yselda",
@@ -142,7 +138,7 @@ export function InitializeWorldPassages(){
         Small spindly tables wobble under the burdens that they unfalteringly bear.<br>
         Sitting at one of the tables is Berin. They are resplendent in rolls of fat, bushy beard hairs, and twinkling eye makeup and gesture you over.<br><br>
 
-        <span id='navigationOutputPlayerPoemSpeak'></span><span id='berinResponse'>"Regale me, Poietai, and I shall tell you something in return."</span><br><br>
+        <span id='navigationOutputPlayerPoemSpeak'></span><span id='berinResponse'>"Regale me, Poietai, and I shall tell you something in return."<br><br></span>
 
         [[Back inside|yseldasKitchens]]<br><br>
         [[Out into the world!|yseldaRoadToSpires]]<br><br>
@@ -250,7 +246,7 @@ export function InitializeWorldPassages(){
 
         <span id='navigationOutputPlayerPoemSpeak'></span><span id='nodasolResponse'>But before you can...a familiar friend approaches. Tall and tall and grinning — Nodasol the Wanderer.<br><br>
 
-        "Hail, Poietai."</span><br><br>
+        "Hail, Poietai."<br><br></span>
 
         [[Back to Yselda's courtyard|hotApartmentCourtyard]]<br><br>
 
