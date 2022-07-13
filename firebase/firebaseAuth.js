@@ -8,7 +8,7 @@ import {GetElementById} from "./../ui.js";
 
 export function Register(){
     
-    SignOut();
+    SignOut(false);
     
     const email = GetElementById("newUserEmail").value;
     const pass = GetElementById("newUserPass").value;
@@ -102,11 +102,11 @@ Login();
 
 }
 
-export function SignOut(){
+export function SignOut(reload = true){
 
     const auth = getAuth();
     signOut(auth).then(() => {
-      location.reload();
+      if(reload) location.reload();
     }).catch((error) => {
       // An error happened.
     });
