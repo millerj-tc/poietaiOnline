@@ -261,8 +261,8 @@ export function InitializeWorldPassages(){
     yseldaRoadToSpiresSrc.SetAllusionWords([
         {text:"road",frequency:1.2,domeFrequency: 0.7},
         {text:"uncompromising",frequency:1,domeFrequency: 0.35},
-        {text:"The Spires",frequency:0.9,domeFrequency: 0.3},
-        {text:"uncompromising",frequency:1,domeFrequency: 0.35},
+        {text:"the Spires",frequency:1,domeFrequency: 0.3},
+        {text:"uncompromising",frequency:0.9,domeFrequency: 0.35},
         {text:"wonder",frequency:1.2,domeFrequency: 0.55},
         {text:"mystery",frequency:1.1,domeFrequency: 0.55},
         {text:"approach",frequency:1.2,domeFrequency: 0.55},
@@ -274,16 +274,24 @@ export function InitializeWorldPassages(){
         `"This is so close to greatness. Hmmm." He ponders. "Can't say exactly what it is, just ever so slightly off."`);
     
     $pfxNodasol68Respo.conditionHandler.AddConditionGroup("or")
-        .AddCondition(PoemLength,"==",7)
-        .AddCondition(PoemLength,"==",8);
+        .AddCondition(PoemLength,"poemCreator","==",6)
+        .AddCondition(PoemLength,"poemCreator","==",8);
     
     $pfxNodasol68Respo.SetActionLoggerString("nodasol68Respo");
     
+    const $pfxNodasol7Respo = yseldaRoadToSpires.passageFxHandler.AddCharacterResponse("nodasol",
+        `"Music to my ears..."`);
+    
+    $pfxNodasol7Respo.conditionHandler.AddConditionGroup("or")
+        .AddCondition(PoemLength,"poemCreator","==",7)
+    
+    $pfxNodasol7Respo.SetActionLoggerString("nodasol7Respo");
+    
     const $pfxNodasolBerinRespo = yseldaRoadToSpires.passageFxHandler.AddCharacterResponse("nodasol",
-        `"Aha, so old Berin is at Yselda's, eh? I saw our old friend Brick recently, I shall have to pass on his regards."`);
+        `"Aha, so old Berin is at Yselda's, eh? I saw our friend Brick recently, I shall have to pass on his regards."`);
     
     $pfxNodasolBerinRespo.conditionHandler.AddConditionGroup("and")
-        .AddCondition(PoemTextContainsWord,"poemCreator","BERIN");
+        .AddCondition(PoemTextContainsWord,"poemCreator","berin");
     
     $pfxNodasolBerinRespo.SetActionLoggerString("nodasolBerinRespo");
     
@@ -296,11 +304,13 @@ export function InitializeWorldPassages(){
     $pfxNodasolBarrowwillowsRespo.SetActionLoggerString("nodasolBarrowwillowsRespo");
     
     const $pfxNodasolFoodRespo = yseldaRoadToSpires.passageFxHandler.AddCharacterResponse("nodasol",
-        `"Goodness gracious, I'm so hungry! I'm sure the dormice are cooking something delightfilling."`);
+        `"Goodness gracious, I'm so hungry! I'm sure Yselsa's dormice are cooking something delightfilling."`);
     
     const $nodasolsolFoodRespoCond = $pfxNodasolFoodRespo.conditionHandler.AddConditionGroup("or")
         .AddCondition(PoemTextContainsWord,"poemCreator","cooks")
         .AddCondition(PoemTextContainsWord,"poemCreator","simmer")
+        .AddCondition(PoemTextContainsWord,"poemCreator","licked")
+        .AddCondition(PoemTextContainsWord,"poemCreator","ate")
         .AddCondition(PoemTextContainsWord,"poemCreator","sweet");
     
     const $addDelightfilling = yseldaRoadToSpires.passageFxHandler.AddPassageFx(AddAllusionWordToSource,{text:"delightfilling",frequency:1.25,domeFrequency: 0.35},yseldaRoadToSpiresSrc);
@@ -322,6 +332,7 @@ export function InitializeWorldPassages(){
     $nodasol.AddPoemEvalMetric(5,PoemLength,"<=",6);
     $nodasol.AddPoemEvalMetric(20,PoemLength,"==",7);
     $nodasol.AddPoemEvalMetric(5,PoemLength,">=",8);
+    $nodasol.AddPoemEvalMetric(-15,PoemTextContainsWord,"uncompromising");
     $nodasol.AddPoemEvalMetric(8,PoemTextContainsWord,"wafting");
     $nodasol.AddPoemEvalMetric(8,PoemTextContainsWord,"vim");
     $nodasol.AddPoemEvalMetric(5,PoemTextContainsWord,"barrowwillows");
