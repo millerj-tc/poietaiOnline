@@ -1,18 +1,19 @@
-import {GetElementById} from "./ui.js";
-import {TransitioningBool} from "./uiUtils.js";
+import {GetElementById,ClearAllChildren} from "./ui.js";
 
 export function UiInit(){
     
     const $outputTray = GetElementById("poemCreatorOutputTray");
     
-    const $creatorTray = GetElementById("poemCreatorOutputTray");
+    $outputTray.dataset.startTop = $outputTray.getBoundingClientRect().top;
+        
+    const $creatorTray = GetElementById("poemCreatorTray");
+    
+    $creatorTray.dataset.startTop = $creatorTray.getBoundingClientRect().top;
     
     const $reciterTray = GetElementById("poemReciterTray");
     
-    $outputTray.addEventListener("transitionend",TransitioningBool($outputTray,false));
+    $reciterTray.dataset.startTop = $reciterTray.getBoundingClientRect().top;
     
-    $creatorTray.addEventListener("transitionend",TransitioningBool($creatorTray,false));
-    
-    $reciterTray.addEventListener("transitionend",function(){TransitioningBool($reciterTray,false)});    
+    console.error("just do it time based with some kind of cross check")
 
 }

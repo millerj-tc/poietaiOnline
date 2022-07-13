@@ -2,17 +2,21 @@ import {GetElementById,ClearAllChildren,CreateElement,SetInnerTextTo} from "./ui
 import {poemRemembererShowPoems} from "./poemRememberer/poemRemembererShowPoems.js";
 import {poemCreatorDisplayFlow} from "./poemCreator/poemCreatorDisplayBuild/poemCreatorDisplayFlow.js";
 
+function _GetTrayAtStartPos(trayElem){
+    
+    console.log(`${trayElem.dataset.startTop} vs ${trayElem.getBoundingClientRect().top}`);
+    
+    if(trayElem.dataset.startTop == trayElem.getBoundingClientRect().top) return true
+    else return false
+}
+
 export function TogglePoemCreatorTrayCollapsed(){
     
     const $tray = GetElementById("poemCreatorTray");
-    
-    if($tray.dataset.transitioning == "true") return
-    
-    const $trayTop = $tray.getBoundingClientRect().y;
-    
+        
     const $button = GetElementById("poemCreatorTrayCollapseToggler");
     
-    if($trayTop < -300){
+    if(_GetTrayAtStartPos($tray)){
         
         $button.innerHTML = `/\\`;
         
@@ -29,6 +33,8 @@ export function TogglePoemCreatorTrayCollapsed(){
 export function PoemCreatorTrayClose(){
     
     const $tray = GetElementById("poemCreatorTray");
+    
+    if(_GetTrayAtStartPos($tray)) return
         
     const $button = GetElementById("poemCreatorTrayCollapseToggler");
     
@@ -37,34 +43,15 @@ export function PoemCreatorTrayClose(){
     $tray.style.transform = "translateY(0)"
 
     const $grid = GetElementById("poemCreatorGrid");
-
-    $tray.addEventListener('transitionend', _ClearPoemCreatorGridOnCollapse);
-    
-    TransitioningBool($tray,true);
-}
-
-function _ClearPoemCreatorGridOnCollapse(){
-    
-    const $output = GetElementById("poemCreatorGrid");
-    
-    const $tray = GetElementById("poemCreatorTray");
-    
-    $tray.dataset.transitioning = false;
-    
-    ClearAllChildren($output);
-    
-    $tray.removeEventListener('transitionend', _ClearPoemCreatorGridOnCollapse);
 }
 
 export function TogglePoemCreatorOutputCollapsed(){
     
     const $tray = GetElementById("poemCreatorOutputTray");
-    
-    const $trayTop = $tray.getBoundingClientRect().y;
-    
+        
     const $button = GetElementById("poemCreatorOutputCollapseToggler");
     
-    if($trayTop < -400){
+    if(_GetTrayAtStartPos($tray)){
         
         $button.innerHTML = `/\\`;
         
@@ -73,13 +60,6 @@ export function TogglePoemCreatorOutputCollapsed(){
         $tray.style.transform = "translateY(55vh)";
     }
     else _PoemCreatorOutputClose();
-}
-
-export function TransitioningBool(elem,trueFalse){
-    
-    console.trace();
-    
-    elem.dataset.transitioning = trueFalse;
 }
 
 function _PoemCreatorOutputClose(){
@@ -105,7 +85,7 @@ export function TogglePoemReciterCollapsed(){
     
     const $button = GetElementById("poemReciterCollapseToggler");
     
-    if($trayBottom > $screenBottom){
+    if(_GetTrayAtStartPos($tray)){
         
         $button.innerHTML = `\\/`;
         
@@ -120,28 +100,13 @@ export function PoemReciterTrayClose(){
     
     const $tray = GetElementById("poemReciterTray");
     
-    if($tray.style.transform == "translateY(0)") return
+    if(_GetTrayAtStartPos($tray)) return
     
     const $button = GetElementById("poemReciterCollapseToggler");
     
     $button.innerHTML = "/\\";
         
     $tray.style.transform = "translateY(0)";
-
-    $tray.addEventListener('transitionend', _ClearPoemRemembererChildrenOnCollapse);
-    
-    TransitioningBool($tray,true);
-}
-
-function _ClearPoemRemembererChildrenOnCollapse(){
-    
-    const $output = GetElementById("poemRemembererDisplay");
-    
-    const $tray = GetElementById("poemReciterTray");
-    
-    ClearAllChildren($output);
-    
-    $tray.removeEventListener('transitionend', _ClearPoemRemembererChildrenOnCollapse);
 }
 
 export function CapitalizeLettersAfterAppropriatePunctuation(id){
