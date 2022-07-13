@@ -77,6 +77,8 @@ export function TogglePoemCreatorOutputCollapsed(){
 
 export function TransitioningBool(elem,trueFalse){
     
+    console.trace();
+    
     elem.dataset.transitioning = trueFalse;
 }
 
@@ -94,8 +96,6 @@ function _PoemCreatorOutputClose(){
 export function TogglePoemReciterCollapsed(){
     
     const $tray = GetElementById("poemReciterTray");
-    
-    if($tray.dataset.transitioning == "true") return
     
     const $output = GetElementById("poemRemembererDisplay");
     
@@ -119,6 +119,8 @@ export function TogglePoemReciterCollapsed(){
 export function PoemReciterTrayClose(){
     
     const $tray = GetElementById("poemReciterTray");
+    
+    if($tray.style.transform == "translateY(0)") return
     
     const $button = GetElementById("poemReciterCollapseToggler");
     
