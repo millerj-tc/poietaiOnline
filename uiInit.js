@@ -4,16 +4,14 @@ export function UiInit(){
     
     const $outputTray = GetElementById("poemCreatorOutputTray");
     
-    $outputTray.dataset.startTop = $outputTray.getBoundingClientRect().top;
+    $outputTray.dataset.open = "false";
         
     const $creatorTray = GetElementById("poemCreatorTray");
     
-    $creatorTray.dataset.startTop = $creatorTray.getBoundingClientRect().top;
+    $creatorTray.dataset.open = "false";
     
     const $reciterTray = GetElementById("poemReciterTray");
     
-    $reciterTray.dataset.startTop = $reciterTray.getBoundingClientRect().top;
-    
-    console.error("just do it time based with some kind of cross check")
+    $reciterTray.dataset.open = "false";
 
 }

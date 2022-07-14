@@ -2,12 +2,47 @@ import {GetElementById,ClearAllChildren,CreateElement,SetInnerTextTo} from "./ui
 import {poemRemembererShowPoems} from "./poemRememberer/poemRemembererShowPoems.js";
 import {poemCreatorDisplayFlow} from "./poemCreator/poemCreatorDisplayBuild/poemCreatorDisplayFlow.js";
 
-function _GetTrayAtStartPos(trayElem){
+const trayTransitionTime = Number(getComputedStyle(document.documentElement).getPropertyValue('--trayTransitionTime').replace("s","")) * 1000;
+
+function _ToggleTrayState(tray,buttonDOM){
     
-    console.log(`${trayElem.dataset.startTop} vs ${trayElem.getBoundingClientRect().top}`);
+    if(buttonDOM.innerText == "\\/") SetInnerTextTo(buttonDOM,"/\\");
+    else SetInnerTextTo(buttonDOM,"\\/");
     
-    if(trayElem.dataset.startTop == trayElem.getBoundingClientRect().top) return true
+    if(tray.dataset.open == "closing") tray.dataset.open = "false";
+    if(tray.dataset.open == "opening") tray.dataset.open = "true";
+    
+    if(tray.id == "poemCreatorTray" && tray.dataset.open == "false"){
+        
+        ClearAllChildren(GetElementById("poemCreatorGrid"));
+    }
+    
+    if(tray.id == "poemReciterTray" && tray.dataset.open == "false"){
+        
+        ClearAllChildren(GetElementById("poemRemembererDisplay"));
+    }
+}
+
+function _IsTrayTransitioning(tray){
+    
+    if(tray.dataset.open == "opening" || tray.dataset.open == "closing") return true
     else return false
+}
+
+function _SetTrayTransitioning(tray,transition){
+    
+    tray.dataset.open = transition;
+}
+
+function _TrayClose(tray,button){
+    
+    if(_IsTrayTransitioning(tray) || tray.dataset.open == "false") return
+    
+    setTimeout(function(){_ToggleTrayState(tray,button)},trayTransitionTime);
+    
+    _SetTrayTransitioning(tray,"closing");
+
+    tray.style.transform = "translateY(0)";
 }
 
 export function TogglePoemCreatorTrayCollapsed(){
@@ -16,33 +51,26 @@ export function TogglePoemCreatorTrayCollapsed(){
         
     const $button = GetElementById("poemCreatorTrayCollapseToggler");
     
-    if(_GetTrayAtStartPos($tray)){
+    const $outputTray = GetElementById("poemCreatorOutputTray");
+    
+    const $outputTrayButton = GetElementById("poemCreatorOutputCollapseToggler");
+    
+    if(_IsTrayTransitioning($tray)) return
+    
+    if($tray.dataset.open == "false"){
         
-        $button.innerHTML = `/\\`;
+        _SetTrayTransitioning($tray,"opening");
+        
+        setTimeout(function(){_ToggleTrayState($tray,$button)},trayTransitionTime);
         
         $tray.style.transform = "translateY(85vh)";
         
         poemCreatorDisplayFlow();
     }
     else{ 
-        PoemCreatorTrayClose();
-        _PoemCreatorOutputClose();
+        _TrayClose($tray,$button);
+        _TrayClose($outputTray,$outputTrayButton);
     }
-}
-
-export function PoemCreatorTrayClose(){
-    
-    const $tray = GetElementById("poemCreatorTray");
-    
-    if(_GetTrayAtStartPos($tray)) return
-        
-    const $button = GetElementById("poemCreatorTrayCollapseToggler");
-    
-    $button.innerHTML = "\\/";
-
-    $tray.style.transform = "translateY(0)"
-
-    const $grid = GetElementById("poemCreatorGrid");
 }
 
 export function TogglePoemCreatorOutputCollapsed(){
@@ -51,62 +79,52 @@ export function TogglePoemCreatorOutputCollapsed(){
         
     const $button = GetElementById("poemCreatorOutputCollapseToggler");
     
-    if(_GetTrayAtStartPos($tray)){
+    if(_IsTrayTransitioning($tray)) return
+    
+    if($tray.dataset.open == "false"){
         
-        $button.innerHTML = `/\\`;
+        _SetTrayTransitioning($tray,"opening");
         
-        window.gameHandler.actionLogger.AddAction("open output tray");
+        setTimeout(function(){_ToggleTrayState($tray,$button)},trayTransitionTime);
         
         $tray.style.transform = "translateY(55vh)";
     }
-    else _PoemCreatorOutputClose();
-}
-
-function _PoemCreatorOutputClose(){
+    else{ 
+        _TrayClose($tray,$button);
+    }
+       
     
-    const $tray = GetElementById("poemCreatorOutputTray");
-        
-    const $button = GetElementById("poemCreatorOutputCollapseToggler");
-    
-    $button.innerHTML = "\\/";
-        
-    $tray.style.transform = "translateY(0)"
 }
 
 export function TogglePoemReciterCollapsed(){
     
     const $tray = GetElementById("poemReciterTray");
     
-    const $output = GetElementById("poemRemembererDisplay");
-    
-    const $trayBottom = $tray.getBoundingClientRect().bottom;
-    
-    const $screenBottom = window.innerHeight;
-    
     const $button = GetElementById("poemReciterCollapseToggler");
     
-    if(_GetTrayAtStartPos($tray)){
+    if(_IsTrayTransitioning($tray)) return
+    
+    if($tray.dataset.open == "false"){
+                
+        _SetTrayTransitioning($tray,"opening");
         
-        $button.innerHTML = `\\/`;
+        setTimeout(function(){_ToggleTrayState($tray,$button)},trayTransitionTime);
         
         $tray.style.transform = "translateY(-45vh)";
         
         poemRemembererShowPoems();
     }
-    else PoemReciterTrayClose();
+    else _TrayClose($tray,$button);
 }
 
-export function PoemReciterTrayClose(){
+export function CloseAllOpenTrays(){
     
-    const $tray = GetElementById("poemReciterTray");
+    const allTrays = [{tray:GetElementById("poemReciterTray"),button:GetElementById("poemReciterCollapseToggler")}, {tray: GetElementById("poemCreatorOutputTray"),button:GetElementById("poemCreatorOutputCollapseToggler")}, {tray: GetElementById("poemCreatorTray"), button:GetElementById("poemCreatorTrayCollapseToggler")}];
     
-    if(_GetTrayAtStartPos($tray)) return
-    
-    const $button = GetElementById("poemReciterCollapseToggler");
-    
-    $button.innerHTML = "/\\";
+    for(const t of allTrays){
         
-    $tray.style.transform = "translateY(0)";
+        _TrayClose(t.tray,t.button);
+    }
 }
 
 export function CapitalizeLettersAfterAppropriatePunctuation(id){

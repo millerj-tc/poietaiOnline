@@ -1,3 +1,11 @@
+/*CSS CONSTANTS*/
+
+:root {
+    --trayTransitionTime: 0.75s;
+}
+
+/*CSS*/
+
 body{
     
     font-family: Helvetica;
@@ -107,7 +115,7 @@ body{
     font-size:calc(14px + 1.2vw);
     border: 2px solid;
     border-radius:25px;
-    transition: transform 0.75s;
+    transition: transform var(--trayTransitionTime);
     z-index:99;
 }
 
@@ -155,7 +163,7 @@ body{
     margin-left: -37vw;
     width:74vw;
     top: -48vh;
-    transition: transform 0.75s;
+    transition: var(--trayTransitionTime);
     z-index: 100;
 }
 
@@ -227,7 +235,7 @@ body{
     top: 95vh;
     left:10vw;
     font-size:calc(13px + 1.2vw);
-    transition: transform 0.75s;
+    transition: transform var(--trayTransitionTime);
     z-index:101;
 }
 

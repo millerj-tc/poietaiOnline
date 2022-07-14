@@ -1,6 +1,6 @@
 import {GetElementById,CreateElement,ClearInnerHTML,GetOrCreateDivInsideDOM,SetInnerTextTo,ScrollIntoView} from "./../ui.js";
 import {GetPoemHTMLFromPoemCreatorOutput,RestoreSpacesBeforePunctuationAndStripCarriageReturns,GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
-import {PoemReciterTrayClose,CapitalizeLettersAfterAppropriatePunctuation,PoemCreatorTrayClose,ReplaceNReturnWithBr} from "./../uiUtils.js";
+import {CloseAllOpenTrays,CapitalizeLettersAfterAppropriatePunctuation,ReplaceNReturnWithBr} from "./../uiUtils.js";
 import {ParseNavigationText,GetPoemFromNavigationOutputPlayerPoemSpeak} from "./../navigation/navigationUtils.js";
 import {AppendCharacterResponsesFlow} from "./AppendCharacterResponsesFlow.js";
 import {HeardPoemToCharacterDatabaseEntry} from "./../firebase/characterDatabaseValues.js";
@@ -170,7 +170,6 @@ function _ScrollToRecitationSpan(){
 
 function _CollapseTheMenuThePoemCameFrom(){
     
-    PoemCreatorTrayClose("closed");
-    PoemReciterTrayClose("closed");
+    CloseAllOpenTrays();
     
 }
