@@ -1,5 +1,5 @@
 import {GetElementById,ClearInnerHTML,CreateElement,GetOrCreateDivInsideDOM,SetInnerTextTo} from "./../ui.js";
-import {ParseNavigationText,AttachEventListenersDOMs} from "./navigationUtils.js";
+import {ParseNavigationText,AttachEventListenersDOMs,IsCharAtPassage} from "./navigationUtils.js";
 import {ReplacePronouns} from "./../utils.js";
 
 export function NavigationFlow(destPassage){
@@ -13,6 +13,8 @@ export function NavigationFlow(destPassage){
      _ParseCurrentPassage($passageHandler);
     
     _DisplayCurrentPassage($passageHandler);
+    
+    _AddCharResponseCSSClasses();
     
     _DisplayAskFavoriteLinks();
 }
@@ -43,6 +45,25 @@ function _DisplayCurrentPassage(passageHandler){
     $navOutput.insertAdjacentHTML("beforeend",passageHandler.currentPassage.text)
     
     AttachEventListenersDOMs("navigationOutput");
+}
+
+function _AddCharResponseCSSClasses(){
+    
+    const gh = window.gameHandler;
+    
+    const navOutput = GetElementById("navigationOutput");
+        
+    for (const char of gh.characterHandler.characters){
+        
+        const currentPassageId = gh.passageHandler.currentPassage.id
+        
+        if(!char.presentPassages.includes(currentPassageId)) continue
+
+        const $respoDiv = GetOrCreateDivInsideDOM(`${char.id}Response`,navOutput);
+        
+        $respoDiv.classList.add("charResponse");
+        
+    }
 }
 
 function _DisplayAskFavoriteLinks(){

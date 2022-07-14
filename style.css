@@ -2,6 +2,7 @@
 
 :root {
     --trayTransitionTime: 0.75s;
+    --charResponseUnderlineTime: 2.5s;
 }
 
 /*CSS*/
@@ -78,6 +79,26 @@ body{
 .navigationOutputPlayerPoemSpeak{
     
     font-weight: bold;
+}
+
+.charResponse{
+    
+    text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+}
+
+.updateResponse{
+    
+    transition: var(--charResponseUnderlineTime);
+
+    text-decoration-color: rgba(255, 255, 255, 1);
+}
+
+.fadeResponse{
+    
+    transition: var(--charResponseUnderlineTime);
+
+    text-decoration-color: rgba(255, 255, 255, 0);
+    
 }
 
 .passageLink{

@@ -11,6 +11,15 @@ export function ParseNavigationText(text){
     return $navText
 }
 
+export function IsCharAtPassage(char,passage){
+    
+    const currentPassageId = gh.passageHandler.currentPassage.id;
+        
+    if(char.presentPassages.includes(currentPassageId)) return true
+    
+    return false
+}
+
 function _ParsePassageLinks(text){
     
     let $navText = text.slice();

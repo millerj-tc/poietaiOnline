@@ -2,6 +2,7 @@ import {AppendToDivOnce} from "./../navigation/passageFX.js";
 import {InsertUsedKeywords} from "./poemEvaluationUtils.js";
 import {GetPoemFromPoemCreatorOutput} from "./../poemCreator/poemCreatorUtils.js";
 import {GetPoemFromNavigationOutputPlayerPoemSpeak} from "./../navigation/navigationUtils.js";
+import {GetElementById} from "./../ui.js";
 
 export function AppendCharacterResponsesFlow(){
 
@@ -14,6 +15,8 @@ export function AppendCharacterResponsesFlow(){
         let $charResponseString = _GetCharacterResponseString($triggeredResponses,charResponseHandler);
         
         $charResponseString = _StateIfFavePoem(charResponseHandler) + $charResponseString;
+        
+        _AddUpdatingClass(GetElementById(charResponseHandler.characterId + "Response"));
         
         AppendToDivOnce(charResponseHandler.characterId + "Response", $charResponseString)
         
@@ -99,6 +102,19 @@ function _StateIfFavePoem(charResponseHandler){
     }
     
     return "";
+}
+
+function _AddUpdatingClass(elem){
+    
+    elem.classList.add("updateResponse");
+    
+    //elem.classList.remove("charResponse");
+    
+    setTimeout(function(){
+    
+        elem.classList.add("fadeResponse");
+        
+    },1500);
 }
 
 function _ParseFirstResponseString(text){
