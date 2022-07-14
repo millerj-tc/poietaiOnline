@@ -38,7 +38,7 @@ body{
     display:block;
     position:fixed;
     top:96vh;
-    left:94vw;
+    left:calc(95vw - 22px);
 }
 
 .wikiButton{
@@ -46,8 +46,8 @@ body{
     font-family: serif;
     display:block;
     position:fixed;
-    top:93vh;
-    left:calc(94vw + 2px);
+    top:92vh;
+    left:calc(95vw - 20px);
 }
 
 @media only screen and (max-width: 600px) {
