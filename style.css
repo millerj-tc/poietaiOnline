@@ -44,6 +44,12 @@ body{
 }
 
 @media only screen and (max-width: 600px) {
+    
+    .wikiButton{
+        
+        top:85vh;
+    }
+    
     .bugButton{
      
         top:88vh;
