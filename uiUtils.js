@@ -6,8 +6,8 @@ const trayTransitionTime = Number(getComputedStyle(document.documentElement).get
 
 function _ToggleTrayState(tray,buttonDOM){
     
-    if(buttonDOM.innerText == "\\/") SetInnerTextTo(buttonDOM,"/\\");
-    else SetInnerTextTo(buttonDOM,"\\/");
+    if(buttonDOM.innerText == "▼") SetInnerTextTo(buttonDOM,"▲");
+    else SetInnerTextTo(buttonDOM,"▼");
     
     if(tray.dataset.open == "closing") tray.dataset.open = "false";
     if(tray.dataset.open == "opening") tray.dataset.open = "true";
