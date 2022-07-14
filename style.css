@@ -34,6 +34,15 @@ body{
     left:94vw;
 }
 
+.wikiButton{
+    
+    font-family: serif;
+    display:block;
+    position:fixed;
+    top:93vh;
+    left:calc(94vw + 2px);
+}
+
 @media only screen and (max-width: 600px) {
     .bugButton{
      

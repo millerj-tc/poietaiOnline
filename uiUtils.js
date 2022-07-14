@@ -21,6 +21,11 @@ function _ToggleTrayState(tray,buttonDOM){
         
         ClearAllChildren(GetElementById("poemRemembererDisplay"));
     }
+    
+    if(tray.id == "poemReciterTray" && tray.dataset.open == "true"){
+        
+        window.gameHandler.actionLogger.AddAction("openPoemRemembererTray");
+    }
 }
 
 function _IsTrayTransitioning(tray){

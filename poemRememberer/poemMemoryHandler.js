@@ -51,7 +51,12 @@ export class poemMemoryHandler
         
         $poemButton.innerHTML = poem.poemText;
         
-        $poemButton.addEventListener("click",function(){PoemEvaluationFlow(poem.poemText)});
+        $poemButton.addEventListener("click",function(){
+            
+            window.gameHandler.actionLogger.AddAction("recite from memory--");
+            
+            PoemEvaluationFlow(poem.poemText);
+        });
     
         return $poemButton;
     }
