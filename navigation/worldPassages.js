@@ -52,7 +52,7 @@ export function InitializeWorldPassages(){
         "You've gotten your winks and your water. Now pay me, itinerant one."</span>
 
         <span id='courtyardButton'></span>
-        <p><i>Click the \\/ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i></p><br><br>
+        <p><i>Click the ▼ at the top of the screen to bring down the poem creation menu. When you're happy with what you've got, click Recite to share your poem with Yselda.</i></p><br><br>
 
         <span id='yseldaFavoriteLink'></span>
 
