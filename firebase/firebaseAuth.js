@@ -91,9 +91,6 @@ export function EstablishSession(){
 
   return update(ref(db), updates);
 }
-    
-
-}
 
 export function SignOut(reload = true){
 
