@@ -91,13 +91,6 @@ export function EstablishSession(){
 
   return update(ref(db), updates);
 }
-
-export function TestLoginMe(){
-    
- GetElementById("existingUserEmail").value = "j.sam.miller@gmail.com";
- GetElementById("existingPass").value = "password";
-    
-Login();
     
 
 }
