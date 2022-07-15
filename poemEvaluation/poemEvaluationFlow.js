@@ -46,6 +46,8 @@ function _StoreRecitedPoemTextToActionLogger(poemText){
 
 function _PresentCharactersHearPoemStoreToDatabase(poemText){
     
+    if(window.uid == "guest") return
+    
     const $poemText = ConvertStringWithHTMLToPlainText(poemText);
     
     const $currPassage = window.gameHandler.passageHandler.currentPassage;

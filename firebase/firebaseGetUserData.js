@@ -4,6 +4,16 @@ import {PullPoemsFromProfileIntoMemoryFlow,PullDomeWordsFromDBIntoMindFlow} from
 
 import {PostUserDataRetrievalFlow} from "./loginFlow.js";
 
+export function LoginAsGuest(){
+    
+    if (window.confirm("If you login as a guest, your unlocked words and progress will not be saved, characters will not remember your poems, and you will not be able to memorize your own poems to retrieve later.")) {
+        
+        window.uid = "guest";
+        
+        PostUserDataRetrievalFlow();
+    }
+}
+
 export function GetUserDataAtLoginFlow(){
     
     _RetrieveName(true);
